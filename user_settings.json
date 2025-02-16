@@ -1,12 +1,12 @@
 {
-    "helldiver": "TESTER",
+    "helldiver": "CalamitusXIII",
     "level": 150,
     "title": "SERVANT OF FREEDOM",
     "sector": "Umlaut Sector",
     "planet": "Fenrir III",
-    "difficulty": "10 - SUPER HELLDIVE",
-    "mission": "Spread Democracy",
-    "DSS": true,
-    "DSSMod": "Eagle Storm",
-    "campaign": "Defence"
+    "difficulty": "No difficulties available",
+    "mission": "No missions available",
+    "DSS": false,
+    "DSSMod": "None",
+    "campaign": "Invasion"
 }

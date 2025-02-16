@@ -1,5 +1,5 @@
 """
-CREDITS TO DEAN FOR THE STUPID AMOUNT OF DATA HE PROVIDED FOR THE JSON FILES
+CREDITS TO DEANFOR THE STUPID AMOUNT OF DATA HE PROVIDED FOR THE JSON FILES
 CREDITS TO ADAM FOR THE SCRIPT AND THE GUI
 """
 
@@ -19,17 +19,15 @@ import configparser
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-# Read configuration from config.config
-config = configparser.ConfigParser()
-config.read('config.config')
-
 # Constants
 DEBUG = True
 DATE_FORMAT = "%d-%m-%Y %H:%M:%S"
 SETTINGS_FILE = 'user_settings.json'
-EXCEL_FILE_PROD = config['Excel Location']['PROD']
-EXCEL_FILE_TEST = config['Excel Location']['TEST']
-
+EXCEL_FILE_TEST = 'mission_log_test.xlsx'
+EXCEL_FILE_PROD = 'mission_log.xlsx'
+# Read configuration from config.config
+config = configparser.ConfigParser()
+config.read('config.config')
 
 DISCORD_CLIENT_ID = config['Discord']['DISCORD_CLIENT_ID']
 RPC_UPDATE_INTERVAL = 15  # seconds
@@ -66,6 +64,12 @@ SYSTEM_COLORS = {
     "Illuminate": config['SystemColors']['Illuminate']
 }
 
+# Enemy icons for Subfactions
+SUBFACTION_ICONS = {
+    "JetBrigade": config['SubfactionIcons']['JetBrigade'],
+    "PredatorStrain": config['SubfactionIcons']['PredatorStrain']
+}
+
 def get_enemy_icon(enemy_type: str) -> str:
     """Get the Discord emoji icon for an enemy type."""
     return ENEMY_ICONS.get(enemy_type, "NaN")
@@ -77,6 +81,10 @@ def get_difficulty_icon(difficulty: str) -> str:
 def get_system_color(enemy_type: str) -> int:
     """Get the Discord color code for an enemy type."""
     return int(SYSTEM_COLORS.get(enemy_type, "0"))
+
+def get_subfaction_icon(subfaction_type: str) -> str:
+    """Get the Discord emoji icon for subfaction type."""
+    return SUBFACTION_ICONS.get(subfaction_type, "NaN")
 
 class MissionLogGUI:
     """GUI application for logging Helldiver 2 mission data."""
@@ -110,6 +118,7 @@ class MissionLogGUI:
         self.kills = tk.StringVar()
         self.deaths = tk.StringVar()
         self.enemy_type = tk.StringVar()
+        self.subfaction_type = tk.StringVar()
         self.Helldivers = tk.StringVar()
         self.mission_category = tk.StringVar()
         self.rating = tk.StringVar(value="Outstanding Patriotism")
@@ -184,6 +193,11 @@ class MissionLogGUI:
             sectors_data = json.load(f)
             sector_list = list(sectors_data.keys())
 
+        # Load subfactions from config
+        with open('Subfactions.json', 'r') as f:
+            enemy_data = json.load(f)
+            enemy_list = list(enemy_data.keys())
+
         # Mission Info Grid
         ttk.Label(mission_frame, text="Helldiver:").grid(row=0, column=0, sticky=tk.W, pady=5)
         ttk.Entry(mission_frame, textvariable=self.Helldivers, width=30).grid(row=0, column=1, padx=5, pady=5)
@@ -231,20 +245,37 @@ class MissionLogGUI:
         with open('Missions.json', 'r') as f:
             missions_data = json.load(f)
             enemy_types = list(missions_data.keys())
-        enemy_combo = ttk.Combobox(details_frame, textvariable=self.enemy_type, values=enemy_types, state='readonly', width=27)
+        enemy_combo = ttk.Combobox(details_frame, textvariable=self.enemy_type, values=enemy_list, state='readonly', width=27)
         enemy_combo.grid(row=0, column=1, padx=5, pady=5)
         enemy_combo.set(enemy_types[0])
 
-        ttk.Checkbutton(details_frame, text="Major Order", variable=self.MO).grid(row=0, column=2, padx=5, pady=5)
+        # Subfaction Type Selection
+        ttk.Label(details_frame, text="Enemy Subfaction:").grid(row=0, column=2, sticky=tk.W, pady=5)
+        subfaction_combo = ttk.Combobox(details_frame, textvariable=self.subfaction_type, state='readonly', width=27)
+        subfaction_combo.grid(row=0, column=3, padx=5, pady=5)
+        self.enemy_combo = enemy_combo
+        self.subfaction_combo = subfaction_combo
 
-        ttk.Checkbutton(details_frame, text="DSS Active", variable=self.DSS).grid(row=0, column=3, padx=5, pady=5)
+
+        def update_subfactions(*args):
+            selected_enemy = self.enemy_type.get()
+            subfaction_list = enemy_data[selected_enemy]["subfactions"]
+            subfaction_combo['values'] = subfaction_list
+            subfaction_combo.set(subfaction_list[0])
+
+        enemy_combo.bind('<<ComboboxSelected>>', update_subfactions)
+        update_subfactions()
+
+        ttk.Checkbutton(details_frame, text="Major Order", variable=self.MO).grid(row=1, column=2, padx=5, pady=5)
+
+        ttk.Checkbutton(details_frame, text="DSS Active", variable=self.DSS).grid(row=1, column=3, padx=5, pady=5)
 
         # DSS Modifier dropdown
         self.dss_frame = ttk.Frame(details_frame)
-        self.dss_frame.grid(row=0, column=4, columnspan=2, sticky=tk.W, pady=5)
+        self.dss_frame.grid(row=1, column=4, columnspan=2, sticky=tk.W, pady=5)
         ttk.Label(self.dss_frame, text="DSS Modifier:").pack(side=tk.LEFT)
-        dss_mods = ["Inactive", "Orbital Blockade", "Heavy Ordinance Distribution", "Eagle Storm"]
-        self.DSSMod.set("Inactive")  # Set default value
+        dss_mods = ["None", "Orbital Blockade", "Heavy Ordinance Distribution", "Eagle Storm"]
+        self.DSSMod.set("None")  # Set default value
         self.dss_combo = ttk.Combobox(self.dss_frame, textvariable=self.DSSMod, values=dss_mods, state='readonly', width=27)
         self.dss_combo.pack(side=tk.LEFT, padx=5)
         
@@ -256,7 +287,7 @@ class MissionLogGUI:
             if self.DSS.get():
                 self.dss_frame.grid()
             else:
-                self.DSSMod.set("Inactive")
+                self.DSSMod.set("None")
                 self.dss_frame.grid_remove()
             
         self.DSS.trace_add("write", toggle_dss_mod)
@@ -388,6 +419,7 @@ class MissionLogGUI:
             sector = self.sector.get() or "No Sector"
             planet = self.planet.get() or "No Planet"
             enemytype = self.enemy_type.get() or "Unknown Enemy"
+            subfactiontype = self.subfaction_type.get() or "Unknown Enemy Subfaction"
             level = self.level.get() or 0
             title = self.title.get() or "No Title"
 
@@ -525,8 +557,6 @@ class MissionLogGUI:
 
     def _collect_mission_data(self) -> Dict:
         """Collect all mission data into a dictionary."""
-
-        print(self.DSSMod.get())
         return {
             'Helldivers': self.Helldivers.get(),
             'Level': self.level.get(),
@@ -534,9 +564,10 @@ class MissionLogGUI:
             'Sector': self.sector.get(),
             'Planet': self.planet.get(),
             'Enemy Type': self.enemy_type.get(),
+            'Enemy Subfaction': self.subfaction_type.get(),
             'Major Order': self.MO.get(),
             'DSS Active': self.DSS.get(),
-            'DSS Modifier': self.DSSMod.get() or "Inactive",
+            'DSS Modifier': self.DSSMod.get(),
             'Mission Category': self.mission_category.get(),
             'Mission Type': self.mission_type.get(),
             'Difficulty': self.difficulty.get(),
@@ -594,6 +625,7 @@ class MissionLogGUI:
             enemy_icon = get_enemy_icon(data['Enemy Type'])
             system_color = get_system_color(data['Enemy Type'])
             diff_icon = get_difficulty_icon(data['Difficulty'])
+            subfaction_icon = get_subfaction_icon(data['Enemy Subfaction'])
 
             # Format the message for Discord
             message_content1 = (
@@ -617,7 +649,7 @@ class MissionLogGUI:
                 "content": None,
                 "embeds": [{
                     "title": f"Date: {date}\n> Mission Report for {data['Helldivers']}\n> Level {data['Level']} | {data['Title']}",
-                    "description": f"=============================\nSector: {data['Sector']}\n\nPlanet: {data['Planet']}\n\nEnemy Faction: {data['Enemy Type']} {enemy_icon}\n\n Major Order: {data['Major Order']}\n\n DSS Active: {data['DSS Active']}\n\n DSS Modifier: {data['DSS Modifier']}\n\nCampaign: {data['Mission Category']}\n=============================",
+                    "description": f"=============================\nSector: {data['Sector']}\n\nPlanet: {data['Planet']}\n\nEnemy Faction: {data['Enemy Type']} {enemy_icon}\n\nEnemy Subfaction: {data['Enemy Subfaction']} {subfaction_icon}\n\n Major Order: {data['Major Order']}\n\n DSS Active: {data['DSS Active']}\n\n DSS Modifier: {data['DSS Modifier']}\n\nCampaign: {data['Mission Category']}\n=============================",
                     "color": system_color,
                     "fields": [{
                         "name": "> Mission Statistics",

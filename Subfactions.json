@@ -1,0 +1,11 @@
+{
+  "Automatons": {
+    "subfactions": ["Automaton Legion", "Jet Brigade"]
+  },
+  "Terminids": {
+    "subfactions": ["Terminid Horde", "Predator Strain"]
+  },
+  "Illuminate": {
+    "subfactions": ["Illuminate Cult"]
+  }
+}
