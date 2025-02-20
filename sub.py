@@ -11,8 +11,12 @@ config = configparser.ConfigParser()
 config.read('config.config')
 
 
-# Read the Excel file (replace 'your_file.xlsx' with your Excel file path)
-df = pd.read_excel('mission_log.xlsx')
+# Read the Excel file
+try:
+    df = pd.read_excel('mission_log_test.xlsx') if DEBUG else pd.read_excel('mission_log.xlsx')
+except FileNotFoundError:
+    print("Error: Excel file not found. Please ensure the file exists in the correct location.")
+    exit(1)
 
 # Initialize a dictionary to store column totals
 sectors = []

@@ -15,12 +15,13 @@ from typing import Dict, List, Optional
 from pypresence import Presence
 import time
 import configparser
+import threading  # Add at top with other imports
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # Constants
-DEBUG = True
+DEBUG = False
 DATE_FORMAT = "%d-%m-%Y %H:%M:%S"
 SETTINGS_FILE = 'user_settings.json'
 EXCEL_FILE_TEST = 'mission_log_test.xlsx'
@@ -66,8 +67,8 @@ SYSTEM_COLORS = {
 
 # Enemy icons for Subfactions
 SUBFACTION_ICONS = {
-    "JetBrigade": config['SubfactionIcons']['JetBrigade'],
-    "PredatorStrain": config['SubfactionIcons']['PredatorStrain']
+    "Jet Brigade": config['SubfactionIcons']['JetBrigade'],
+    "Predator Strain": config['SubfactionIcons']['PredatorStrain'],
 }
 
 def get_enemy_icon(enemy_type: str) -> str:
@@ -82,9 +83,26 @@ def get_system_color(enemy_type: str) -> int:
     """Get the Discord color code for an enemy type."""
     return int(SYSTEM_COLORS.get(enemy_type, "0"))
 
+def normalize_subfaction_name(subfaction: str) -> str:
+    """Normalize subfaction name to match config keys."""
+    # Remove extra spaces and convert to title case
+    normalized = " ".join(subfaction.split()).title()
+    # Add any specific replacements
+    replacements = {
+        "Jet Brigade": "JetBrigade",
+        "Predator Strain": "PredatorStrain",
+        # Add more mappings as needed
+    }
+    return replacements.get(normalized, normalized)
+
 def get_subfaction_icon(subfaction_type: str) -> str:
     """Get the Discord emoji icon for subfaction type."""
-    return SUBFACTION_ICONS.get(subfaction_type, "NaN")
+    # Direct lookup without normalization
+    icon = SUBFACTION_ICONS.get(subfaction_type, "NaN")
+    logging.info(f"Getting subfaction icon for '{subfaction_type}', found: {icon}")
+    if icon == "NaN":
+        icon = ""
+    return icon
 
 class MissionLogGUI:
     """GUI application for logging Helldiver 2 mission data."""
@@ -94,21 +112,37 @@ class MissionLogGUI:
         self.root = root
         self.root.title("Helldiver Mission Log Manager")
         self.root.resizable(False, False)
-        self.root.iconphoto(False, tk.PhotoImage(file='SuperEarth.png'))
+        
+        # Load icon in a separate thread
+        def load_icon():
+            try:
+                icon = tk.PhotoImage(file='SuperEarth.png')
+                self.root.after(0, lambda: self.root.iconphoto(False, icon))
+            except Exception as e:
+                logging.error(f"Failed to load icon: {e}")
+        
+        threading.Thread(target=load_icon, daemon=True).start()
+        
         self.settings_file = SETTINGS_FILE
         self._setup_variables()
-        self._setup_discord_rpc()  # Add this line
+        self._setup_discord_rpc()
         self._create_main_frame()
         self._setup_ui()
+        
+        # Delay loading settings
         self.root.after(100, self.load_settings)
-
-        # Add periodic RPC updates
+        
+        # Start RPC updates after a short delay
         self.root.after(1000, self._periodic_rpc_update)
 
     def _periodic_rpc_update(self) -> None:
         """Periodically update Discord Rich Presence."""
-        self._update_discord_presence()
-        self.root.after(1000, self._periodic_rpc_update)
+        try:
+            self._update_discord_presence()
+        except Exception as e:
+            logging.error(f"Error in periodic RPC update: {e}")
+        finally:
+            self.root.after(RPC_UPDATE_INTERVAL * 1000, self._periodic_rpc_update)
 
     def _setup_variables(self) -> None:
         """Initialize tkinter variables with validation."""
@@ -129,6 +163,7 @@ class MissionLogGUI:
         self.DSS = tk.BooleanVar()
         self.DSSMod = tk.StringVar()
         self.report_style = tk.StringVar(value='Modern')
+        self.note = tk.StringVar()
 
         # Add validation for numeric fields
         validate_cmd = self.root.register(self._validate_numeric_input)
@@ -161,15 +196,18 @@ class MissionLogGUI:
 
     def _setup_discord_rpc(self) -> None:
         """Initialize Discord Rich Presence."""
-        try:
-            self.RPC = Presence(DISCORD_CLIENT_ID)
-            self.RPC.connect()
-            self.last_rpc_update = 0
-            logging.info("Discord Rich Presence initialized successfully")
-        except Exception as e:
-            logging.error(f"Failed to initialize Discord Rich Presence: {e}")
-            self.RPC = None
+        def init_rpc():
+            try:
+                self.RPC = Presence(DISCORD_CLIENT_ID)
+                self.RPC.connect()
+                self.last_rpc_update = 0
+                logging.info("Discord Rich Presence initialized successfully")
+            except Exception as e:
+                logging.error(f"Failed to initialize Discord Rich Presence: {e}")
+                self.RPC = None
 
+        # Run Discord RPC initialization in a separate thread
+        threading.Thread(target=init_rpc, daemon=True).start()
 
     def _setup_ui(self) -> None:
         """Set up the complete UI layout."""
@@ -193,10 +231,6 @@ class MissionLogGUI:
             sectors_data = json.load(f)
             sector_list = list(sectors_data.keys())
 
-        # Load subfactions from config
-        with open('Subfactions.json', 'r') as f:
-            enemy_data = json.load(f)
-            enemy_list = list(enemy_data.keys())
 
         # Mission Info Grid
         ttk.Label(mission_frame, text="Helldiver:").grid(row=0, column=0, sticky=tk.W, pady=5)
@@ -242,35 +276,23 @@ class MissionLogGUI:
 
         # Enemy Type Selection
         ttk.Label(details_frame, text="Enemy Type:").grid(row=0, column=0, sticky=tk.W, pady=5)
+
         with open('Missions.json', 'r') as f:
             missions_data = json.load(f)
             enemy_types = list(missions_data.keys())
-        enemy_combo = ttk.Combobox(details_frame, textvariable=self.enemy_type, values=enemy_list, state='readonly', width=27)
+
+        enemy_combo = ttk.Combobox(details_frame, textvariable=self.enemy_type, values=enemy_types, state='readonly', width=27)
         enemy_combo.grid(row=0, column=1, padx=5, pady=5)
         enemy_combo.set(enemy_types[0])
 
-        # Subfaction Type Selection
-        ttk.Label(details_frame, text="Enemy Subfaction:").grid(row=0, column=2, sticky=tk.W, pady=5)
-        subfaction_combo = ttk.Combobox(details_frame, textvariable=self.subfaction_type, state='readonly', width=27)
-        subfaction_combo.grid(row=0, column=3, padx=5, pady=5)
-        self.enemy_combo = enemy_combo
-        self.subfaction_combo = subfaction_combo
-
-
-        def update_subfactions(*args):
-            selected_enemy = self.enemy_type.get()
-            subfaction_list = enemy_data[selected_enemy]["subfactions"]
-            subfaction_combo['values'] = subfaction_list
-            subfaction_combo.set(subfaction_list[0])
-
-        enemy_combo.bind('<<ComboboxSelected>>', update_subfactions)
-        update_subfactions()
-
-        ttk.Checkbutton(details_frame, text="Major Order", variable=self.MO).grid(row=1, column=2, padx=5, pady=5)
-
-        ttk.Checkbutton(details_frame, text="DSS Active", variable=self.DSS).grid(row=1, column=3, padx=5, pady=5)
+        # Major Order checkbox
+        ttk.Label(details_frame, text="Major Order:").grid(row=3, column=2, sticky=tk.W, pady=5)
+        ttk.Checkbutton(details_frame, variable=self.MO).grid(row=3, column=3, padx=5, pady=5)
 
         # DSS Modifier dropdown
+        ttk.Label(details_frame, text="DSS Active:").grid(row=1, column=2, sticky=tk.W, pady=5)
+        ttk.Checkbutton(details_frame, variable=self.DSS).grid(row=1, column=3, padx=5, pady=5)
+
         self.dss_frame = ttk.Frame(details_frame)
         self.dss_frame.grid(row=1, column=4, columnspan=2, sticky=tk.W, pady=5)
         ttk.Label(self.dss_frame, text="DSS Modifier:").pack(side=tk.LEFT)
@@ -292,6 +314,11 @@ class MissionLogGUI:
             
         self.DSS.trace_add("write", toggle_dss_mod)
 
+        # Subfaction Selection
+        ttk.Label(details_frame, text="Enemy Subfaction:").grid(row=0, column=2, sticky=tk.W, pady=5)
+        subfaction_combo = ttk.Combobox(details_frame, textvariable=self.subfaction_type, state='readonly', width=27)
+        subfaction_combo.grid(row=0, column=3, padx=5, pady=5)
+
         # Mission Campaign Selection
         ttk.Label(details_frame, text="Mission Campaign:").grid(row=1, column=0, sticky=tk.W, pady=5)
         mission_cat_combo = ttk.Combobox(details_frame, textvariable=self.mission_category, state='readonly', width=27)
@@ -307,28 +334,43 @@ class MissionLogGUI:
         mission_type_combo = ttk.Combobox(details_frame, textvariable=self.mission_type, state='readonly', width=27)
         mission_type_combo.grid(row=3, column=1, padx=5, pady=5)
 
-        def update_mission_categories(*args):
+        def update_subfactions(*args):
             enemy = self.enemy_type.get()
             if enemy in missions_data:
-                categories = list(missions_data[enemy].keys())
+                subfactions = list(missions_data[enemy].keys())
+                logging.info(f"Available subfactions for {enemy}: {subfactions}")  # Add logging
+                subfaction_combo['values'] = subfactions
+            if subfactions:
+                subfaction_combo.set(subfactions[0])
+                update_mission_categories()
+
+        def update_mission_categories(*args):
+            enemy = self.enemy_type.get()
+            subfaction = self.subfaction_type.get()
+            if enemy in missions_data and subfaction in missions_data[enemy]:
+                categories = list(missions_data[enemy][subfaction].keys())
                 mission_cat_combo['values'] = categories
-                if categories:
-                    mission_cat_combo.set(categories[0])
-                    update_mission_types()
+            if categories:
+                mission_cat_combo.set(categories[0])
+                update_mission_types()
 
         def update_mission_types(*args):
             enemy = self.enemy_type.get()
+            subfaction = self.subfaction_type.get()
             category = self.mission_category.get()
             
-            if enemy in missions_data and category in missions_data[enemy]:
-                if missions_data[enemy][category] != "Unknown":
-                    difficulties = list(missions_data[enemy][category].keys())
+            if (enemy in missions_data and 
+                subfaction in missions_data[enemy] and 
+                category in missions_data[enemy][subfaction]):
+                
+                if missions_data[enemy][subfaction][category] != "Unknown":
+                    difficulties = list(missions_data[enemy][subfaction][category].keys())
                     difficulty_combo['values'] = difficulties
                     difficulty_combo.set(difficulties[0])
                     
                     # Set initial mission types from first difficulty
                     first_difficulty = difficulties[0]
-                    available_missions = missions_data[enemy][category][first_difficulty]
+                    available_missions = missions_data[enemy][subfaction][category][first_difficulty]
                     mission_type_combo['values'] = available_missions
                     if available_missions:
                         mission_type_combo.set(available_missions[0])
@@ -340,30 +382,48 @@ class MissionLogGUI:
 
         def update_available_missions(*args):
             enemy = self.enemy_type.get()
+            subfaction = self.subfaction_type.get()
             category = self.mission_category.get()
             difficulty = self.difficulty.get()
             
             if (enemy in missions_data and 
-                category in missions_data[enemy] and 
-                difficulty in missions_data[enemy][category]):
+                subfaction in missions_data[enemy] and 
+                category in missions_data[enemy][subfaction] and 
+                difficulty in missions_data[enemy][subfaction][category]):
                 
-                available_missions = missions_data[enemy][category][difficulty]
+                available_missions = missions_data[enemy][subfaction][category][difficulty]
                 mission_type_combo['values'] = available_missions
                 if available_missions:
                     mission_type_combo.set(available_missions[0])
 
-        enemy_combo.bind('<<ComboboxSelected>>', update_mission_categories)
+        enemy_combo.bind('<<ComboboxSelected>>', update_subfactions)
+        subfaction_combo.bind('<<ComboboxSelected>>', update_mission_categories)
         mission_cat_combo.bind('<<ComboboxSelected>>', update_mission_types)
         difficulty_combo.bind('<<ComboboxSelected>>', update_available_missions)
-        
+
         # Initial setup
-        update_mission_categories()
+        update_subfactions()
 
-        # Statistics Section
-        stats_frame = ttk.LabelFrame(content, text="Mission Statistics", padding=10)
-        stats_frame.grid(row=2, column=0, padx=5, pady=5, sticky=(tk.W, tk.N, tk.S))
+        # Statistics and Note Section Container
+        stats_note_container = ttk.Frame(content)
+        stats_note_container.grid(row=2, column=0, padx=5, pady=5, sticky=(tk.W, tk.E))
 
-        
+        # Statistics Section (Left)
+        stats_frame = ttk.LabelFrame(stats_note_container, text="Mission Statistics", padding=10)
+        stats_frame.pack(side=tk.LEFT, padx=5, fill=tk.BOTH, expand=True)
+
+        # Note Section (Right)
+        note_frame = ttk.LabelFrame(stats_note_container, text="Note", padding=10)
+        note_frame.pack(side=tk.RIGHT, padx=5, fill=tk.BOTH, expand=True)
+
+        note_entry = tk.Text(note_frame, height=3, width=30)
+        note_entry.grid(row=0, column=0, padx=5, pady=5, sticky=(tk.W, tk.E, tk.N, tk.S))
+        # Add a trace to update self.note when text changes
+        def update_note(*args):
+            self.note.set(note_entry.get("1.0", "end-1c"))
+        note_entry.bind('<KeyRelease>', lambda e: update_note())
+        note_frame.columnconfigure(0, weight=1)  # Make the column expand horizontally
+        note_frame.rowconfigure(0, weight=1)  # Make the row expand vertically
 
         ttk.Label(stats_frame, text="Kills:").grid(row=1, column=0, sticky=tk.W, pady=5)
         ttk.Entry(stats_frame, textvariable=self.kills, width=30).grid(row=1, column=1, padx=5, pady=5)
@@ -419,7 +479,6 @@ class MissionLogGUI:
             sector = self.sector.get() or "No Sector"
             planet = self.planet.get() or "No Planet"
             enemytype = self.enemy_type.get() or "Unknown Enemy"
-            subfactiontype = self.subfaction_type.get() or "Unknown Enemy Subfaction"
             level = self.level.get() or 0
             title = self.title.get() or "No Title"
 
@@ -446,13 +505,16 @@ class MissionLogGUI:
 
     def load_settings(self) -> None:
         """Load user settings from file."""
-        try:
-            if os.path.exists(self.settings_file):
-                with open(self.settings_file, 'r') as f:
-                    settings = json.load(f)
-                    self._apply_settings(settings)
-        except Exception as e:
-            self._show_error(f"Error loading settings: {e}")
+        def load():
+            try:
+                if os.path.exists(self.settings_file):
+                    with open(self.settings_file, 'r') as f:
+                        settings = json.load(f)
+                        self.root.after(0, lambda: self._apply_settings(settings))
+            except Exception as e:
+                self.root.after(0, lambda: self._show_error(f"Error loading settings: {e}"))
+
+        threading.Thread(target=load, daemon=True).start()
 
     def _apply_settings(self, settings: Dict) -> None:
         """Apply loaded settings to UI elements."""
@@ -493,7 +555,8 @@ class MissionLogGUI:
             'mission': self.mission_type.get(),
             'DSS': self.DSS.get(),
             'DSSMod': self.DSSMod.get(),
-            'campaign': self.mission_category.get()
+            'campaign': self.mission_category.get(),
+            'subfaction': self.subfaction_type.get()
         }
         try:
             with open(self.settings_file, 'w') as f:
@@ -574,7 +637,8 @@ class MissionLogGUI:
             'Kills': self.kills.get(),
             'Deaths': self.deaths.get(),
             'Rating': self.rating.get(),
-            'Time': datetime.now().strftime(DATE_FORMAT)
+            'Time': datetime.now().strftime(DATE_FORMAT),
+            'Note': self.note.get()
         }
 
 
