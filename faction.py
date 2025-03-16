@@ -6,7 +6,7 @@ import json
 #Constants
 DEBUG = True
 
-# Read configuration from config.config
+# Read config file
 config = configparser.ConfigParser()
 config.read('config.config')
 
@@ -136,6 +136,7 @@ WEBHOOK_URLS = {
     'TEST': config['Webhooks']['TEST'].split(',')
 }
 ACTIVE_WEBHOOK = WEBHOOK_URLS['TEST'] if DEBUG else WEBHOOK_URLS['PROD']
+UID = config['Discord']['UID']
 
 # Get latest note
 latest_note = df['Notes'].iloc[-1] if 'Notes' in df.columns else "No Quote"
@@ -189,31 +190,32 @@ enemy_icons = {
     }
 }
 
-# Group planets by enemy type
-enemy_planets = {}
-for planet in planets:
-    planet_data = df[df["Planet"] == planet]
-    if not planet_data.empty:
-        enemy_type = planet_data["Enemy Type"].iloc[0]
-        if enemy_type not in enemy_planets:
-            enemy_planets[enemy_type] = []
-        enemy_planets[enemy_type].append((planet, planet_data))
+# Group data by enemy type (faction)
+faction_stats = {}
+for enemy_type in enemy_types:
+    faction_data = df[df["Enemy Type"] == enemy_type]
+    if not faction_data.empty:
+        faction_stats[enemy_type] = {
+            "total_kills": faction_data["Kills"].sum(),
+            "total_deaths": faction_data["Deaths"].sum(),
+            "total_deployments": len(faction_data),
+            "major_orders": faction_data["Major Order"].astype(int).sum(),
+            "last_deployment": faction_data["Time"].max() if "Time" in df.columns else "No date available",
+            "planets": faction_data["Planet"].unique().tolist()
+        }
 
 # Add enemy-specific embeds
-for enemy_type, planet_list in enemy_planets.items():
-    planets_description = ""
-    for planet, planet_data in planet_list:
-        last_date = planet_data["Time"].max() if "Time" in df.columns else "No date available"
-        planets_description += f"{enemy_icons.get(enemy_type, {'emoji': ''})['emoji']} **{planet}**\n" + \
-               f"> Deployments - {len(planet_data)}\n" + \
-               f"> Major Order Deployments - {planet_data['Major Order'].astype(int).sum()}\n" + \
-               f"> Kills - {planet_data['Kills'].sum()}\n" + \
-               f"> Deaths - {planet_data['Deaths'].sum()}\n" + \
-               f"> Last Deployment - {last_date}\n\n"
+for enemy_type, stats in faction_stats.items():
+    faction_description = f"{enemy_icons.get(enemy_type, {'emoji': ''})['emoji']} **{enemy_type} Front Statistics**\n" + \
+        f"> Deployments - {stats['total_deployments']}\n" + \
+        f"> Major Order Deployments - {stats['major_orders']}\n" + \
+        f"> Kills - {stats['total_kills']}\n" + \
+        f"> Deaths - {stats['total_deaths']}\n" + \
+        f"> Last Deployment - {stats['last_deployment']}\n\n"
 
     embed_data["embeds"].append({
-        "title": f"{enemy_type} Front",
-        "description": planets_description,
+        "title": f"{enemy_type} Campaign Record",
+        "description": faction_description,
         "color": enemy_icons.get(enemy_type, {"color": 7257043})["color"],
         "thumbnail": {"url": enemy_icons.get(enemy_type, {"url": ""})["url"]}
     })

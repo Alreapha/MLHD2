@@ -464,9 +464,13 @@ class MissionLogGUI:
         style_combo.pack(side=tk.LEFT, padx=5)
         style_combo.set(report_styles[0])
 
-        #export button
+        #export button by planet
         export_button = ttk.Button(export_frame, text="Export Excel Data to Webhook", command=lambda: os.system('python sub.py'))
         export_button.grid(row=6, column=0, pady=15)
+
+        #export button by faction
+        export_button = ttk.Button(export_frame, text="Export Faction Data to Webhook", command=lambda: os.system('python faction.py'))
+        export_button.grid(row=7, column=0, pady=15)
 
 
     def _update_discord_presence(self) -> None:

@@ -2,7 +2,7 @@
     "Automatons": {
 	    "Automaton Legion": {
             "Invasion": "Unknown",
-            "Defence": {
+            "Defense": {
                 "1 - TRIVIAL": [
                 "Terminate Illegal Broadcast",
                 "Pump Fuel To ICBM",
@@ -259,7 +259,7 @@
         },
         "Jet Brigade": {
             "Invasion": "Unknown",
-            "Defence": {
+            "Defense": {
                 "1 - TRIVIAL": [
                 "Terminate Illegal Broadcast",
                 "Pump Fuel To ICBM",
