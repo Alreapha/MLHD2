@@ -1,10 +1,9 @@
 """
-CREDITS TO DEANFOR THE STUPID AMOUNT OF DATA HE PROVIDED FOR THE JSON FILES
+CREDITS TO DEAN FOR THE STUPID AMOUNT OF DATA HE PROVIDED FOR THE JSON FILES
 CREDITS TO ADAM FOR THE SCRIPT AND THE GUI
 """
 
-import tkinter as tk
-from tkinter import ttk, messagebox
+from tkinter import ttk, messagebox, Tk
 import requests
 import os
 from datetime import datetime, timezone, timedelta
@@ -15,13 +14,14 @@ from typing import Dict, List, Optional
 from pypresence import Presence
 import time
 import configparser
-import threading  # Add at top with other imports
+import threading
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # Constants
 DEBUG = False
+VERSION = "1.3.112"
 DATE_FORMAT = "%d-%m-%Y %H:%M:%S"
 SETTINGS_FILE = 'user_settings.json'
 EXCEL_FILE_TEST = 'mission_log_test.xlsx'
@@ -110,7 +110,7 @@ class MissionLogGUI:
     def __init__(self, root: tk.Tk) -> None:
         """Initialize the GUI application."""
         self.root = root
-        self.root.title("Helldiver Mission Log Manager")
+        self.root.title("Helldiver Mission Log Manager V-{}".Format(VERSION))
         self.root.resizable(False, False)
         
         # Load icon in a separate thread
@@ -784,6 +784,6 @@ class MissionLogGUI:
                 pass
 
 if __name__ == "__main__":
-    root = tk.Tk()
+    root = Tk()
     app = MissionLogGUI(root)
     root.mainloop()
