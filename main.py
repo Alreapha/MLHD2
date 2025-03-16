@@ -168,6 +168,9 @@ class MissionLogGUI:
         self.DSSMod = tk.StringVar()
         self.report_style = tk.StringVar(value='Modern')
         self.note = tk.StringVar()
+        self.shipName1 = tk.StringVar()
+        self.shipName2 = tk.StringVar()
+        self.FullShipName = tk.StringVar()
 
         # Add validation for numeric fields
         validate_cmd = self.root.register(self._validate_numeric_input)
@@ -204,11 +207,12 @@ class MissionLogGUI:
             try:
                 self.RPC = Presence(DISCORD_CLIENT_ID)
                 self.RPC.connect()
-                self.last_rpc_update = 0
+                self.last_rpc_update = time.time()  # Initialize the timestamp
                 logging.info("Discord Rich Presence initialized successfully")
             except Exception as e:
                 logging.error(f"Failed to initialize Discord Rich Presence: {e}")
                 self.RPC = None
+                self.last_rpc_update = 0  # Set default value even if connection fails
 
         # Run Discord RPC initialization in a separate thread
         threading.Thread(target=init_rpc, daemon=True).start()
@@ -237,31 +241,52 @@ class MissionLogGUI:
 
 
         # Mission Info Grid
-        ttk.Label(mission_frame, text="Helldiver:").grid(row=0, column=0, sticky=tk.W, pady=5)
-        ttk.Entry(mission_frame, textvariable=self.Helldivers, width=30).grid(row=0, column=1, padx=5, pady=5)
+        ttk.Label(mission_frame, text="Destroyer Name:").grid(row=0, column=0, sticky=tk.W, pady=5)
 
-        ttk.Label(mission_frame, text="Level:").grid(row=0, column=2, sticky=tk.W, pady=5)
-        ttk.Entry(mission_frame, textvariable=self.level, width=30).grid(row=0, column=3, padx=5, pady=5)
+        self.shipName1s = ["SES Adjudicator", "SES Advocate", "SES Aegis", "SES Agent", "SES Arbiter", "SES Banner", "SES Beacon", "SES Blade", "SES Bringer", "SES Champion", "SES Citizen", "SES Claw", "SES Colossus", "SES Comptroller", "SES Courier", "SES Custodian", "SES Dawn", "SES Defender", "SES Diamond", "SES Distributor", "SES Dream", "SES Elected Representative", "SES Emperor", "SES Executor", "SES Eye", "SES Father", "SES Fist", "SES Flame", "SES Force", "SES Forerunner", "SES Founding Father", "SES Gauntlet", "SES Giant", "SES Guardian", "SES Halo", "SES Hammer", "SES Harbinger", "SES Herald", "SES Judge", "SES Keeper", "SES King", "SES Knight", "SES Lady", "SES Legislator", "SES Leviathan", "SES Light", "SES Lord", "SES Magistrate", "SES Marshall", "SES Martyr", "SES Mirror", "SES Mother", "SES Octagon", "SES Ombudsman", "SES Panther", "SES Paragon", "SES Patriot", "SES Pledge", "SES Power", "SES Precursor", "SES Pride", "SES Prince", "SES Princess", "SES Progenitor", "SES Prophet", "SES Protector", "SES Purveyor", "SES Queen", "SES Ranger", "SES Reign", "SES Representative", "SES Senator", "SES Sentinel", "SES Shield", "SES Soldier", "SES Song", "SES Soul", "SES Sovereign", "SES Spear", "SES Stallion", "SES Star", "SES Steward", "SES Superintendent", "SES Sword", "SES Titan", "SES Triumph", "SES Warrior", "SES Whisper", "SES Will", "SES Wings"]
+        self.shipName2s = ["of Allegiance", "of Audacity", "of Authority", "of Battle", "of Benevolence", "of Conquest", "of Conviction", "of Conviviality", "of Courage", "of Dawn", "of Democracy", "of Destiny", "of Destruction", "of Determination", "of Equality", "of Eternity", "of Family Values", "of Fortitude", "of Freedom", "of Glory", "of Gold", "of Honour", "of Humankind", "of Independence", "of Individual Merit", "of Integrity", "of Iron", "of Judgement", "of Justice", "of Law", "of Liberty", "of Mercy", "of Midnight", "of Morality", "of Morning", "of Opportunity", "of Patriotism", "of Peace", "of Perseverance", "of Pride", "of Redemption", "of Science", "of Self-Determination", "of Selfless Service", "of Serenity", "of Starlight", "of Steel", "of Super Earth", "of Supremacy", "of the Constitution", "of the People", "of the Regime", "of the Stars", "of the State", "of Truth", "of Twilight", "of Victory", "of Vigilance", "of War", "of Wrath"]
 
-        ttk.Label(mission_frame, text="Title:").grid(row=0, column=4, sticky=tk.W, pady=5)
-        titles = ['CADET', 'SPACE CADET', 'SERGEANT', 'MASTER SERGEANT', 'CHIEF', 'SPACE CHIEF PRIME', 
+        self.ship1_combo = ttk.Combobox(mission_frame, textvariable=self.shipName1, values=self.shipName1s, state='readonly', width=27)
+        self.ship1_combo.grid(row=0, column=1, padx=5, pady=5)
+        self.ship1_combo.set(self.shipName1s[0])
+
+        self.ship2_combo = ttk.Combobox(mission_frame, textvariable=self.shipName2, values=self.shipName2s, state='readonly', width=27)
+        self.ship2_combo.grid(row=0, column=2, padx=5, pady=5)
+        self.ship2_combo.set(self.shipName2s[0])
+
+        def update_full_ship_name(*args):
+            self.FullShipName.set(f"{self.shipName1.get()} {self.shipName2.get()}")
+
+        self.shipName1.trace_add("write", update_full_ship_name)
+        self.shipName2.trace_add("write", update_full_ship_name)
+        update_full_ship_name()
+
+        ttk.Label(mission_frame, text="Helldiver:").grid(row=2, column=0, sticky=tk.W, pady=5)
+        ttk.Entry(mission_frame, textvariable=self.Helldivers, width=30).grid(row=2, column=1, padx=5, pady=5)
+
+        ttk.Label(mission_frame, text="Level:").grid(row=2, column=2, sticky=tk.W, padx=5, pady=5)
+        ttk.Entry(mission_frame, textvariable=self.level, width=10).grid(row=2, column=2, sticky=tk.E, padx=(0,5), pady=5)
+
+        ttk.Label(mission_frame, text="Title:").grid(row=2, column=4, sticky=tk.W, pady=5)
+        self.titles = ['CADET', 'SPACE CADET', 'SERGEANT', 'MASTER SERGEANT', 'CHIEF', 'SPACE CHIEF PRIME', 
              'DEATH CAPTAIN', 'MARSHALL', 'STAR MARSHALL', 'ADMIRAL', 'SKULL ADMIRAL', 'FLEET ADMIRAL',
              'ADMIRABLE ADMIRAL', 'COMMANDER', 'GALACTIC COMMANDER', 'HELL COMMANDER', 'GENERAL',
              '5-STAR GENERAL', '10-STAR GENERAL', 'PRIVATE', 'SUPER PRIVATE', 'SUPER CITIZEN',
              'VIPER COMMANDO', 'FIRE SAFETY OFFICER', 'EXPERT EXTERMINATOR', 'FREE OF THOUGHT',
              'ASSAULT INFANTRY', 'SUPER PEDESTRIAN', 'SERVANT OF FREEDOM']
-        title_combo = ttk.Combobox(mission_frame, textvariable=self.title, values=titles, state='readonly', width=27)
-        title_combo.grid(row=0, column=5, padx=5, pady=5)
-        title_combo.set(titles[0])
+        self.title_combo = ttk.Combobox(mission_frame, textvariable=self.title, state='readonly', width=27)
+        self.title_combo['values'] = self.titles
+        self.title_combo.grid(row=2, column=5, padx=5, pady=5)
+        self.title_combo.set(self.titles[0])
 
-        ttk.Label(mission_frame, text="Sector:").grid(row=1, column=0, sticky=tk.W, pady=5)
+        ttk.Label(mission_frame, text="Sector:").grid(row=3, column=0, sticky=tk.W, pady=5)
         sector_combo = ttk.Combobox(mission_frame, textvariable=self.sector, values=sector_list, state='readonly', width=27)
-        sector_combo.grid(row=1, column=1, padx=5, pady=5)
+        sector_combo.grid(row=3, column=1, padx=5, pady=5)
         sector_combo.set(sector_list[0])
 
-        ttk.Label(mission_frame, text="Planet:").grid(row=2, column=0, sticky=tk.W, pady=5)
+        ttk.Label(mission_frame, text="Planet:").grid(row=4, column=0, sticky=tk.W, pady=5)
         planet_combo = ttk.Combobox(mission_frame, textvariable=self.planet, state='readonly', width=27)
-        planet_combo.grid(row=2, column=1, padx=5, pady=5)
+        planet_combo.grid(row=4, column=1, padx=5, pady=5)
         self.sector_combo = sector_combo
         self.planet_combo = planet_combo
 
@@ -538,6 +563,8 @@ class MissionLogGUI:
         self.difficulty.set(settings.get('difficulty', '1 - TRIVIAL'))
         self.mission_category.set(settings.get('campaign', 'Ivasion'))
         self.DSS.set(settings.get('DSS', False))
+        self.shipName1.set(settings.get('shipName1', 'SES Adjudicator'))
+        self.shipName2.set(settings.get('shipName2', 'of Allegiance'))
 
 
         if settings.get('DSS'):
@@ -547,8 +574,7 @@ class MissionLogGUI:
         if settings.get('mission'):
             self.mission_type.set(settings.get('mission'))
 
-        title_combo = self.frame.winfo_children()[0].winfo_children()[0].winfo_children()[5]
-        if settings.get('title') in title_combo['values']:
+        if settings.get('title') in self.titles:
             self.title.set(settings.get('title'))
         if settings.get('sector') in self.sector_combo['values']:
             self.sector.set(settings.get('sector'))
@@ -571,7 +597,9 @@ class MissionLogGUI:
             'DSS': self.DSS.get(),
             'DSSMod': self.DSSMod.get(),
             'campaign': self.mission_category.get(),
-            'subfaction': self.subfaction_type.get()
+            'subfaction': self.subfaction_type.get(),
+            'shipName1': self.shipName1.get(),
+            'shipName2': self.shipName2.get()
         }
         try:
             with open(self.settings_file, 'w') as f:
@@ -641,6 +669,7 @@ class MissionLogGUI:
     def _collect_mission_data(self) -> Dict:
         """Collect all mission data into a dictionary."""
         return {
+            'Super Destroyer': self.FullShipName.get(),
             'Helldivers': self.Helldivers.get(),
             'Level': self.level.get(),
             'Title': self.title.get(),
