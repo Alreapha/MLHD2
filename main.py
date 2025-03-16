@@ -313,7 +313,7 @@ class MissionLogGUI:
             if self.DSS.get():
                 self.dss_frame.grid()
             else:
-                self.DSSMod.set("None")
+                self.DSSMod.set("Inactive")
                 self.dss_frame.grid_remove()
             
         self.DSS.trace_add("write", toggle_dss_mod)
@@ -665,19 +665,27 @@ class MissionLogGUI:
         self._send_to_discord(data)
 
     def _save_to_excel(self, data: Dict) -> bool:
-        """Save mission data to Excel file with backup."""
+        """Save mission data to Excel file by appending new rows."""
         excel_file = EXCEL_FILE_TEST if DEBUG else EXCEL_FILE_PROD
-
+        
         try:
-            # Save new data
-            df = pd.DataFrame([data])
+            # Create new DataFrame with single row of data
+            new_data = pd.DataFrame([data])
+            
+            # If file exists, read and append. Otherwise create new file
             if os.path.exists(excel_file):
                 existing_df = pd.read_excel(excel_file)
-                df = pd.concat([existing_df, df], ignore_index=True)
-            df.to_excel(excel_file, index=False)
-            logging.info(f"Successfully saved data to {excel_file}")
+                updated_df = pd.concat([existing_df, new_data], ignore_index=True)
+            else:
+                updated_df = new_data
+                
+            # Save the updated DataFrame back to Excel
+            with pd.ExcelWriter(excel_file) as writer:
+                updated_df.to_excel(writer, index=False)
+                
+            logging.info(f"Successfully appended data to {excel_file}")
             return True
-
+            
         except Exception as e:
             logging.error(f"Error saving to Excel: {e}")
             self._show_error(f"Error saving to Excel: {e}")
@@ -806,8 +814,14 @@ class MissionLogGUI:
             except:
                 pass
 
-def export_excel():
-    subprocess.run(['python', 'sub.py'], shell=False)
+    def export_excel(self):
+        try:
+            subprocess.run(['python', 'sub.py'], 
+                          shell=False,
+                          check=True,
+                          capture_output=True)
+        except subprocess.CalledProcessError as e:
+            self._show_error(f"Export failed: {e}")
 
 if __name__ == "__main__":
     if not re.match(r'^\d{17,19}$', config['Discord']['UID']):
