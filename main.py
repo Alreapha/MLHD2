@@ -828,7 +828,7 @@ class MissionLogGUI:
             self._show_error(f"Export failed: {e}")
 
 if __name__ == "__main__":
-    if not re.match(r'^\d{17,19}$', config['Discord']['UID']):
+    if not (re.match(r'^\d{17,19}$', config['Discord']['UID']) or (DEBUG and config['Discord']['UID'] == '0')):
         print("Please set a valid Discord ID in the config file")
         messagebox.showerror("Error", "Please set a valid Discord ID in the config file")
         os._exit(1)

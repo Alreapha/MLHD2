@@ -23,6 +23,14 @@ DIFFICULTY_ICONS = {
     "10 - SUPER HELLDIVE": config['DifficultyIcons']['10 - SUPER HELLDIVE']
 }
 
+# Enemy icons and colors from config
+ENEMY_ICONS = {
+    "Automatons": config['EnemyIcons']['Automatons'],
+    "Terminids": config['EnemyIcons']['Terminids'],
+    "Illuminate": config['EnemyIcons']['Illuminate'],
+    "Observing": config['EnemyIcons']['Observation'],
+}
+
 
 # Read the Excel file
 try:
@@ -156,7 +164,7 @@ embed_data = {
                         "<:goldstar:1337818552094163034> Favourites\n" +
                         f"> Mission - {df['Mission Type'].mode()[0]}\n" +
                         f"> Campaign - {df['Mission Category'].mode()[0]}\n" +
-                        f"> Faction - {df['Enemy Type'].mode()[0]}\n" +
+                        f"> Faction - {df['Enemy Type'].mode()[0]} {ENEMY_ICONS.get(df['Enemy Type'].mode()[0], '')}\n" +
                         f"> Difficulty - {df['Difficulty'].mode()[0]} {DIFFICULTY_ICONS.get(df['Difficulty'].mode()[0], '')}\n" +
                         f"> Planet - {df['Planet'].mode()[0]}",
             "color": 7257043,
