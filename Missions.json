@@ -1320,5 +1320,14 @@
             "Defense": "Unknown",
             "Liberation": "Unknown"
         }
+    },
+    "Observing":{
+            "No Faction":{
+                "Observation":{
+                    "1 - TRIVIAL": [
+                    "Observing Galactic War"
+                    ]
+            }
+        }
     }
 }

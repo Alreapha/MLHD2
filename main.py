@@ -3,9 +3,9 @@ CREDITS TO DEAN FOR THE STUPID AMOUNT OF DATA HE PROVIDED FOR THE JSON FILES
 CREDITS TO ADAM FOR THE SCRIPT AND THE GUI
 """
 
-from tkinter import ttk, messagebox, Tk
+import tkinter as tk
+from tkinter import ttk, messagebox
 import requests
-import os
 from datetime import datetime, timezone, timedelta
 import json
 import pandas as pd
@@ -15,12 +15,15 @@ from pypresence import Presence
 import time
 import configparser
 import threading
+import os
+import subprocess
+import re
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # Constants
-DEBUG = False
+DEBUG = True
 VERSION = "1.3.112"
 DATE_FORMAT = "%d-%m-%Y %H:%M:%S"
 SETTINGS_FILE = 'user_settings.json'
@@ -44,7 +47,8 @@ ACTIVE_WEBHOOK = WEBHOOK_URLS['TEST'] if DEBUG else WEBHOOK_URLS['PROD']
 ENEMY_ICONS = {
     "Automatons": config['EnemyIcons']['Automatons'],
     "Terminids": config['EnemyIcons']['Terminids'],
-    "Illuminate": config['EnemyIcons']['Illuminate']
+    "Illuminate": config['EnemyIcons']['Illuminate'],
+    "Observing": config['EnemyIcons']['Observation'],
 }
 
 DIFFICULTY_ICONS = {
@@ -110,7 +114,7 @@ class MissionLogGUI:
     def __init__(self, root: tk.Tk) -> None:
         """Initialize the GUI application."""
         self.root = root
-        self.root.title("Helldiver Mission Log Manager V-{}".Format(VERSION))
+        self.root.title("Helldiver Mission Log Manager V-{}".format(VERSION))
         self.root.resizable(False, False)
         
         # Load icon in a separate thread
@@ -486,10 +490,17 @@ class MissionLogGUI:
             enemy_assets = {
                 "Automatons": "bots",
                 "Terminids": "bugs",
-                "Illuminate": "squids"
+                "Illuminate": "squids",
+                "Observing": "obs"
             }
             
             small_image = enemy_assets.get(enemytype, "unknown")
+
+            if self.enemy_type.get() == "Observing":
+                SText = "Observing"
+            else:
+                SText = "Fighting: " + enemytype
+
 
             self.RPC.update(
                 state=f"Sector: {sector}\nPlanet: {planet}",
@@ -497,7 +508,7 @@ class MissionLogGUI:
                 large_image="superearth",
                 large_text="Helldivers 2",
                 small_image=small_image,
-                small_text=f"Fighting: {enemytype}",
+                small_text=f"{SText}",
             )
             self.last_rpc_update = current_time
         except Exception as e:
@@ -571,6 +582,11 @@ class MissionLogGUI:
             
         self.save_settings()
         self.update_time()
+
+        if self.enemy_type.get() == "Observing":
+            self._show_error("You cannot submit an observation mission")
+            return
+
         data = self._collect_mission_data()
 
         if self._save_to_excel(data):
@@ -673,18 +689,18 @@ class MissionLogGUI:
             Stars = ""
             GoldStar = config['Stars']['GoldStar']
             GreyStar = config['Stars']['GreyStar']
-            if self.rating.get() == "Outstanding Patriotism":
-                Stars = "{}{}{}{}{}".format(GoldStar, GoldStar, GoldStar, GoldStar, GoldStar)
-            elif self.rating.get() == "Superior Valour":
-                Stars = "{}{}{}{}{}".format(GoldStar, GoldStar, GoldStar, GoldStar, GreyStar)
-            elif self.rating.get() == "Honourable Duty":
-                Stars = "{}{}{}{}{}".format(GoldStar, GoldStar, GoldStar, GreyStar, GreyStar)
-            elif self.rating.get() == "Unremarkable Performance":
-                Stars = "{}{}{}{}{}".format(GoldStar, GoldStar, GreyStar, GreyStar, GreyStar)
-            elif self.rating.get() == "Disappointing Service":
-                Stars = "{}{}{}{}{}".format(GoldStar, GreyStar, GreyStar, GreyStar, GreyStar)
-            else:
-                Stars = "{}{}{}{}{}".format(GreyStar, GreyStar, GreyStar, GreyStar, GreyStar)
+            
+            # Map ratings to number of gold stars
+            rating_stars = {
+                "Outstanding Patriotism": 5,
+                "Superior Valour": 4,
+                "Honourable Duty": 3,
+                "Unremarkable Performance": 2,
+                "Disappointing Service": 1
+            }
+            
+            gold_count = rating_stars.get(self.rating.get(), 0)
+            Stars = GoldStar * gold_count + GreyStar * (5 - gold_count)
             date = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
             enemy_icon = get_enemy_icon(data['Enemy Type'])
             system_color = get_system_color(data['Enemy Type'])
@@ -709,11 +725,14 @@ class MissionLogGUI:
                 f"# ================================\n"
             )
 
+            UID = config['Discord']['UID']
+            MICo = str(data["Major Order"]) + " " + config['MiscIcon']['MO'] if data["Major Order"] else str(data["Major Order"])
+
             message_content2 = {
                 "content": None,
                 "embeds": [{
                     "title": f"Date: {date}\n> Mission Report for {data['Helldivers']}\n> Level {data['Level']} | {data['Title']}",
-                    "description": f"=============================\nSector: {data['Sector']}\n\nPlanet: {data['Planet']}\n\nEnemy Faction: {data['Enemy Type']} {enemy_icon}\n\nEnemy Subfaction: {data['Enemy Subfaction']} {subfaction_icon}\n\n Major Order: {data['Major Order']}\n\n DSS Active: {data['DSS Active']}\n\n DSS Modifier: {data['DSS Modifier']}\n\nCampaign: {data['Mission Category']}\n=============================",
+                    "description": f"=============================\nSector: {data['Sector']}\n\nPlanet: {data['Planet']}\n\nEnemy Faction: {data['Enemy Type']} {enemy_icon}\n\nEnemy Subfaction: {data['Enemy Subfaction']} {subfaction_icon}\n\n Major Order: {MICo}\n\n DSS Active: {data['DSS Active']}\n\n DSS Modifier: {data['DSS Modifier']}\n\nCampaign: {data['Mission Category']}\n=============================",
                     "color": system_color,
                     "fields": [{
                         "name": "> Mission Statistics",
@@ -722,10 +741,14 @@ class MissionLogGUI:
                     "author": {
                         "name": "Super Earth Mission Control"
                     },
+                    "footer": {
+                    "text": f"{UID}"
+                    },
                     "image": {"url": "https://images-ext-1.discordapp.net/external/9jCMPgdYyRaWcSNmU0JZjnDQD9Lt2awiLxegodvltpc/https/i.ibb.co/qY68vxkS/1f75a494d68eae549179996c4610bda0c22.png"},
-                    "thumbnail": {"url": "https://cdn.discordapp.com/attachments/1337173158377033779/1337468193777782845/super-earth-helldivers-svg-logo-v0-0cvbn5nesrvc1.png?ex=67a78dd2&is=67a63c52&hm=3a9d304d5aafbf928ed549190ed427a7c510afc594f54d14ba582ea3e72445e6&"}
+                    "thumbnail": {"url": "https://cdn.discordapp.com/attachments/1337173158377033779/1337468193777782845/super-earth-helldivers-svg-logo-v0-0cvbn5nesrvc1.png?ex=67a78dd2&is=67a63c52&hm=3a9d304d5aafbf928ed549190ed427a7c510afc594f54d14ba582ea3e72445e6&"}                   
                 }],
                 "attachments": []
+                
             }
 
             webhook_data = {"content": message_content1} if self.report_style.get() == "Fax" else message_content2
@@ -783,7 +806,15 @@ class MissionLogGUI:
             except:
                 pass
 
+def export_excel():
+    subprocess.run(['python', 'sub.py'], shell=False)
+
 if __name__ == "__main__":
-    root = Tk()
+    if not re.match(r'^\d{17,19}$', config['Discord']['UID']):
+        print("Please set a valid Discord ID in the config file")
+        messagebox.showerror("Error", "Please set a valid Discord ID in the config file")
+        os._exit(1)
+
+    root = tk.Tk()
     app = MissionLogGUI(root)
     root.mainloop()
