@@ -4,7 +4,7 @@ import requests
 import json
 
 #Constants
-DEBUG = True
+DEBUG = False
 
 # Read config file
 config = configparser.ConfigParser()
@@ -58,6 +58,7 @@ total_rating = sum(rating_mapping[row["Rating"]] for index, row in df.iterrows()
 Rating_Percentage = (total_rating / max_rating) * 100
 
 # Get the user's name and level from the last row of the DataFrame
+helldiver_ses = df['Super Destroyer'].iloc[-1] if 'Super Destroyer' in df.columns else "Unknown"
 helldiver_name = df['Helldivers'].iloc[-1] if 'Helldivers' in df.columns else "Unknown"
 helldiver_level = df['Level'].iloc[-1] if 'Level' in df.columns else 0
 helldiver_title = df['Title'].iloc[-1] if 'Title' in df.columns else "Unknown"
@@ -147,7 +148,22 @@ ACTIVE_WEBHOOK = WEBHOOK_URLS['TEST'] if DEBUG else WEBHOOK_URLS['PROD']
 UID = config['Discord']['UID']
 
 # Get latest note
-latest_note = df['Notes'].iloc[-1] if 'Notes' in df.columns else "No Quote"
+non_blank_notes = df['Note'].dropna()
+latest_note = non_blank_notes.iloc[-1] if not non_blank_notes.empty else "No Quote"
+
+# Get Instances from Data
+search_mission = df['Mission Type'].mode()[0]
+MissionCount = df.apply(lambda row: row.astype(str).str.contains(search_mission, case=False).sum(), axis=1).sum()
+search_campaign = df['Mission Category'].mode()[0]
+CampaignCount = df.apply(lambda row: row.astype(str).str.contains(search_campaign, case=False).sum(), axis=1).sum()
+search_faction = df['Enemy Type'].mode()[0]
+FactionCount = df.apply(lambda row: row.astype(str).str.contains(search_faction, case=False).sum(), axis=1).sum()
+search_difficulty = df['Difficulty'].mode()[0]
+DifficultyCount = df.apply(lambda row: row.astype(str).str.contains(search_difficulty, case=False).sum(), axis=1).sum()
+search_planet = df['Planet'].mode()[0]
+PlanetCount = df.apply(lambda row: row.astype(str).str.contains(search_planet, case=False).sum(), axis=1).sum()
+search_sector = df['Sector'].mode()[0]
+SectorCount = df.apply(lambda row: row.astype(str).str.contains(search_sector, case=False).sum(), axis=1).sum()
 
 # Create embed data
 embed_data = {
@@ -155,18 +171,26 @@ embed_data = {
     "embeds": [
         {
             "title": "",  # Empty title, will be set below
-            "description": f"\"{latest_note}\"\n\n<:hd1superearth:1103949794285723658> Recorded Statistics\n" + 
+            "description": f"\"{latest_note}\"\n\n<a:easyshine1:1349110651829747773>  <a:easyshine2:1349110649753698305> Combat Statistics <a:easyshine2:1349110649753698305> <a:easyshine3:1349110648528699422>\n" + 
                         f"> Kills - {df['Kills'].sum()}\n" +
                         f"> Deaths - {df['Deaths'].sum()}\n" +
+                        f"> Highest Kills in Mission - {df['Kills'].max()}\n" +
+
+                        f"\n<a:easyshine1:1349110651829747773>  <a:easysuperearth:1343266082881802443> Mission Statistics <a:easysuperearth:1343266082881802443> <a:easyshine3:1349110648528699422>\n" + 
                         f"> Deployments - {len(df)}\n" +
                         f"> Major Order Deployments - {df['Major Order'].astype(int).sum()}\n" +
-                        f"> Rating - {Rating} | {int(Rating_Percentage)}%\n\n" +
-                        "<:goldstar:1337818552094163034> Favourites\n" +
-                        f"> Mission - {df['Mission Type'].mode()[0]}\n" +
-                        f"> Campaign - {df['Mission Category'].mode()[0]}\n" +
-                        f"> Faction - {df['Enemy Type'].mode()[0]} {ENEMY_ICONS.get(df['Enemy Type'].mode()[0], '')}\n" +
-                        f"> Difficulty - {df['Difficulty'].mode()[0]} {DIFFICULTY_ICONS.get(df['Difficulty'].mode()[0], '')}\n" +
-                        f"> Planet - {df['Planet'].mode()[0]}",
+                        f"> DSS Deployments - {df['DSS Active'].astype(int).sum()}\n" +
+
+                        f"\n<a:easyshine1:1349110651829747773>  <a:easyskullgold:1232018045791375360> Performance Statistics <a:easyskullgold:1232018045791375360> <a:easyshine3:1349110648528699422>\n" +                      
+                        f"> Rating - {Rating} | {int(Rating_Percentage)}%\n" +
+
+                        f"\n<a:easyshine1:1349110651829747773>  <:goldstar:1337818552094163034> Favourites <:goldstar:1337818552094163034> <a:easyshine3:1349110648528699422>\n" +     
+                        f"> Mission - {df['Mission Type'].mode()[0]} (x{MissionCount})\n" +
+                        f"> Campaign - {df['Mission Category'].mode()[0]} (x{CampaignCount})\n" +
+                        f"> Faction - {df['Enemy Type'].mode()[0]} {ENEMY_ICONS.get(df['Enemy Type'].mode()[0], '')} (x{FactionCount})\n" +
+                        f"> Difficulty - {df['Difficulty'].mode()[0]} {DIFFICULTY_ICONS.get(df['Difficulty'].mode()[0], '')} (x{DifficultyCount})\n" +
+                        f"> Planet - {df['Planet'].mode()[0]} (x{PlanetCount})\n" +
+                        f"> Sector - {df['Sector'].mode()[0]} (x{SectorCount})\n",
             "color": 7257043,
             "author": {"name": "SEAF Battle Record"},
             "footer": {"text": config['Discord']['UID']},
@@ -177,7 +201,7 @@ embed_data = {
 }
 
 # Update the embed title with name and level
-embed_data["embeds"][0]["title"] = f"Helldiver: {helldiver_name}\nLevel {helldiver_level} | {helldiver_title}"
+embed_data["embeds"][0]["title"] = f"{helldiver_ses}Helldiver: {helldiver_name}\nLevel {helldiver_level} | {helldiver_title}"
 
 # Enemy type specific embeds with icons
 enemy_icons = {

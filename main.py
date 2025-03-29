@@ -23,8 +23,8 @@ import re
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # Constants
-DEBUG = True
-VERSION = "1.3.112"
+DEBUG = False
+VERSION = "1.3.113"
 DATE_FORMAT = "%d-%m-%Y %H:%M:%S"
 SETTINGS_FILE = 'user_settings.json'
 EXCEL_FILE_TEST = 'mission_log_test.xlsx'
@@ -73,6 +73,7 @@ SYSTEM_COLORS = {
 SUBFACTION_ICONS = {
     "Jet Brigade": config['SubfactionIcons']['JetBrigade'],
     "Predator Strain": config['SubfactionIcons']['PredatorStrain'],
+    "Incineration Corps": config['SubfactionIcons']['IncinerationCorps'],
 }
 
 def get_enemy_icon(enemy_type: str) -> str:
@@ -95,6 +96,7 @@ def normalize_subfaction_name(subfaction: str) -> str:
     replacements = {
         "Jet Brigade": "JetBrigade",
         "Predator Strain": "PredatorStrain",
+        "Incineration Corps": "IncinerationCorps",
         # Add more mappings as needed
     }
     return replacements.get(normalized, normalized)
@@ -273,7 +275,7 @@ class MissionLogGUI:
              'ADMIRABLE ADMIRAL', 'COMMANDER', 'GALACTIC COMMANDER', 'HELL COMMANDER', 'GENERAL',
              '5-STAR GENERAL', '10-STAR GENERAL', 'PRIVATE', 'SUPER PRIVATE', 'SUPER CITIZEN',
              'VIPER COMMANDO', 'FIRE SAFETY OFFICER', 'EXPERT EXTERMINATOR', 'FREE OF THOUGHT',
-             'ASSAULT INFANTRY', 'SUPER PEDESTRIAN', 'SERVANT OF FREEDOM']
+             'ASSAULT INFANTRY', 'SUPER PEDESTRIAN', 'SERVANT OF FREEDOM', 'SUPER SHERIFF']
         self.title_combo = ttk.Combobox(mission_frame, textvariable=self.title, state='readonly', width=27)
         self.title_combo['values'] = self.titles
         self.title_combo.grid(row=2, column=5, padx=5, pady=5)
