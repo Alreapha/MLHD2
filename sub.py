@@ -31,6 +31,27 @@ ENEMY_ICONS = {
     "Observing": config['EnemyIcons']['Observation'],
 }
 
+# Planet Icons
+PLANET_ICONS = {
+    "Super Earth": config['PlanetIcons']['Human Homeworld'],
+    "Cyberstan": config['PlanetIcons']['Automaton Homeworld'],
+    "Malevelon Creek": config['PlanetIcons']['Malevelon Creek'],
+    "Calypso": config['PlanetIcons']['Calypso'],
+    "Diaspora X": config['PlanetIcons']['Gloom'],
+    "Enuliale": config['PlanetIcons']['Gloom'],
+    "Epsilon Phoencis VI": config['PlanetIcons']['Gloom'],
+    "Gemstone Bluffs": config['PlanetIcons']['Gloom'],
+    "Nabatea Secundus": config['PlanetIcons']['Gloom'],
+    "Navi VII": config['PlanetIcons']['Gloom'],
+    "Azur Secundus": config['PlanetIcons']['Gloom'],
+    "Erson Sands": config['PlanetIcons']['Gloom'],
+    "Nivel 43": config['PlanetIcons']['Gloom'],
+    "Zagon Prime": config['PlanetIcons']['Gloom'],
+    "Hellmire": config['PlanetIcons']['Gloom'],
+    "Omicron": config['PlanetIcons']['Gloom'],
+    "Oshaune": config['PlanetIcons']['Gloom'],
+    "Fori Prime": config['PlanetIcons']['Gloom']
+}
 
 # Read the Excel file
 try:
@@ -188,7 +209,7 @@ embed_data = {
                         f"> Campaign - {df['Mission Category'].mode()[0]} (x{CampaignCount})\n" +
                         f"> Faction - {df['Enemy Type'].mode()[0]} {ENEMY_ICONS.get(df['Enemy Type'].mode()[0], '')} (x{FactionCount})\n" +
                         f"> Difficulty - {df['Difficulty'].mode()[0]} {DIFFICULTY_ICONS.get(df['Difficulty'].mode()[0], '')} (x{DifficultyCount})\n" +
-                        f"> Planet - {df['Planet'].mode()[0]} (x{PlanetCount})\n" +
+                        f"> Planet - {df['Planet'].mode()[0]} {PLANET_ICONS.get(df['Planet'].mode()[0], '')} (x{PlanetCount})\n" +
                         f"> Sector - {df['Sector'].mode()[0]} (x{SectorCount})\n",
             "color": 7257043,
             "author": {"name": "SEAF Battle Record"},

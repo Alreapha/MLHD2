@@ -24,7 +24,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 
 # Constants
 DEBUG = False
-VERSION = "1.3.115"
+VERSION = "1.3.116"
 DATE_FORMAT = "%d-%m-%Y %H:%M:%S"
 SETTINGS_FILE = 'user_settings.json'
 EXCEL_FILE_TEST = 'mission_log_test.xlsx'
@@ -69,6 +69,28 @@ SYSTEM_COLORS = {
     "Illuminate": config['SystemColors']['Illuminate']
 }
 
+# Planet Icons
+PLANET_ICONS = {
+    "Super Earth": config['PlanetIcons']['Human Homeworld'],
+    "Cyberstan": config['PlanetIcons']['Automaton Homeworld'],
+    "Malevelon Creek": config['PlanetIcons']['Malevelon Creek'],
+    "Calypso": config['PlanetIcons']['Calypso'],
+    "Diaspora X": config['PlanetIcons']['Gloom'],
+    "Enuliale": config['PlanetIcons']['Gloom'],
+    "Epsilon Phoencis VI": config['PlanetIcons']['Gloom'],
+    "Gemstone Bluffs": config['PlanetIcons']['Gloom'],
+    "Nabatea Secundus": config['PlanetIcons']['Gloom'],
+    "Navi VII": config['PlanetIcons']['Gloom'],
+    "Azur Secundus": config['PlanetIcons']['Gloom'],
+    "Erson Sands": config['PlanetIcons']['Gloom'],
+    "Nivel 43": config['PlanetIcons']['Gloom'],
+    "Zagon Prime": config['PlanetIcons']['Gloom'],
+    "Hellmire": config['PlanetIcons']['Gloom'],
+    "Omicron": config['PlanetIcons']['Gloom'],
+    "Oshaune": config['PlanetIcons']['Gloom'],
+    "Fori Prime": config['PlanetIcons']['Gloom']
+}
+
 # Enemy icons for Subfactions
 SUBFACTION_ICONS = {
     "Jet Brigade": config['SubfactionIcons']['JetBrigade'],
@@ -83,6 +105,10 @@ def get_enemy_icon(enemy_type: str) -> str:
 def get_difficulty_icon(difficulty: str) -> str:
     """Get Difficulty Icons"""
     return DIFFICULTY_ICONS.get(difficulty, "NaN")
+
+def get_planet_icon(planet: str) -> str:
+    """Get Planet Icons"""
+    return PLANET_ICONS.get(planet, "")
 
 def get_system_color(enemy_type: str) -> int:
     """Get the Discord color code for an enemy type."""
@@ -746,6 +772,7 @@ class MissionLogGUI:
             Stars = GoldStar * gold_count + GreyStar * (5 - gold_count)
             date = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
             enemy_icon = get_enemy_icon(data['Enemy Type'])
+            planet_icon = get_planet_icon(data['Planet'])
             system_color = get_system_color(data['Enemy Type'])
             diff_icon = get_difficulty_icon(data['Difficulty'])
             subfaction_icon = get_subfaction_icon(data['Enemy Subfaction'])
@@ -757,7 +784,7 @@ class MissionLogGUI:
                 f"> # | **Mission Report for {data['Helldivers']}**\n"
                 f"> # --------------------------------\n"
                 f"> # | **Sector:** {data['Sector']}\n"
-                f"> ## | **Planet:** {data['Planet']}\n"
+                f"> ## | **Planet:** {data['Planet']} {planet_icon}\n"
                 f"> ## | **Enemy Type:** {data['Enemy Type']} {enemy_icon}\n"
                 f"> ## | **Mission Category:** {data['Mission Category']}\n"
                 f"> ## | **Mission Type:** {data['Mission Type']}\n"
@@ -775,7 +802,7 @@ class MissionLogGUI:
                 "content": None,
                 "embeds": [{
                     "title": f"Date: {date}\n> Mission Report for {data['Helldivers']}\n> Level {data['Level']} | {data['Title']}",
-                    "description": f"=============================\nSector: {data['Sector']}\n\nPlanet: {data['Planet']}\n\nEnemy Faction: {data['Enemy Type']} {enemy_icon}\n\nEnemy Subfaction: {data['Enemy Subfaction']} {subfaction_icon}\n\n Major Order: {MICo}\n\n DSS Active: {data['DSS Active']}\n\n DSS Modifier: {data['DSS Modifier']}\n\nCampaign: {data['Mission Category']}\n=============================",
+                    "description": f"=============================\nSector: {data['Sector']}\n\nPlanet: {data['Planet']} {planet_icon}\n\nEnemy Faction: {data['Enemy Type']} {enemy_icon}\n\nEnemy Subfaction: {data['Enemy Subfaction']} {subfaction_icon}\n\n Major Order: {MICo}\n\n DSS Active: {data['DSS Active']}\n\n DSS Modifier: {data['DSS Modifier']}\n\nCampaign: {data['Mission Category']}\n=============================",
                     "color": system_color,
                     "fields": [{
                         "name": "> Mission Statistics",
