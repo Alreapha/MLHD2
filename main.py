@@ -24,7 +24,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 
 # Constants
 DEBUG = False
-VERSION = "1.3.118"
+VERSION = "1.3.119"
 DATE_FORMAT = "%d-%m-%Y %H:%M:%S"
 SETTINGS_FILE = 'user_settings.json'
 EXCEL_FILE_TEST = 'mission_log_test.xlsx'
@@ -850,7 +850,7 @@ class MissionLogGUI:
         ttk.Entry(stats_frame, textvariable=self.deaths, width=30).grid(row=2, column=1, padx=5, pady=5)
 
         ttk.Label(stats_frame, text="Performance:").grid(row=3, column=0, sticky=tk.W, pady=5)
-        ratings = ["Outstanding Patriotism", "Superior Valour", "Honourable Duty", "Unremarkable Performance", "Disappointing Service", "Disgraceful Conduct"]
+        ratings = ["Outstanding Patriotism", "Superior Valour", "Costly Failure", "Honourable Duty", "Unremarkable Performance", "Disappointing Service", "Disgraceful Conduct"]
         self.rating.set(ratings[0])  # Set default value before creating Combobox
         rating_combo = ttk.Combobox(stats_frame, textvariable=self.rating, values=ratings, state='readonly', width=27)
         rating_combo.grid(row=3, column=1, padx=5, pady=5)
@@ -1136,9 +1136,11 @@ class MissionLogGUI:
             rating_stars = {
                 "Outstanding Patriotism": 5,
                 "Superior Valour": 4,
+                "Costly Failure": 4,
                 "Honourable Duty": 3,
                 "Unremarkable Performance": 2,
-                "Disappointing Service": 1
+                "Disappointing Service": 1,
+                "Disgraceful Conduct": 0
             }
             
             gold_count = rating_stars.get(self.rating.get(), 0)
