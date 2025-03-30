@@ -24,7 +24,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 
 # Constants
 DEBUG = False
-VERSION = "1.3.117"
+VERSION = "1.3.118"
 DATE_FORMAT = "%d-%m-%Y %H:%M:%S"
 SETTINGS_FILE = 'user_settings.json'
 EXCEL_FILE_TEST = 'mission_log_test.xlsx'
@@ -420,6 +420,13 @@ SUBFACTION_ICONS = {
     "Incineration Corps": config['SubfactionIcons']['IncinerationCorps'],
 }
 
+# DSS icons for Modifiers
+DSS_ICONS = {
+    "Eagle Storm": config['MiscIcon']['Eagle Storm'],
+    "Orbital Blockade": config['MiscIcon']['Orbital Blockade'],
+    "Heavy Ordnance Distribution": config['MiscIcon']['Heavy Ordnance Distribution']
+}
+
 def get_enemy_icon(enemy_type: str) -> str:
     """Get the Discord emoji icon for an enemy type."""
     return ENEMY_ICONS.get(enemy_type, "NaN")
@@ -447,6 +454,10 @@ def get_mission_icon(mission_type: str) -> str:
 def get_biome_banner(planet: str) -> str:
     """Get Biome Banners"""
     return BIOME_BANNERS.get(planet, "")
+
+def get_dss_icon(dss_modifier: str) -> str:
+    """Get DSS Icons"""
+    return DSS_ICONS.get(dss_modifier, "")
 
 def normalize_subfaction_name(subfaction: str) -> str:
     """Normalize subfaction name to match config keys."""
@@ -1143,6 +1154,7 @@ class MissionLogGUI:
             campaign_icon = get_campaign_icon(data['Mission Category'])
             mission_icon = get_mission_icon(data['Mission Type'])
             biome_banner = get_biome_banner(data['Planet'])
+            dss_icon = get_dss_icon(data['DSS Modifier'])
 
             total_missions_main = total_missions()
 
@@ -1166,12 +1178,13 @@ class MissionLogGUI:
 
             UID = config['Discord']['UID']
             MICo = str(data["Major Order"]) + " " + config['MiscIcon']['MO'] if data["Major Order"] else str(data["Major Order"])
+            DSSIco = str(data["DSS Active"]) + " " + config['MiscIcon']['DSS'] if data["DSS Active"] else str(data["DSS Active"])
 
             message_content2 = {
                 "content": None,
                 "embeds": [{
                     "title": f"{data['Super Destroyer']}\nDeployed {data['Helldivers']}\nLevel {data['Level']} | {data['Title']}\nMission: {total_missions_main}",
-                    "description": f"<a:easyshine1:1349110651829747773> <:hd1superearth:1103949794285723658> **Galactic Intel** {planet_icon} <a:easyshine3:1349110648528699422>\n> Sector: {data['Sector']}\n> Planet: {data['Planet']}\n> Major Order: {MICo}\n> DSS Active: {data['DSS Active']}\n> DSS Modifier: {data['DSS Modifier']}\n\n",
+                    "description": f"<a:easyshine1:1349110651829747773> <:hd1superearth:1103949794285723658> **Galactic Intel** {planet_icon} <a:easyshine3:1349110648528699422>\n> Sector: {data['Sector']}\n> Planet: {data['Planet']}\n> Major Order: {MICo}\n> DSS Active: {DSSIco}\n> DSS Modifier: {data['DSS Modifier']} {dss_icon}\n\n",
                     "color": system_color,
                     "fields": [{
                         "name": f"<a:easyshine1:1349110651829747773> {enemy_icon} **Enemy Intel** {subfaction_icon} <a:easyshine3:1349110648528699422>",
