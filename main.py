@@ -24,7 +24,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 
 # Constants
 DEBUG = False
-VERSION = "1.3.116"
+VERSION = "1.3.117"
 DATE_FORMAT = "%d-%m-%Y %H:%M:%S"
 SETTINGS_FILE = 'user_settings.json'
 EXCEL_FILE_TEST = 'mission_log_test.xlsx'
@@ -91,8 +91,330 @@ PLANET_ICONS = {
     "Fori Prime": config['PlanetIcons']['Gloom']
 }
 
+# Campaign Icons
+CAMPAIGN_ICONS = {
+    "Defense": config['CampaignIcons']['Defense'],
+    "Liberation": config['CampaignIcons']['Liberation'],
+    "Invasion": config['CampaignIcons']['Invasion']
+}
+
+# Mission Icons
+MISSION_ICONS = {
+    "Terminate Illegal Broadcast": config['MissionIcons']['Terminate Illegal Broadcast'],
+    "Pump Fuel To ICBM": config['MissionIcons']['Pump Fuel To ICBM'],
+    "Upload Escape Pod Data": config['MissionIcons']['Upload Escape Pod Data'],
+    "Spread Democracy": config['MissionIcons']['Spread Democracy'],
+    "Conduct Geological Survey": config['MissionIcons']['Conduct Geological Survey'],
+    "Launch ICBM": config['MissionIcons']['Launch ICBM'],
+    "Retrieve Valuable Data": config['MissionIcons']['Retrieve Valuable Data'],
+    "Blitz: Search and Destroy": config['MissionIcons']['Blitz Search and Destroy'],
+    "PLACEHOLDER": config['MissionIcons']['PLACEHOLDER'],
+    "Emergency Evacuation": config['MissionIcons']['Emergency Evacuation'],
+    "Retrieve Essential Personnel": config['MissionIcons']['Retrieve Essential Personnel'],
+    "Evacuate High-Value Assets": config['MissionIcons']['Evacuate High-Value Assets'],
+    "Eliminate Brood Commanders": config['MissionIcons']['Eliminate Brood Commanders'],
+    "Eliminate Chargers": config['MissionIcons']['Eliminate Chargers'],
+    "Eliminate Impaler": config['MissionIcons']['Eliminate Impaler'],
+    "Eliminate Bile Titans": config['MissionIcons']['Eliminate Bile Titans'],
+    "Activate E-710 Pumps": config['MissionIcons']['Activate E-710 Pumps'],
+    "Purge Hatcheries": config['MissionIcons']['Purge Hatcheries'],
+    "Enable E-710 Extraction": config['MissionIcons']['Enable E-710 Extraction'],
+    "Nuke Nursery": config['MissionIcons']['Nuke Nursery'],
+    "Activate Terminid Control System": config['MissionIcons']['Activate Terminid Control System'],
+    "Deactivate Terminid Control System": config['MissionIcons']['Deactivate Terminid Control System'],
+    "Deploy Dark Fluid": config['MissionIcons']['Deploy Dark Fluid'],
+    "Eradicate Terminid Swarm": config['MissionIcons']['Eradicate Terminid Swarm'],
+    "Destroy Transmission Network": config['MissionIcons']['Destroy Transmission Network'],
+    "Eliminate Devastators": config['MissionIcons']['Eliminate Devastators'],
+    "Eliminate Automaton Hulks": config['MissionIcons']['Eliminate Automaton Hulks'],
+    "Eliminate Automaton Factory Strider": config['MissionIcons']['Eliminate Automaton Factory Strider'],
+    "Sabotage Supply Bases": config['MissionIcons']['Sabotage Supply Bases'],
+    "Sabotage Air Base": config['MissionIcons']['Sabotage Air Base'],
+    "Eradicate Automaton Forces": config['MissionIcons']['Eradicate Automaton Forces'],
+    "Destroy Command Bunkers": config['MissionIcons']['Destroy Command Bunkers'],
+    "Neutralize Orbital Defenses": config['MissionIcons']['Neutralize Orbital Defenses'],
+    "Evacuate Colonists": config['MissionIcons']['Evacuate Colonists'],
+    "Retrieve Recon Craft Intel": config['MissionIcons']['Retrieve Recon Craft Intel'],
+    "Free Colony": config['MissionIcons']['Free Colony'],
+    "Blitz: Destroy Illuminate Warp Ships": config['MissionIcons']['Blitz Destroy Illuminate Warp Ships'],
+    "Destroy Harvesters": config['MissionIcons']['Destroy Harvesters'],
+    "Extract Research Probe Data": config['MissionIcons']['Extract Research Probe Data'],
+    "Collect Meteorological Data": config['MissionIcons']['Collect Meteorological Data'],
+    "Collect Gloom-Infused Oil": config['MissionIcons']['Collect Gloom-Infused Oil'],
+    "Blitz: Secure Research Site": config['MissionIcons']['Blitz Secure Research Site'],
+    "Collect Gloom Spore Readings": config['MissionIcons']['Collect Gloom Spore Readings'],
+    "Chart Terminid Tunnels": config['MissionIcons']['Chart Terminid Tunnels']
+}
+
+# Biome banners for Planets
+BIOME_BANNERS = {
+    "Propus": config['BiomeBanners']['Desert Dunes'],
+    "Klen Dahth II": config['BiomeBanners']['Desert Dunes'],
+    "Outpost 32": config['BiomeBanners']['Desert Dunes'],
+    "Lastofe": config['BiomeBanners']['Desert Dunes'],
+    "Diaspora X": config['BiomeBanners']['Desert Dunes'],
+    "Zagon Prime": config['BiomeBanners']['Desert Dunes'],
+    "Osupsam": config['BiomeBanners']['Desert Dunes'],
+    "Mastia": config['BiomeBanners']['Desert Dunes'],
+    "Caramoor": config['BiomeBanners']['Desert Dunes'],
+    "Heze Bay": config['BiomeBanners']['Desert Dunes'],
+    "Viridia Prime": config['BiomeBanners']['Desert Dunes'],
+    "Durgen": config['BiomeBanners']['Desert Dunes'],
+    "Phact Bay": config['BiomeBanners']['Desert Dunes'],
+    "Keid": config['BiomeBanners']['Desert Dunes'],
+    "Zzaniah Prime": config['BiomeBanners']['Desert Dunes'],
+    "Choohe": config['BiomeBanners']['Desert Dunes'],
+    "Pilen V": config['BiomeBanners']['Desert Cliffs'],
+    "Zea Rugosia": config['BiomeBanners']['Desert Cliffs'],
+    "Myradesh": config['BiomeBanners']['Desert Cliffs'],
+    "Azur Secundus": config['BiomeBanners']['Desert Cliffs'],
+    "Erata Prime": config['BiomeBanners']['Desert Cliffs'],
+    "Mortax Prime": config['BiomeBanners']['Desert Cliffs'],
+    "Cerberus IIIc": config['BiomeBanners']['Desert Cliffs'],
+    "Ustotu": config['BiomeBanners']['Desert Cliffs'],
+    "Erson Sands": config['BiomeBanners']['Desert Cliffs'],
+    "Canopus": config['BiomeBanners']['Desert Cliffs'],
+    "Hydrobius": config['BiomeBanners']['Desert Cliffs'],
+    "Polaris Prime": config['BiomeBanners']['Desert Cliffs'],
+    "Darrowsport": config['BiomeBanners']['Acidic Badlands'],
+    "Darius II": config['BiomeBanners']['Acidic Badlands'],
+    "Chort Bay": config['BiomeBanners']['Acidic Badlands'],
+    "Leng Secundus": config['BiomeBanners']['Acidic Badlands'],
+    "Rirga Bay": config['BiomeBanners']['Acidic Badlands'],
+    "Shete": config['BiomeBanners']['Acidic Badlands'],
+    "Skaash": config['BiomeBanners']['Acidic Badlands'],
+    "Wraith": config['BiomeBanners']['Acidic Badlands'],
+    "Slif": config['BiomeBanners']['Acidic Badlands'],
+    "Wilford Station": config['BiomeBanners']['Acidic Badlands'],
+    "Botein": config['BiomeBanners']['Acidic Badlands'],
+    "Wasat": config['BiomeBanners']['Acidic Badlands'],
+    "Esker": config['BiomeBanners']['Acidic Badlands'],
+    "Charbal-VII": config['BiomeBanners']['Acidic Badlands'],
+    "Kraz": config['BiomeBanners']['Rocky Canyons'],
+    "Hydrofall Prime": config['BiomeBanners']['Rocky Canyons'],
+    "Myrium": config['BiomeBanners']['Rocky Canyons'],
+    "Vernen Wells": config['BiomeBanners']['Rocky Canyons'],
+    "Calypso": config['BiomeBanners']['Rocky Canyons'],
+    "Achird III": config['BiomeBanners']['Rocky Canyons'],
+    "Azterra": config['BiomeBanners']['Rocky Canyons'],
+    "Senge 23": config['BiomeBanners']['Rocky Canyons'],
+    "Emeria": config['BiomeBanners']['Rocky Canyons'],
+    "Fori Prime": config['BiomeBanners']['Rocky Canyons'],
+    "Mekbuda": config['BiomeBanners']['Rocky Canyons'],
+    "Effluvia": config['BiomeBanners']['Rocky Canyons'],
+    "Pioneer II": config['BiomeBanners']['Rocky Canyons'],
+    "Castor": config['BiomeBanners']['Rocky Canyons'],
+    "Prasa": config['BiomeBanners']['Rocky Canyons'],
+    "Kuma": config['BiomeBanners']['Rocky Canyons'],
+	"Widow's Harbor": config['BiomeBanners']['Moon'],
+	"RD-4": config['BiomeBanners']['Moon'],
+	"Claorell": config['BiomeBanners']['Moon'],
+	"Maia": config['BiomeBanners']['Moon'],
+	"Curia": config['BiomeBanners']['Moon'],
+	"Sirius": config['BiomeBanners']['Moon'],
+	"Rasp": config['BiomeBanners']['Moon'],
+	"Terrek": config['BiomeBanners']['Moon'],
+	"Dolph": config['BiomeBanners']['Moon'],
+	"Fenrir III": config['BiomeBanners']['Moon'],
+	"Zosma": config['BiomeBanners']['Moon'],
+	"Euphoria III": config['BiomeBanners']['Moon'],
+	"Primordia": config['BiomeBanners']['Volcanic Jungle'],
+	"Rogue 5": config['BiomeBanners']['Volcanic Jungle'],
+	"Alta V": config['BiomeBanners']['Volcanic Jungle'],
+	"Mantes": config['BiomeBanners']['Volcanic Jungle'],
+	"Gaellivare": config['BiomeBanners']['Volcanic Jungle'],
+	"Meissa": config['BiomeBanners']['Volcanic Jungle'],
+	"Spherion": config['BiomeBanners']['Volcanic Jungle'],
+	"Kirrik": config['BiomeBanners']['Volcanic Jungle'],
+	"Baldrick Prime": config['BiomeBanners']['Volcanic Jungle'],
+	"Zegema Paradise": config['BiomeBanners']['Volcanic Jungle'],
+	"Irulta": config['BiomeBanners']['Volcanic Jungle'],
+	"Regnus": config['BiomeBanners']['Volcanic Jungle'],
+	"Navi VII": config['BiomeBanners']['Volcanic Jungle'],
+	"Oasis": config['BiomeBanners']['Volcanic Jungle'],
+	"Pollux 31": config['BiomeBanners']['Volcanic Jungle'],
+	"Aesir Pass": config['BiomeBanners']['Deadlands'],
+	"Alderidge Cove": config['BiomeBanners']['Deadlands'],
+	"Penta": config['BiomeBanners']['Deadlands'],
+	"Ain-5": config['BiomeBanners']['Deadlands'],
+	"Skat Bay": config['BiomeBanners']['Deadlands'],
+	"Alaraph": config['BiomeBanners']['Deadlands'],
+	"Veil": config['BiomeBanners']['Deadlands'],
+	"Troost": config['BiomeBanners']['Deadlands'],
+	"Haka": config['BiomeBanners']['Deadlands'],
+	"Nivel 43": config['BiomeBanners']['Deadlands'],
+	"Pandion-XXIV": config['BiomeBanners']['Deadlands'],
+	"Cirrus": config['BiomeBanners']['Deadlands'],
+	"Mort": config['BiomeBanners']['Deadlands'],
+	"Iridica": config['BiomeBanners']['Ethereal Jungle'],
+	"Seyshel Beach": config['BiomeBanners']['Ethereal Jungle'],
+	"Ursica XI": config['BiomeBanners']['Ethereal Jungle'],
+	"Acubens Prime": config['BiomeBanners']['Ethereal Jungle'],
+	"Fort Justice": config['BiomeBanners']['Ethereal Jungle'],
+	"Sulfura": config['BiomeBanners']['Ethereal Jungle'],
+	"Alamak VII": config['BiomeBanners']['Ethereal Jungle'],
+	"Tibit": config['BiomeBanners']['Ethereal Jungle'],
+	"Mordia 9": config['BiomeBanners']['Ethereal Jungle'],
+	"Emorath": config['BiomeBanners']['Ethereal Jungle'],
+	"Shallus": config['BiomeBanners']['Ethereal Jungle'],
+	"Vindemitarix Prime": config['BiomeBanners']['Ethereal Jungle'],
+	"Zefia": config['BiomeBanners']['Ethereal Jungle'],
+	"Bekvam III": config['BiomeBanners']['Ethereal Jungle'],
+	"Turing": config['BiomeBanners']['Ethereal Jungle'],
+	"New Haven": config['BiomeBanners']['Ionic Jungle'],
+	"Prosperity Falls": config['BiomeBanners']['Ionic Jungle'],
+	"Veld": config['BiomeBanners']['Ionic Jungle'],
+	"Malevelon Creek": config['BiomeBanners']['Ionic Jungle'],
+	"Siemnot": config['BiomeBanners']['Ionic Jungle'],
+	"Alairt III": config['BiomeBanners']['Ionic Jungle'],
+	"Merak": config['BiomeBanners']['Ionic Jungle'],
+	"Gemma": config['BiomeBanners']['Ionic Jungle'],
+	"Minchir": config['BiomeBanners']['Ionic Jungle'],
+	"Kuper": config['BiomeBanners']['Ionic Jungle'],
+	"Brink-2": config['BiomeBanners']['Ionic Jungle'],
+	"Peacock": config['BiomeBanners']['Ionic Jungle'],
+	"Genesis Prime": config['BiomeBanners']['Ionic Jungle'],
+	"New Kiruna": config['BiomeBanners']['Icy Glaciers'],
+	"Borea": config['BiomeBanners']['Icy Glaciers'],
+	"Marfark": config['BiomeBanners']['Icy Glaciers'],
+	"Epsilon Phoencis VI": config['BiomeBanners']['Icy Glaciers'],
+	"Kelvinor": config['BiomeBanners']['Icy Glaciers'],
+	"Vog-Sojoth": config['BiomeBanners']['Icy Glaciers'],
+	"Alathfar XI": config['BiomeBanners']['Icy Glaciers'],
+	"Okul VI": config['BiomeBanners']['Icy Glaciers'],
+	"Julheim": config['BiomeBanners']['Icy Glaciers'],
+	"Hadar": config['BiomeBanners']['Icy Glaciers'],
+	"Mog": config['BiomeBanners']['Icy Glaciers'],
+	"Vandalon IV": config['BiomeBanners']['Icy Glaciers'],
+	"Arkturus": config['BiomeBanners']['Icy Glaciers'],
+	"Hesoe Prime": config['BiomeBanners']['Icy Glaciers'],
+	"Vega Bay": config['BiomeBanners']['Icy Glaciers'],
+	"New Stockholm": config['BiomeBanners']['Icy Glaciers'],
+	"Heeth": config['BiomeBanners']['Icy Glaciers'],
+	"Choepessa IV": config['BiomeBanners']['Boneyard'],
+	"Martyr's Bay": config['BiomeBanners']['Boneyard'],
+	"Lesath": config['BiomeBanners']['Boneyard'],
+	"Cyberstan": config['BiomeBanners']['Boneyard'],
+	"Deneb Secundus": config['BiomeBanners']['Boneyard'],
+	"Acrux IX": config['BiomeBanners']['Boneyard'],
+	"Inari": config['BiomeBanners']['Boneyard'],
+	"Estanu": config['BiomeBanners']['Boneyard'],
+	"Stor Tha Prime": config['BiomeBanners']['Boneyard'],
+	"Halies Port": config['BiomeBanners']['Boneyard'],
+	"Oslo Station": config['BiomeBanners']['Boneyard'],
+	"Igla": config['BiomeBanners']['Boneyard'],
+	"Krakatwo": config['BiomeBanners']['Boneyard'],
+	"Grafmere": config['BiomeBanners']['Boneyard'],
+	"Eukoria": config['BiomeBanners']['Boneyard'],
+	"Tien Kwan": config['BiomeBanners']['Boneyard'],
+	"Pathfinder V": config['BiomeBanners']['Plains'],
+	"Fort Union": config['BiomeBanners']['Plains'],
+	"Volterra": config['BiomeBanners']['Plains'],
+	"Gemstone Bluffs": config['BiomeBanners']['Plains'],
+	"Acamar IV": config['BiomeBanners']['Plains'],
+	"Achernar Secundus": config['BiomeBanners']['Plains'],
+	"Electra Bay": config['BiomeBanners']['Plains'],
+	"Afoyay Bay": config['BiomeBanners']['Plains'],
+	"Matar Bay": config['BiomeBanners']['Plains'],
+	"Reaf": config['BiomeBanners']['Plains'],
+	"Termadon": config['BiomeBanners']['Plains'],
+	"Fenmire": config['BiomeBanners']['Plains'],
+	"The Weir": config['BiomeBanners']['Plains'],
+	"Bellatrix": config['BiomeBanners']['Plains'],
+	"Oshaune": config['BiomeBanners']['Plains'],
+	"Varylia 5": config['BiomeBanners']['Plains'],
+	"Hort": config['BiomeBanners']['Plains'],
+	"Draupnir": config['BiomeBanners']['Plains'],
+	"Obari": config['BiomeBanners']['Plains'],
+	"Mintoria": config['BiomeBanners']['Plains'],
+	"Midasburg": config['BiomeBanners']['Tundra'],
+	"Demiurg": config['BiomeBanners']['Tundra'],
+	"Kerth Secundus": config['BiomeBanners']['Tundra'],
+	"Aurora Bay": config['BiomeBanners']['Tundra'],
+	"Martale": config['BiomeBanners']['Tundra'],
+	"Crucible": config['BiomeBanners']['Tundra'],
+	"Shelt": config['BiomeBanners']['Tundra'],
+	"Trandor": config['BiomeBanners']['Tundra'],
+	"Andar": config['BiomeBanners']['Tundra'],
+	"Diluvia": config['BiomeBanners']['Tundra'],
+	"Bunda Secundus": config['BiomeBanners']['Tundra'],
+	"Ilduna Prime": config['BiomeBanners']['Tundra'],
+	"Omicron": config['BiomeBanners']['Tundra'],
+	"Ras Algethi": config['BiomeBanners']['Tundra'],
+	"Duma Tyr": config['BiomeBanners']['Tundra'],
+	"Adhara": config['BiomeBanners']['Scorched Moor'],
+	"Hellmire": config['BiomeBanners']['Scorched Moor'],
+	"Imber": config['BiomeBanners']['Scorched Moor'],
+	"Menkent": config['BiomeBanners']['Scorched Moor'],
+	"Blistica": config['BiomeBanners']['Scorched Moor'],
+	"Herthon Secundus": config['BiomeBanners']['Scorched Moor'],
+	"Pöpli IX": config['BiomeBanners']['Scorched Moor'],
+	"Partion": config['BiomeBanners']['Scorched Moor'],
+	"Wezen": config['BiomeBanners']['Scorched Moor'],
+	"Marre IV": config['BiomeBanners']['Scorched Moor'],
+	"Karlia": config['BiomeBanners']['Scorched Moor'],
+	"Maw": config['BiomeBanners']['Scorched Moor'],
+	"Kneth Port": config['BiomeBanners']['Scorched Moor'],
+	"Grand Errant": config['BiomeBanners']['Scorched Moor'],
+	"Fort Sanctuary": config['BiomeBanners']['Ionic Crimson'],
+	"Elysian Meadows": config['BiomeBanners']['Ionic Crimson'],
+	"Acrab XI": config['BiomeBanners']['Ionic Crimson'],
+	"Enuliale": config['BiomeBanners']['Ionic Crimson'],
+	"Liberty Ridge": config['BiomeBanners']['Ionic Crimson'],
+	"Stout": config['BiomeBanners']['Ionic Crimson'],
+	"Gatria": config['BiomeBanners']['Ionic Crimson'],
+	"Freedom Peak": config['BiomeBanners']['Ionic Crimson'],
+	"Ubanea": config['BiomeBanners']['Ionic Crimson'],
+	"Valgaard": config['BiomeBanners']['Ionic Crimson'],
+	"Valmox": config['BiomeBanners']['Ionic Crimson'],
+	"Overgoe Prime": config['BiomeBanners']['Ionic Crimson'],
+	"Providence": config['BiomeBanners']['Ionic Crimson'],
+	"Kharst": config['BiomeBanners']['Ionic Crimson'],
+	"Gunvald": config['BiomeBanners']['Ionic Crimson'],
+	"Yed Prior": config['BiomeBanners']['Ionic Crimson'],
+	"Ingmar": config['BiomeBanners']['Ionic Crimson'],
+	"Crimsica": config['BiomeBanners']['Ionic Crimson'],
+	"Charon Prime": config['BiomeBanners']['Ionic Crimson'],
+	"Clasa": config['BiomeBanners']['Basic Swamp'],
+	"Seasse": config['BiomeBanners']['Basic Swamp'],
+	"Parsh": config['BiomeBanners']['Basic Swamp'],
+	"East Iridium Trading Bay": config['BiomeBanners']['Basic Swamp'],
+	"Gacrux": config['BiomeBanners']['Basic Swamp'],
+	"Barabos": config['BiomeBanners']['Basic Swamp'],
+	"Ivis": config['BiomeBanners']['Basic Swamp'],
+	"Fornskogur II": config['BiomeBanners']['Basic Swamp'],
+	"Nabatea Secundus": config['BiomeBanners']['Basic Swamp'],
+	"Haldus": config['BiomeBanners']['Basic Swamp'],
+	"Caph": config['BiomeBanners']['Basic Swamp'],
+	"Bore Rock": config['BiomeBanners']['Basic Swamp'],
+	"X-45": config['BiomeBanners']['Basic Swamp'],
+	"Pherkad Secundus": config['BiomeBanners']['Basic Swamp'],
+	"Krakabos": config['BiomeBanners']['Basic Swamp'],
+	"Asperoth Prime": config['BiomeBanners']['Basic Swamp'],
+	"Atrama": config['BiomeBanners']['Haunted Swamp'],
+	"Setia": config['BiomeBanners']['Haunted Swamp'],
+	"Tarsh": config['BiomeBanners']['Haunted Swamp'],
+	"Gar Haren": config['BiomeBanners']['Haunted Swamp'],
+	"Merga IV": config['BiomeBanners']['Haunted Swamp'],
+	"Ratch": config['BiomeBanners']['Haunted Swamp'],
+	"Bashyr": config['BiomeBanners']['Haunted Swamp'],
+	"Nublaria I": config['BiomeBanners']['Haunted Swamp'],
+	"Solghast": config['BiomeBanners']['Haunted Swamp'],
+	"Iro": config['BiomeBanners']['Haunted Swamp'],
+	"Socorro III": config['BiomeBanners']['Haunted Swamp'],
+	"Khandark": config['BiomeBanners']['Haunted Swamp'],
+	"Klaka 5": config['BiomeBanners']['Haunted Swamp'],
+	"Skitter": config['BiomeBanners']['Haunted Swamp'],
+    "Angel's Venture": config['BiomeBanners']['Fractured Planet'],
+    "Moradesh": config['BiomeBanners']['Fractured Planet'],
+    "Meridia": config['BiomeBanners']['Black Hole']
+}
+
 # Enemy icons for Subfactions
 SUBFACTION_ICONS = {
+    "Automaton Legion": config['SubfactionIcons']['AutomatonLegion'],
+    "Terminid Horde": config['SubfactionIcons']['TerminidHorde'],
+    "Illuminate Cult": config['SubfactionIcons']['IlluminateCult'],
     "Jet Brigade": config['SubfactionIcons']['JetBrigade'],
     "Predator Strain": config['SubfactionIcons']['PredatorStrain'],
     "Incineration Corps": config['SubfactionIcons']['IncinerationCorps'],
@@ -113,6 +435,18 @@ def get_planet_icon(planet: str) -> str:
 def get_system_color(enemy_type: str) -> int:
     """Get the Discord color code for an enemy type."""
     return int(SYSTEM_COLORS.get(enemy_type, "0"))
+
+def get_campaign_icon(mission_category: str) -> str:
+    """Get Campaign Icons"""
+    return CAMPAIGN_ICONS.get(mission_category, "")
+
+def get_mission_icon(mission_type: str) -> str:
+    """Get Mission Icons"""
+    return MISSION_ICONS.get(mission_type, "")
+
+def get_biome_banner(planet: str) -> str:
+    """Get Biome Banners"""
+    return BIOME_BANNERS.get(planet, "")
 
 def normalize_subfaction_name(subfaction: str) -> str:
     """Normalize subfaction name to match config keys."""
@@ -135,6 +469,11 @@ def get_subfaction_icon(subfaction_type: str) -> str:
     if icon == "NaN":
         icon = ""
     return icon
+
+def total_missions():
+    df = pd.read_excel('mission_log_test.xlsx') if DEBUG else pd.read_excel('mission_log.xlsx')
+    total_rows = len(df)
+    return total_rows
 
 class MissionLogGUI:
     """GUI application for logging Helldiver 2 mission data."""
@@ -391,6 +730,17 @@ class MissionLogGUI:
         mission_type_combo = ttk.Combobox(details_frame, textvariable=self.mission_type, state='readonly', width=27)
         mission_type_combo.grid(row=3, column=1, padx=5, pady=5)
 
+        # Biome Banner
+        def display_image_from_url(biome_banner):
+            with urllib.request.urlopen(biome_banner) as u:
+                raw_data = u.read()
+
+            planet_image = Image.open(io.BytesIO(raw_data))
+            planet_photo = ImageTk.PhotoImage(planet_image)
+
+            planet_label = tk.Label(content, planet_image=planet_photo)
+            planet_label.pack()
+
         def update_subfactions(*args):
             enemy = self.enemy_type.get()
             if enemy in missions_data:
@@ -644,7 +994,19 @@ class MissionLogGUI:
         self.update_time()
 
         if self.enemy_type.get() == "Observing":
-            self._show_error("You cannot submit an observation mission")
+            self._show_error("ADVISORY: You cannot submit an observation mission")
+            return
+
+        if self.mission_type.get() == "No missions available":
+            self._show_error("ADVISORY: You cannot submit without selecting a mission")
+            return
+
+        if self.planet.get() == "Meridia":
+            self._show_error("ADVISORY: Volatile spacetime fluctuations currently prohibit FTL travel to the Meridian Black Hole.")
+            return
+
+        if self.planet.get() == "Angel's Venture" or self.planet.get() == "Moradesh":
+            self._show_error("ADVISORY: You cannot deploy on a fractured planet")
             return
 
         data = self._collect_mission_data()
@@ -773,9 +1135,16 @@ class MissionLogGUI:
             date = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
             enemy_icon = get_enemy_icon(data['Enemy Type'])
             planet_icon = get_planet_icon(data['Planet'])
+            if planet_icon == '':
+                planet_icon = '<:hd1superearth:1103949794285723658>'
             system_color = get_system_color(data['Enemy Type'])
             diff_icon = get_difficulty_icon(data['Difficulty'])
             subfaction_icon = get_subfaction_icon(data['Enemy Subfaction'])
+            campaign_icon = get_campaign_icon(data['Mission Category'])
+            mission_icon = get_mission_icon(data['Mission Type'])
+            biome_banner = get_biome_banner(data['Planet'])
+
+            total_missions_main = total_missions()
 
             # Format the message for Discord
             message_content1 = (
@@ -786,8 +1155,8 @@ class MissionLogGUI:
                 f"> # | **Sector:** {data['Sector']}\n"
                 f"> ## | **Planet:** {data['Planet']} {planet_icon}\n"
                 f"> ## | **Enemy Type:** {data['Enemy Type']} {enemy_icon}\n"
-                f"> ## | **Mission Category:** {data['Mission Category']}\n"
-                f"> ## | **Mission Type:** {data['Mission Type']}\n"
+                f"> ## | **Mission Category:** {data['Mission Category']} {campaign_icon}\n"
+                f"> ## | **Mission Type:** {data['Mission Type']} {mission_icon}\n"
                 f"> ## | **Mission Difficulty:** {data['Difficulty']}\n"
                 f"> # --------------------------------\n"
                 f"> ### | **Kills:** {data['Kills']}\n"
@@ -801,20 +1170,22 @@ class MissionLogGUI:
             message_content2 = {
                 "content": None,
                 "embeds": [{
-                    "title": f"Date: {date}\n> Mission Report for {data['Helldivers']}\n> Level {data['Level']} | {data['Title']}",
-                    "description": f"=============================\nSector: {data['Sector']}\n\nPlanet: {data['Planet']} {planet_icon}\n\nEnemy Faction: {data['Enemy Type']} {enemy_icon}\n\nEnemy Subfaction: {data['Enemy Subfaction']} {subfaction_icon}\n\n Major Order: {MICo}\n\n DSS Active: {data['DSS Active']}\n\n DSS Modifier: {data['DSS Modifier']}\n\nCampaign: {data['Mission Category']}\n=============================",
+                    "title": f"{data['Super Destroyer']}\nDeployed {data['Helldivers']}\nLevel {data['Level']} | {data['Title']}\nMission: {total_missions_main}",
+                    "description": f"<a:easyshine1:1349110651829747773> <:hd1superearth:1103949794285723658> **Galactic Intel** {planet_icon} <a:easyshine3:1349110648528699422>\n> Sector: {data['Sector']}\n> Planet: {data['Planet']}\n> Major Order: {MICo}\n> DSS Active: {data['DSS Active']}\n> DSS Modifier: {data['DSS Modifier']}\n\n",
                     "color": system_color,
                     "fields": [{
-                        "name": "> Mission Statistics",
-                        "value": f"=============================\nMission: {data['Mission Type']}\n\n Difficulty: {data['Difficulty']} {diff_icon}\n\nKills: {data['Kills']}\n\nDeaths: {data['Deaths']}\n\n Performance: {data['Rating']}\n\n {Stars}\n============================="
+                        "name": f"<a:easyshine1:1349110651829747773> {enemy_icon} **Enemy Intel** {subfaction_icon} <a:easyshine3:1349110648528699422>",
+                        "value": f"> Faction: {data['Enemy Type']}\n> Subfaction: {data['Enemy Subfaction']}\n> Campaign: {data['Mission Category']}\n\n<a:easyshine1:1349110651829747773> {campaign_icon} **Mission Intel** {mission_icon} <a:easyshine3:1349110648528699422>\n> Mission: {data['Mission Type']}\n> Difficulty: {data['Difficulty']} {diff_icon}\n> Kills: {data['Kills']}\n> Deaths: {data['Deaths']}\n> Rating: {data['Rating']}\n\n {Stars}\n"
                     }],
                     "author": {
-                        "name": "Super Earth Mission Control"
+                        "name": f"Super Earth Mission Report\nDate: {date}",
+                        "icon_url": "https://cdn.discordapp.com/attachments/1340508329977446484/1356001307596427564/NwNzS9B.png?ex=67eafa21&is=67e9a8a1&hm=7e204265cbcdeaf96d7b244cd63992c4ef10dc18befbcf2ed39c3a269af14ec0&"
                     },
                     "footer": {
-                    "text": f"{UID}"
+                    "text": f"{UID}",
+                    "icon_url": "https://cdn.discordapp.com/attachments/1340508329977446484/1356025859319926784/5cwgI15.png?ex=67eb10fe&is=67e9bf7e&hm=ab6326a9da1e76125238bf3668acac8ad1e43b24947fc6d878d7b94c8a60ab28&"
                     },
-                    "image": {"url": "https://images-ext-1.discordapp.net/external/9jCMPgdYyRaWcSNmU0JZjnDQD9Lt2awiLxegodvltpc/https/i.ibb.co/qY68vxkS/1f75a494d68eae549179996c4610bda0c22.png"},
+                    "image": {"url": f"{biome_banner}"},
                     "thumbnail": {"url": "https://cdn.discordapp.com/attachments/1337173158377033779/1337468193777782845/super-earth-helldivers-svg-logo-v0-0cvbn5nesrvc1.png?ex=67a78dd2&is=67a63c52&hm=3a9d304d5aafbf928ed549190ed427a7c510afc594f54d14ba582ea3e72445e6&"}                   
                 }],
                 "attachments": []

@@ -53,6 +53,61 @@ PLANET_ICONS = {
     "Fori Prime": config['PlanetIcons']['Gloom']
 }
 
+# Campaign Icons
+CAMPAIGN_ICONS = {
+    "Defense": config['CampaignIcons']['Defense'],
+    "Liberation": config['CampaignIcons']['Liberation'],
+    "Invasion": config['CampaignIcons']['Invasion']
+}
+
+# Mission Icons
+MISSION_ICONS = {
+    "Terminate Illegal Broadcast": config['MissionIcons']['Terminate Illegal Broadcast'],
+    "Pump Fuel To ICBM": config['MissionIcons']['Pump Fuel To ICBM'],
+    "Upload Escape Pod Data": config['MissionIcons']['Upload Escape Pod Data'],
+    "Spread Democracy": config['MissionIcons']['Spread Democracy'],
+    "Conduct Geological Survey": config['MissionIcons']['Conduct Geological Survey'],
+    "Launch ICBM": config['MissionIcons']['Launch ICBM'],
+    "Retrieve Valuable Data": config['MissionIcons']['Retrieve Valuable Data'],
+    "Blitz: Search and Destroy": config['MissionIcons']['Blitz Search and Destroy'],
+    "PLACEHOLDER": config['MissionIcons']['PLACEHOLDER'],
+    "Emergency Evacuation": config['MissionIcons']['Emergency Evacuation'],
+    "Retrieve Essential Personnel": config['MissionIcons']['Retrieve Essential Personnel'],
+    "Evacuate High-Value Assets": config['MissionIcons']['Evacuate High-Value Assets'],
+    "Eliminate Brood Commanders": config['MissionIcons']['Eliminate Brood Commanders'],
+    "Eliminate Chargers": config['MissionIcons']['Eliminate Chargers'],
+    "Eliminate Impaler": config['MissionIcons']['Eliminate Impaler'],
+    "Eliminate Bile Titans": config['MissionIcons']['Eliminate Bile Titans'],
+    "Activate E-710 Pumps": config['MissionIcons']['Activate E-710 Pumps'],
+    "Purge Hatcheries": config['MissionIcons']['Purge Hatcheries'],
+    "Enable E-710 Extraction": config['MissionIcons']['Enable E-710 Extraction'],
+    "Nuke Nursery": config['MissionIcons']['Nuke Nursery'],
+    "Activate Terminid Control System": config['MissionIcons']['Activate Terminid Control System'],
+    "Deactivate Terminid Control System": config['MissionIcons']['Deactivate Terminid Control System'],
+    "Deploy Dark Fluid": config['MissionIcons']['Deploy Dark Fluid'],
+    "Eradicate Terminid Swarm": config['MissionIcons']['Eradicate Terminid Swarm'],
+    "Destroy Transmission Network": config['MissionIcons']['Destroy Transmission Network'],
+    "Eliminate Devastators": config['MissionIcons']['Eliminate Devastators'],
+    "Eliminate Automaton Hulks": config['MissionIcons']['Eliminate Automaton Hulks'],
+    "Eliminate Automaton Factory Strider": config['MissionIcons']['Eliminate Automaton Factory Strider'],
+    "Sabotage Supply Bases": config['MissionIcons']['Sabotage Supply Bases'],
+    "Sabotage Air Base": config['MissionIcons']['Sabotage Air Base'],
+    "Eradicate Automaton Forces": config['MissionIcons']['Eradicate Automaton Forces'],
+    "Destroy Command Bunkers": config['MissionIcons']['Destroy Command Bunkers'],
+    "Neutralize Orbital Defenses": config['MissionIcons']['Neutralize Orbital Defenses'],
+    "Evacuate Colonists": config['MissionIcons']['Evacuate Colonists'],
+    "Retrieve Recon Craft Intel": config['MissionIcons']['Retrieve Recon Craft Intel'],
+    "Free Colony": config['MissionIcons']['Free Colony'],
+    "Blitz: Destroy Illuminate Warp Ships": config['MissionIcons']['Blitz Destroy Illuminate Warp Ships'],
+    "Destroy Harvesters": config['MissionIcons']['Destroy Harvesters'],
+    "Extract Research Probe Data": config['MissionIcons']['Extract Research Probe Data'],
+    "Collect Meteorological Data": config['MissionIcons']['Collect Meteorological Data'],
+    "Collect Gloom-Infused Oil": config['MissionIcons']['Collect Gloom-Infused Oil'],
+    "Blitz: Secure Research Site": config['MissionIcons']['Blitz Secure Research Site'],
+    "Collect Gloom Spore Readings": config['MissionIcons']['Collect Gloom Spore Readings'],
+    "Chart Terminid Tunnels": config['MissionIcons']['Chart Terminid Tunnels']
+}
+
 # Read the Excel file
 try:
     df = pd.read_excel('mission_log_test.xlsx') if DEBUG else pd.read_excel('mission_log.xlsx')
@@ -205,15 +260,15 @@ embed_data = {
                         f"> Rating - {Rating} | {int(Rating_Percentage)}%\n" +
 
                         f"\n<a:easyshine1:1349110651829747773>  <:goldstar:1337818552094163034> Favourites <:goldstar:1337818552094163034> <a:easyshine3:1349110648528699422>\n" +     
-                        f"> Mission - {df['Mission Type'].mode()[0]} (x{MissionCount})\n" +
-                        f"> Campaign - {df['Mission Category'].mode()[0]} (x{CampaignCount})\n" +
+                        f"> Mission - {df['Mission Type'].mode()[0]} {MISSION_ICONS.get(df['Mission Type'].mode()[0], '')} (x{MissionCount})\n" +
+                        f"> Campaign - {df['Mission Category'].mode()[0]} {CAMPAIGN_ICONS.get(df['Mission Category'].mode()[0], '')} (x{CampaignCount})\n" +
                         f"> Faction - {df['Enemy Type'].mode()[0]} {ENEMY_ICONS.get(df['Enemy Type'].mode()[0], '')} (x{FactionCount})\n" +
                         f"> Difficulty - {df['Difficulty'].mode()[0]} {DIFFICULTY_ICONS.get(df['Difficulty'].mode()[0], '')} (x{DifficultyCount})\n" +
                         f"> Planet - {df['Planet'].mode()[0]} {PLANET_ICONS.get(df['Planet'].mode()[0], '')} (x{PlanetCount})\n" +
                         f"> Sector - {df['Sector'].mode()[0]} (x{SectorCount})\n",
             "color": 7257043,
             "author": {"name": "SEAF Battle Record"},
-            "footer": {"text": config['Discord']['UID']},
+            "footer": {"text": config['Discord']['UID'],"icon_url": "https://cdn.discordapp.com/attachments/1340508329977446484/1356025859319926784/5cwgI15.png?ex=67eb10fe&is=67e9bf7e&hm=ab6326a9da1e76125238bf3668acac8ad1e43b24947fc6d878d7b94c8a60ab28&"},
             "thumbnail": {"url": "https://i.ibb.co/5g2b9NXb/Super-Earth-Icon.png"}
         }
     ],
@@ -239,6 +294,64 @@ enemy_icons = {
         "emoji": config['EnemyIcons']['Illuminate'],
         "color": int(config['SystemColors']['Illuminate']),
         "url": "https://i.ibb.co/wr4Nm5HT/Illuminate-Icon.png"
+    }
+}
+
+# Planet type specific embeds with icons
+planet_icons = {
+    "Super Earth": {
+        "emoji": config['PlanetIcons']['Human Homeworld']
+    },
+    "Cyberstan": {
+        "emoji": config['PlanetIcons']['Automaton Homeworld']
+    },
+    "Malevelon Creek": {
+        "emoji": config['PlanetIcons']['Malevelon Creek']
+    },
+    "Calypso": {
+        "emoji": config['PlanetIcons']['Calypso']
+    },
+    "Diaspora X": {
+        "emoji": config['PlanetIcons']['Gloom']
+    },
+    "Enuliale": {
+        "emoji": config['PlanetIcons']['Gloom']
+    },
+    "Epsilon Phoencis VI": {
+        "emoji": config['PlanetIcons']['Gloom']
+    },
+    "Gemstone Bluffs": {
+        "emoji": config['PlanetIcons']['Gloom']
+    },
+    "Nabatea Secundus": {
+        "emoji": config['PlanetIcons']['Gloom']
+    },
+    "Navi VII": {
+        "emoji": config['PlanetIcons']['Gloom']
+    },
+    "Azur Secundus": {
+        "emoji": config['PlanetIcons']['Gloom']
+    },
+    "Erson Sands": {
+        "emoji": config['PlanetIcons']['Gloom']
+    },
+    "Nivel 43": {
+        "emoji": config['PlanetIcons']['Gloom']
+    },
+    "Zagon Prime": {
+        "emoji": config['PlanetIcons']['Gloom']
+    },
+    "Hellmire": {
+        "emoji": config['PlanetIcons']['Gloom']
+    },
+    "Omicron": {
+        "emoji": config['PlanetIcons']['Gloom']
+    },
+    "Oshaune": {
+        "emoji": config['PlanetIcons']['Gloom']
+    },
+    "Fori Prime": {
+        "emoji": config['PlanetIcons']['Gloom']
     }
 }
 
