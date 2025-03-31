@@ -24,7 +24,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 
 # Constants
 DEBUG = False
-VERSION = "1.3.121"
+VERSION = "1.3.122"
 DATE_FORMAT = "%d-%m-%Y %H:%M:%S"
 SETTINGS_FILE = 'user_settings.json'
 EXCEL_FILE_TEST = 'mission_log_test.xlsx'
@@ -417,7 +417,7 @@ SUBFACTION_ICONS = {
     "Illuminate Cult": config['SubfactionIcons']['IlluminateCult'],
     "Jet Brigade": config['SubfactionIcons']['JetBrigade'],
     "Predator Strain": config['SubfactionIcons']['PredatorStrain'],
-    "The Incineration Corps": config['SubfactionIcons']['TheIncinerationCorps'],
+    "Incineration Corps": config['SubfactionIcons']['IncinerationCorps'],
 }
 
 # DSS icons for Modifiers
@@ -467,7 +467,7 @@ def normalize_subfaction_name(subfaction: str) -> str:
     replacements = {
         "Jet Brigade": "JetBrigade",
         "Predator Strain": "PredatorStrain",
-        "The Incineration Corps": "TheIncinerationCorps",
+        "Incineration Corps": "IncinerationCorps",
         # Add more mappings as needed
     }
     return replacements.get(normalized, normalized)
