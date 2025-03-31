@@ -24,7 +24,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 
 # Constants
 DEBUG = False
-VERSION = "1.3.119"
+VERSION = "1.3.120"
 DATE_FORMAT = "%d-%m-%Y %H:%M:%S"
 SETTINGS_FILE = 'user_settings.json'
 EXCEL_FILE_TEST = 'mission_log_test.xlsx'
@@ -417,7 +417,7 @@ SUBFACTION_ICONS = {
     "Illuminate Cult": config['SubfactionIcons']['IlluminateCult'],
     "Jet Brigade": config['SubfactionIcons']['JetBrigade'],
     "Predator Strain": config['SubfactionIcons']['PredatorStrain'],
-    "Incineration Corps": config['SubfactionIcons']['IncinerationCorps'],
+    "The Incineration Corps": config['SubfactionIcons']['TheIncinerationCorps'],
 }
 
 # DSS icons for Modifiers
@@ -467,7 +467,7 @@ def normalize_subfaction_name(subfaction: str) -> str:
     replacements = {
         "Jet Brigade": "JetBrigade",
         "Predator Strain": "PredatorStrain",
-        "Incineration Corps": "IncinerationCorps",
+        "The Incineration Corps": "TheIncinerationCorps",
         # Add more mappings as needed
     }
     return replacements.get(normalized, normalized)
@@ -703,7 +703,7 @@ class MissionLogGUI:
         self.dss_frame = ttk.Frame(details_frame)
         self.dss_frame.grid(row=1, column=4, columnspan=2, sticky=tk.W, pady=5)
         ttk.Label(self.dss_frame, text="DSS Modifier:").pack(side=tk.LEFT)
-        dss_mods = ["None", "Orbital Blockade", "Heavy Ordinance Distribution", "Eagle Storm"]
+        dss_mods = ["None", "Orbital Blockade", "Heavy Ordnance Distribution", "Eagle Storm"]
         self.DSSMod.set("None")  # Set default value
         self.dss_combo = ttk.Combobox(self.dss_frame, textvariable=self.DSSMod, values=dss_mods, state='readonly', width=27)
         self.dss_combo.pack(side=tk.LEFT, padx=5)
