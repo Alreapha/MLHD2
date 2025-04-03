@@ -19,19 +19,20 @@ import os
 import subprocess
 import re
 
+# Read configuration from config.config
+config = configparser.ConfigParser()
+config.read('config.config')
+
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-# Constants
-DEBUG = False
+#Constants
+DEBUG = config.getboolean('DEBUGGING', 'DEBUG', fallback=False)
 VERSION = "1.3.123"
 DATE_FORMAT = "%d-%m-%Y %H:%M:%S"
 SETTINGS_FILE = 'user_settings.json'
 EXCEL_FILE_TEST = 'mission_log_test.xlsx'
 EXCEL_FILE_PROD = 'mission_log.xlsx'
-# Read configuration from config.config
-config = configparser.ConfigParser()
-config.read('config.config')
 
 DISCORD_CLIENT_ID = config['Discord']['DISCORD_CLIENT_ID']
 RPC_UPDATE_INTERVAL = 15  # seconds
@@ -494,7 +495,11 @@ class MissionLogGUI:
     def __init__(self, root: tk.Tk) -> None:
         """Initialize the GUI application."""
         self.root = root
-        self.root.title("Helldiver Mission Log Manager V-{}".format(VERSION))
+        if DEBUG:
+            self.root.title("Helldiver Mission Log Manager V-{} DEBUG:{}".format(VERSION, DEBUG))
+        else:
+            self.root.title("Helldiver Mission Log Manager V-{}".format(VERSION))
+        
         self.root.resizable(False, False)
         
         # Load icon in a separate thread
