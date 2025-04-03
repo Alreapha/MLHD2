@@ -24,7 +24,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 
 # Constants
 DEBUG = False
-VERSION = "1.3.122"
+VERSION = "1.3.123"
 DATE_FORMAT = "%d-%m-%Y %H:%M:%S"
 SETTINGS_FILE = 'user_settings.json'
 EXCEL_FILE_TEST = 'mission_log_test.xlsx'
@@ -418,6 +418,7 @@ SUBFACTION_ICONS = {
     "Jet Brigade": config['SubfactionIcons']['JetBrigade'],
     "Predator Strain": config['SubfactionIcons']['PredatorStrain'],
     "Incineration Corps": config['SubfactionIcons']['IncinerationCorps'],
+    "Jet Brigade & Incineration Corps": config['SubfactionIcons']['JetBrigadeIncinerationCorps']
 }
 
 # DSS icons for Modifiers
@@ -468,6 +469,7 @@ def normalize_subfaction_name(subfaction: str) -> str:
         "Jet Brigade": "JetBrigade",
         "Predator Strain": "PredatorStrain",
         "Incineration Corps": "IncinerationCorps",
+        "Jet Brigade & Incineration Corps": "JetBrigadeIncinerationCorps"
         # Add more mappings as needed
     }
     return replacements.get(normalized, normalized)
@@ -957,7 +959,7 @@ class MissionLogGUI:
 
 
         if settings.get('DSS'):
-            self.DSSMod.set(settings.get('DSSMod', 'None'))
+            self.DSSMod.set(settings.get('DSSMod', 'Inactive'))
         
         # For mission type
         if settings.get('mission'):

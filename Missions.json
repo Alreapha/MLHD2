@@ -770,6 +770,263 @@
                 "Neutralize Orbital Defenses"
                 ]
             }
+        },
+        "Jet Brigade & Incineration Corps": {
+            "Invasion": "Unknown",
+            "Defense": {
+                "1 - TRIVIAL": [
+                "Terminate Illegal Broadcast",
+                "Pump Fuel To ICBM",
+                "Upload Escape Pod Data",
+                "Spread Democracy",
+                "Retrieve Essential Personnel",
+                "Destroy Transmission Network",
+                "Eliminate Devastators"
+                ],
+                "2 - EASY": [
+                "Terminate Illegal Broadcast",
+                "Pump Fuel To ICBM",
+                "Upload Escape Pod Data",
+                "Spread Democracy",
+                "Retrieve Essential Personnel",
+                "Conduct Geological Survey",
+                "Destroy Transmission Network",
+                "Eliminate Devastators",
+                "Sabotage Supply Bases"
+                ],
+                "3 - MEDIUM": [
+                "Spread Democracy",
+                "Retrieve Essential Personnel",
+                "Conduct Geological Survey",
+                "Launch ICBM",
+                "Retrieve Valuable Data",
+                "Blitz: Search and Destroy",
+                "Emergency Evacuation",
+                "Eliminate Automaton Hulks",
+                "Sabotage Supply Bases",
+                "Sabotage Air Base",
+                "Eradicate Automaton Forces"
+                ],
+                "4 - CHALLENGING": [
+                "Spread Democracy",
+                "Retrieve Essential Personnel",
+                "Conduct Geological Survey",
+                "Launch ICBM",
+                "Retrieve Valuable Data",
+                "Blitz: Search and Destroy",
+                "Emergency Evacuation",
+                "Eliminate Automaton Factory Strider",
+                "Sabotage Supply Bases",
+                "Sabotage Air Base",
+                "Eradicate Automaton Forces"
+                ],
+                "5 - HARD": [
+                "Spread Democracy",
+                "Retrieve Essential Personnel",
+                "Evacuate High-Value Assets",
+                "Conduct Geological Survey",
+                "Launch ICBM",
+                "Retrieve Valuable Data",
+                "Blitz: Search and Destroy",
+                "Emergency Evacuation",
+                "Eliminate Automaton Factory Strider",
+                "Sabotage Supply Bases",
+                "Sabotage Air Base",
+                "Eradicate Automaton Forces",
+                "Destroy Command Bunkers",
+                "Neutralize Orbital Defenses"
+                ],
+                "6 - EXTREME": [
+                "Spread Democracy",
+                "Retrieve Essential Personnel",
+                "Evacuate High-Value Assets",
+                "Conduct Geological Survey",
+                "Launch ICBM",
+                "Retrieve Valuable Data",
+                "Blitz: Search and Destroy",
+                "Emergency Evacuation",
+                "Eliminate Automaton Factory Strider",
+                "Sabotage Air Base",
+                "Eradicate Automaton Forces",
+                "Destroy Command Bunkers",
+                "Neutralize Orbital Defenses"
+                ],
+                "7 - SUICIDE MISSION": [
+                "Spread Democracy",
+                "Retrieve Essential Personnel",
+                "Evacuate High-Value Assets",
+                "Conduct Geological Survey",
+                "Launch ICBM",
+                "Retrieve Valuable Data",
+                "Blitz: Search and Destroy",
+                "Emergency Evacuation",
+                "Sabotage Air Base",
+                "Eradicate Automaton Forces",
+                "Destroy Command Bunkers",
+                "Neutralize Orbital Defenses"
+                ],
+                "8 - IMPOSSIBLE": [
+                "Spread Democracy",
+                "Retrieve Essential Personnel",
+                "Evacuate High-Value Assets",
+                "Conduct Geological Survey",
+                "Launch ICBM",
+                "Retrieve Valuable Data",
+                "Blitz: Search and Destroy",
+                "Emergency Evacuation",
+                "Sabotage Air Base",
+                "Eradicate Automaton Forces",
+                "Destroy Command Bunkers",
+                "Neutralize Orbital Defenses"
+                ],
+                "9 - HELLDIVE": [
+                "Spread Democracy",
+                "Retrieve Essential Personnel",
+                "Evacuate High-Value Assets",
+                "Conduct Geological Survey",
+                "Launch ICBM",
+                "Retrieve Valuable Data",
+                "Blitz: Search and Destroy",
+                "Emergency Evacuation",
+                "Sabotage Air Base",
+                "Eradicate Automaton Forces",
+                "Destroy Command Bunkers",
+                "Neutralize Orbital Defenses"
+                ],
+                "10 - SUPER HELLDIVE": [
+                "Spread Democracy",
+                "Retrieve Essential Personnel",
+                "Evacuate High-Value Assets",
+                "Conduct Geological Survey",
+                "Launch ICBM",
+                "Retrieve Valuable Data",
+                "Blitz: Search and Destroy",
+                "Emergency Evacuation",
+                "Sabotage Air Base",
+                "Eradicate Automaton Forces",
+                "Destroy Command Bunkers",
+                "Neutralize Orbital Defenses"
+                ]
+            },
+            "Liberation": {
+                "1 - TRIVIAL": [
+                "Terminate Illegal Broadcast",
+                "Pump Fuel To ICBM",
+                "Upload Escape Pod Data",
+                "Spread Democracy",
+                "Destroy Transmission Network",
+                "Eliminate Devastators"
+                ],
+                "2 - EASY": [
+                "Terminate Illegal Broadcast",
+                "Pump Fuel To ICBM",
+                "Upload Escape Pod Data",
+                "Spread Democracy",
+                "Conduct Geological Survey",
+                "Destroy Transmission Network",
+                "Eliminate Devastators",
+                "Sabotage Supply Bases"
+                ],
+                "3 - MEDIUM": [
+                "Spread Democracy",
+                "Conduct Geological Survey",
+                "Launch ICBM",
+                "Retrieve Valuable Data",
+                "Blitz: Search and Destroy",
+                "Emergency Evacuation",
+                "Eliminate Automaton Hulks",
+                "Sabotage Supply Bases",
+                "Sabotage Air Base",
+                "Eradicate Automaton Forces"
+                ],
+                "4 - CHALLENGING": [
+                "Spread Democracy",
+                "Conduct Geological Survey",
+                "Launch ICBM",
+                "Retrieve Valuable Data",
+                "Blitz: Search and Destroy",
+                "Emergency Evacuation",
+                "Eliminate Automaton Factory Strider",
+                "Sabotage Supply Bases",
+                "Sabotage Air Base",
+                "Eradicate Automaton Forces"
+                ],
+                "5 - HARD": [
+                "Spread Democracy",
+                "Conduct Geological Survey",
+                "Launch ICBM",
+                "Retrieve Valuable Data",
+                "Blitz: Search and Destroy",
+                "Emergency Evacuation",
+                "Eliminate Automaton Factory Strider",
+                "Sabotage Supply Bases",
+                "Sabotage Air Base",
+                "Eradicate Automaton Forces",
+                "Destroy Command Bunkers",
+                "Neutralize Orbital Defenses"
+                ],
+                "6 - EXTREME": [
+                "Spread Democracy",
+                "Conduct Geological Survey",
+                "Launch ICBM",
+                "Retrieve Valuable Data",
+                "Blitz: Search and Destroy",
+                "Emergency Evacuation",
+                "Eliminate Automaton Factory Strider",
+                "Sabotage Air Base",
+                "Eradicate Automaton Forces",
+                "Destroy Command Bunkers",
+                "Neutralize Orbital Defenses"
+                ],
+                "7 - SUICIDE MISSION": [
+                "Spread Democracy",
+                "Conduct Geological Survey",
+                "Launch ICBM",
+                "Retrieve Valuable Data",
+                "Blitz: Search and Destroy",
+                "Emergency Evacuation",
+                "Sabotage Air Base",
+                "Eradicate Automaton Forces",
+                "Destroy Command Bunkers",
+                "Neutralize Orbital Defenses"
+                ],
+                "8 - IMPOSSIBLE": [
+                "Spread Democracy",
+                "Conduct Geological Survey",
+                "Launch ICBM",
+                "Retrieve Valuable Data",
+                "Blitz: Search and Destroy",
+                "Emergency Evacuation",
+                "Sabotage Air Base",
+                "Eradicate Automaton Forces",
+                "Destroy Command Bunkers",
+                "Neutralize Orbital Defenses"
+                ],
+                "9 - HELLDIVE": [
+                "Spread Democracy",
+                "Conduct Geological Survey",
+                "Launch ICBM",
+                "Retrieve Valuable Data",
+                "Blitz: Search and Destroy",
+                "Emergency Evacuation",
+                "Sabotage Air Base",
+                "Eradicate Automaton Forces",
+                "Destroy Command Bunkers",
+                "Neutralize Orbital Defenses"
+                ],
+                "10 - SUPER HELLDIVE": [
+                "Spread Democracy",
+                "Conduct Geological Survey",
+                "Launch ICBM",
+                "Retrieve Valuable Data",
+                "Blitz: Search and Destroy",
+                "Emergency Evacuation",
+                "Sabotage Air Base",
+                "Eradicate Automaton Forces",
+                "Destroy Command Bunkers",
+                "Neutralize Orbital Defenses"
+                ]
+            }
         }
     },
     "Terminids": {
