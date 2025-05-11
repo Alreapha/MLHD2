@@ -892,6 +892,10 @@ class MissionLogGUI:
         export_button = ttk.Button(export_frame, text="Export Excel Data to Webhook", command=lambda: os.system('python sub.py'))
         export_button.grid(row=6, column=0, pady=15)
 
+        #open export GUI
+        GUIbutton = ttk.Button(export_frame, text="Open Export GUI", command=lambda: subprocess.run(['python', 'exportGUI.py'], shell=False))
+        GUIbutton.grid(row=5, column=0, pady=15)
+
         #export button by faction
         export_button = ttk.Button(export_frame, text="Export Faction Data to Webhook", command=lambda: os.system('python faction.py'))
         export_button.grid(row=7, column=0, pady=15)
