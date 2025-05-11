@@ -27,7 +27,7 @@ config.read('config.config')
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # Constants
-DEBUG = False
+DEBUG = config.getboolean('DEBUGGING', 'DEBUG', fallback=False)
 VERSION = "1.3.125"
 DATE_FORMAT = "%d-%m-%Y %H:%M:%S"
 SETTINGS_FILE = 'user_settings.json'

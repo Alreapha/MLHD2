@@ -4,7 +4,7 @@ import requests
 import json
 
 #Constants
-DEBUG = False
+DEBUG = config.getboolean('DEBUGGING', 'DEBUG', fallback=False)
 
 # Read config file
 config = configparser.ConfigParser()
