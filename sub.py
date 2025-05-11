@@ -3,12 +3,14 @@ import configparser
 import requests
 import json
 
-#Constants
-DEBUG = config.getboolean('DEBUGGING', 'DEBUG', fallback=False)
 
 # Read configuration from config.config
 config = configparser.ConfigParser()
 config.read('config.config')
+
+
+#Constants
+DEBUG = config.getboolean('DEBUGGING', 'DEBUG', fallback=False)
 
 DIFFICULTY_ICONS = {
     "1 - TRIVIAL": config['DifficultyIcons']['1 - TRIVIAL'],

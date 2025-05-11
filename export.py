@@ -602,6 +602,11 @@ SectorCount = df.apply(lambda row: row.astype(str).str.contains(search_sector, c
 Rating, Rating_Percentage = get_rating(df)
 # Get the last entry details
 helldiver_ses, helldiver_name, helldiver_level, helldiver_title, latest_note = get_LastEntry(df)
+# get streak
+highest_streak = 0
+with open('streak_data.json', 'r') as f:
+    streak_data = json.load(f)
+    highest_streak = streak_data.get(helldiver_ses, {}).get("highest_streak", 0)
 
 # Create embed data
 # Create the main embed first

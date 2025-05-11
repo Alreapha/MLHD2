@@ -17,6 +17,7 @@ import configparser
 import threading
 import os
 import subprocess
+import random
 import re
 
 # Read configuration from config.config
@@ -1042,26 +1043,43 @@ class MissionLogGUI:
             level = int(self.level.get())
             kills = int(self.kills.get())
             deaths = int(self.deaths.get())
+            #create a randint between 1 and 0
+            rndint = random.randint(0, 1)
 
             if level < 1 or level > 150:  # Add reasonable level range
-                self._show_error("Level must be between 1 and 150")
+                if rndint == 1:
+                    self._show_error("ADVISORY: You are not a Helldiver")
+                else:
+                    self._show_error("Level must be between 1 and 150")
                 return False
 
             if kills < 0 or kills > 10000:
-                self._show_error("Invalid number of kills")
+                if rndint == 1:
+                    self._show_error("These kills will be reported to your Democracy Officer... I dear hope you're not lying...")
+                else:
+                    self._show_error("Invalid number of kills")
                 return False
 
             if deaths < 0 or deaths > 1000:
-                self._show_error("Invalid number of deaths")
+                if rndint == 1:
+                    self._show_error("Surely you didn't die this many times... right?")
+                else:
+                    self._show_error("Invalid number of deaths")
                 return False
 
             # Validate required text fields
             if not self.Helldivers.get().strip():
-                self._show_error("Helldiver name is required")
+                if rndint == 1:
+                    self._show_error("I know we're cannon fodder but you could at least give yourself a name... have some dignity!")
+                else:
+                    self._show_error("Helldiver name is required")
                 return False
 
             if not self.mission_type.get().strip():
-                self._show_error("Mission type is required")
+                if rndint == 1:
+                    self._show_error("Did you sit in your hellpod the entire time?")
+                else:
+                    self._show_error("Mission type is required")
                 return False
 
             return True
@@ -1097,7 +1115,7 @@ class MissionLogGUI:
             'Deaths': self.deaths.get(),
             'Rating': self.rating.get(),
             'Time': datetime.now().strftime(DATE_FORMAT),
-            'Note': self.note.get()
+            'Note': self.note.get(),
         }
 
 
@@ -1167,6 +1185,69 @@ class MissionLogGUI:
             biome_banner = get_biome_banner(data['Planet'])
             dss_icon = get_dss_icon(data['DSS Modifier'])
 
+
+            # Logic to track streaks (submissions within an hour)
+            helldiver_name = data['Helldivers']
+            streak_file = 'streak_data.json'
+            streak = 1  # Default streak value
+            highest_streak = 0  # Default highest streak value
+            streak_emoji = ""  # No streak emoji by default
+
+            try:
+                # Load streak data for all users
+                streak_data = {}
+                if os.path.exists(streak_file):
+                    with open(streak_file, 'r') as f:
+                        streak_data = json.load(f)
+                
+                user_data = streak_data.get(helldiver_name, {'streak': 0, 'last_time': None})
+                
+                # Check if this user has previous streak data with valid timestamp
+                if user_data['last_time']:
+                    last_time = datetime.strptime(user_data['last_time'], "%Y-%m-%d %H:%M:%S")
+                    time_diff = datetime.now() - last_time
+                    
+                    if time_diff.total_seconds() <= 3600:  # Within an hour
+                        streak = user_data['streak'] + 1
+                        # Add streak emoji based on length
+                        if streak >= 30:
+                            streak_emoji = "🔥 x" + str(streak) + " WTF!"
+                        elif streak >= 24:
+                            streak_emoji = "🔥 x" + str(streak) + " TRULY HELLDIVING!"
+                        elif streak >= 21:
+                            streak_emoji = "🔥 x" + str(streak) + " IMPOSSIBLE!"
+                        elif streak >= 18:
+                            streak_emoji = "🔥 x" + str(streak) + " SUICIDAL!"
+                        elif streak >= 15:
+                            streak_emoji = "🔥 x" + str(streak) + " PATRIOTIC!"
+                        elif streak >= 12:
+                            streak_emoji = "🔥 x" + str(streak) + " DEMOCRATIC!"
+                        elif streak >= 9:
+                            streak_emoji = "🔥 x" + str(streak) + " LIBERATING!"
+                        elif streak >= 6:
+                            streak_emoji = "🔥 x" + str(streak) + " SUPER!"
+                        elif streak >= 3:
+                            streak_emoji = "🔥 x" + str(streak) + " COMMENDABLE!"
+                        else:
+                            streak_emoji = "🔥 x" + str(streak)
+                # Update streak data for this user
+                highest_streak = user_data.get('highest_streak', 0)  # Get existing highest streak or default to 0
+                if streak > highest_streak:
+                    highest_streak = streak
+                    
+                streak_data[helldiver_name] = {
+                    'streak': streak,
+                    'highest_streak': highest_streak,
+                    'last_time': datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                }
+                
+                # Save updated streak data
+                with open(streak_file, 'w') as f:
+                    json.dump(streak_data, f, indent=4)
+                    
+            except Exception as e:
+                logging.error(f"Error managing streak data: {e}")
+
             total_missions_main = total_missions()
 
             # Format the message for Discord
@@ -1206,7 +1287,7 @@ class MissionLogGUI:
                         "icon_url": "https://cdn.discordapp.com/attachments/1340508329977446484/1356001307596427564/NwNzS9B.png?ex=67eafa21&is=67e9a8a1&hm=7e204265cbcdeaf96d7b244cd63992c4ef10dc18befbcf2ed39c3a269af14ec0&"
                     },
                     "footer": {
-                    "text": f"{UID}",
+                    "text": f"{UID}  {streak_emoji}",
                     "icon_url": "https://cdn.discordapp.com/attachments/1340508329977446484/1356025859319926784/5cwgI15.png?ex=67eb10fe&is=67e9bf7e&hm=ab6326a9da1e76125238bf3668acac8ad1e43b24947fc6d878d7b94c8a60ab28&"
                     },
                     "image": {"url": f"{biome_banner}"},
