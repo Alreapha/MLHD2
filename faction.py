@@ -536,7 +536,173 @@ embed_data = {
             "footer": {"text": config['Discord']['UID'],"icon_url": "https://cdn.discordapp.com/attachments/1340508329977446484/1356025859319926784/5cwgI15.png?ex=67eb10fe&is=67e9bf7e&hm=ab6326a9da1e76125238bf3668acac8ad1e43b24947fc6d878d7b94c8a60ab28&"},
             "image": {"url": f"{BIOME_BANNERS.get(df['Planet'].mode()[0], '')}"},
             "thumbnail": {"url": "https://i.ibb.co/5g2b9NXb/Super-Earth-Icon.png"}
-        }
+        },
+        {
+      "title": "Terminids Campaign Record",
+      "description": f"<a:easyshine1:1349110651829747773> <:hd2bugs:1337190441170370693> Terminid Front Statistics <:hd2bugs:1337190441170370693> <a:easyshine3:1349110648528699422>\n" +
+                         f"> <:resistance:1370883421496148068> Kills - {df[df['Enemy Type'] == 'Terminids']['Kills'].sum()}\n" +
+                         f"> <:helldiverHD:1370887412443648070> Deaths - {df[df['Enemy Type'] == 'Terminids']['Deaths'].sum()}\n" +
+                         f"> <:highprioritytarget:1370882658019704903> Highest Kills in Mission - {df[df['Enemy Type'] == 'Terminids']['Kills'].max()}\n\n" +
+
+                         f"> <:deployments:1370887552525139968> Deployments - {df[df['Enemy Type'] == 'Terminids']['Enemy Type'].count().sum()}\n" +
+                         f"> <:major_order:1356035244033048788> Major Order Deployments - {df[df['Enemy Type'] == 'Terminids']['Major Order'].astype(int).sum()}\n" +
+                         f"> <:dss:1356034406430806036> DSS Deployments - {df[df['Enemy Type'] == 'Terminids']['DSS Active'].astype(int).sum()}\n" +
+                         f"> <:lastdeployment:1370887542445965564> Last Deployment - {df[df['Enemy Type'] == 'Terminids']['Time'].max() if 'Time' in df.columns else 'No date available'}\n\n" +
+
+                         f"> <:liberation_campaign:1355955855572602962> Liberations - {df[df['Enemy Type'] == 'Terminids'][df['Mission Category'] == 'Liberation']['Mission Category'].count().sum()}\n" +
+                         f"> <:defence_campaign:1355955857480876282> Defenses - {df[df['Enemy Type'] == 'Terminids'][df['Mission Category'] == 'Defense']['Mission Category'].count().sum()}\n" +
+                         f"> <:invasion_campaign:1355955853588562202> Invasion - {df[df['Enemy Type'] == 'Terminids'][df['Mission Category'] == 'Invasion']['Mission Category'].count().sum()}\n" +
+                         f"> <:highprioritycampaign:1370787949372899328> High-Priority - {df[df['Enemy Type'] == 'Terminids'][df['Mission Category'] == 'High-Priority']['Mission Category'].count().sum()}\n\n",
+      
+    #   f"<a:easyshine1:1349110651829747773> <:hd2bugs:1337190441170370693> Terminid Horde Statistics <:hd2bugs:1337190441170370693> <a:easyshine3:1349110648528699422>\n" +
+    #                      f"> <:resistance:1370883421496148068> Kills - {df[df['Enemy Subfaction'] == 'Terminid Horde']['Kills'].sum()}\n" +
+    #                      f"> <:helldiverHD:1370887412443648070> Deaths - {df[df['Enemy Subfaction'] == 'Terminid Horde']['Deaths'].sum()}\n" +
+    #                      f"> <:highprioritytarget:1370882658019704903> Highest Kills in Mission - {df[df['Enemy Subfaction'] == 'Terminid Horde']['Kills'].max()}\n\n" +
+
+    #                      f"> <:deployments:1370887552525139968> Deployments - {df[df['Enemy Subfaction'] == 'Terminid Horde']['Enemy Type'].count().sum()}\n" +
+    #                      f"> <:major_order:1356035244033048788> Major Order Deployments - {df[df['Enemy Subfaction'] == 'Terminid Horde']['Major Order'].astype(int).sum()}\n" +
+    #                      f"> <:dss:1356034406430806036> DSS Deployments - {df[df['Enemy Subfaction'] == 'Terminid Horde']['DSS Active'].astype(int).sum()}\n" +
+    #                      f"> <:lastdeployment:1370887542445965564> Last Deployment - {df[df['Enemy Subfaction'] == 'Terminid Horde']['Time'].max() if 'Time' in df.columns else 'No date available'}\n\n" +
+
+    #                      f"> <:liberation_campaign:1355955855572602962> Liberations - {df[df['Enemy Subfaction'] == 'Terminid Horde'][df['Mission Category'] == 'Liberation']['Mission Category'].count().sum()}\n" +
+    #                      f"> <:defence_campaign:1355955857480876282> Defenses - {df[df['Enemy Subfaction'] == 'Terminid Horde'][df['Mission Category'] == 'Defense']['Mission Category'].count().sum()}\n" +
+    #                      f"> <:invasion_campaign:1355955853588562202> Invasion - {df[df['Enemy Subfaction'] == 'Terminid Horde'][df['Mission Category'] == 'Invasion']['Mission Category'].count().sum()}\n" +
+    #                      f"> <:highprioritycampaign:1370787949372899328> High-Priority - {df[df['Enemy Subfaction'] == 'Terminid Horde'][df['Mission Category'] == 'High-Priority']['Mission Category'].count().sum()}\n\n",
+
+      "color": 16761088,
+      "image": {
+        "url": "https://cdn.discordapp.com/attachments/1340508329977446484/1370786767128760420/terminidBanner.png?ex=6820c429&is=681f72a9&hm=3ca1e122e8063426a3dd1963791aca33ba6343a7a946b06287d344ce6c0f93a0&"
+      },
+      "thumbnail": {
+        "url": "https://i.ibb.co/PspGgJkH/Terminids-Icon.png"
+      }
+    },
+    # {
+    #   "title": "Predator Strain Campaign Record",
+    #   "description":   f"<a:easyshine1:1349110651829747773> <:predatorstrain:1370887431586582622> Predator Strain Statistics <:predatorstrain:1370887431586582622> <a:easyshine3:1349110648528699422>\n" +
+    #                      f"> <:resistance:1370883421496148068> Kills - {df[df['Enemy Subfaction'] == 'Predator Strain']['Kills'].sum()}\n" +
+    #                      f"> <:helldiverHD:1370887412443648070> Deaths - {df[df['Enemy Subfaction'] == 'Predator Strain']['Deaths'].sum()}\n" +
+    #                      f"> <:highprioritytarget:1370882658019704903> Highest Kills in Mission - {df[df['Enemy Subfaction'] == 'Predator Strain']['Kills'].max()}\n\n" +
+
+    #                      f"> <:deployments:1370887552525139968> Deployments - {df[df['Enemy Subfaction'] == 'Predator Strain']['Enemy Type'].count().sum()}\n" +
+    #                      f"> <:major_order:1356035244033048788> Major Order Deployments - {df[df['Enemy Subfaction'] == 'Predator Strain']['Major Order'].astype(int).sum()}\n" +
+    #                      f"> <:dss:1356034406430806036> DSS Deployments - {df[df['Enemy Subfaction'] == 'Predator Strain']['DSS Active'].astype(int).sum()}\n" +
+    #                      f"> <:lastdeployment:1370887542445965564> Last Deployment - {df[df['Enemy Subfaction'] == 'Predator Strain']['Time'].max() if 'Time' in df.columns else 'No date available'}\n\n" +
+
+    #                      f"> <:liberation_campaign:1355955855572602962> Liberations - {df[df['Enemy Subfaction'] == 'Predator Strain'][df['Mission Category'] == 'Liberation']['Mission Category'].count().sum()}\n" +
+    #                      f"> <:defence_campaign:1355955857480876282> Defenses - {df[df['Enemy Subfaction'] == 'Predator Strain'][df['Mission Category'] == 'Defense']['Mission Category'].count().sum()}\n" +
+    #                      f"> <:invasion_campaign:1355955853588562202> Invasion - {df[df['Enemy Subfaction'] == 'Predator Strain'][df['Mission Category'] == 'Invasion']['Mission Category'].count().sum()}\n" +
+    #                      f"> <:highprioritycampaign:1370787949372899328> High-Priority - {df[df['Enemy Subfaction'] == 'Predator Strain'][df['Mission Category'] == 'High-Priority']['Mission Category'].count().sum()}\n\n" +
+      
+    #   f"<a:easyshine1:1349110651829747773> <:sporeburststrain:1370787947800166420> Spore Burst Strain Statistics <:sporeburststrain:1370787947800166420> <a:easyshine3:1349110648528699422>\n" +
+    #                      f"> <:resistance:1370883421496148068> Kills - {df[df['Enemy Subfaction'] == 'Spore Burst Strain']['Kills'].sum()}\n" +
+    #                      f"> <:helldiverHD:1370887412443648070> Deaths - {df[df['Enemy Subfaction'] == 'Spore Burst Strain']['Deaths'].sum()}\n" +
+    #                      f"> <:highprioritytarget:1370882658019704903> Highest Kills in Mission - {df[df['Enemy Subfaction'] == 'Spore Burst Strain']['Kills'].max()}\n\n" +
+
+    #                      f"> <:deployments:1370887552525139968> Deployments - {df[df['Enemy Subfaction'] == 'Spore Burst Strain']['Enemy Type'].count().sum()}\n" +
+    #                      f"> <:major_order:1356035244033048788> Major Order Deployments - {df[df['Enemy Subfaction'] == 'Spore Burst Strain']['Major Order'].astype(int).sum()}\n" +
+    #                      f"> <:dss:1356034406430806036> DSS Deployments - {df[df['Enemy Subfaction'] == 'Spore Burst Strain']['DSS Active'].astype(int).sum()}\n" +
+    #                      f"> <:lastdeployment:1370887542445965564> Last Deployment - {df[df['Enemy Subfaction'] == 'Spore Burst Strain']['Time'].max() if 'Time' in df.columns else 'No date available'}\n\n" +
+
+    #                      f"> <:liberation_campaign:1355955855572602962> Liberations - {df[df['Enemy Subfaction'] == 'Spore Burst Strain'][df['Mission Category'] == 'Liberation']['Mission Category'].count().sum()}\n" +
+    #                      f"> <:defence_campaign:1355955857480876282> Defenses - {df[df['Enemy Subfaction'] == 'Spore Burst Strain'][df['Mission Category'] == 'Defense']['Mission Category'].count().sum()}\n" +
+    #                      f"> <:invasion_campaign:1355955853588562202> Invasion - {df[df['Enemy Subfaction'] == 'Spore Burst Strain'][df['Mission Category'] == 'Invasion']['Mission Category'].count().sum()}\n" +
+    #                      f"> <:highprioritycampaign:1370787949372899328> High-Priority - {df[df['Enemy Subfaction'] == 'Spore Burst Strain'][df['Mission Category'] == 'High-Priority']['Mission Category'].count().sum()}\n\n",
+
+    #   "color": 16761088,
+    #   "image": {
+    #     "url": "https://cdn.discordapp.com/attachments/1340508329977446484/1370786767128760420/terminidBanner.png?ex=6820c429&is=681f72a9&hm=3ca1e122e8063426a3dd1963791aca33ba6343a7a946b06287d344ce6c0f93a0&"
+    #   },
+    #   "thumbnail": {
+    #     "url": "https://i.ibb.co/PspGgJkH/Terminids-Icon.png"
+    #   }
+    # },
+    {
+      "title": "Automaton Campaign Record",
+      "description": "<a:easyshine1:1349110651829747773> <:hd2bots:1337190442449502208> Automaton Front Statistics <:hd2bots:1337190442449502208> <a:easyshine3:1349110648528699422>\n" +
+                         f"> <:resistance:1370883421496148068> Kills - {df[df['Enemy Type'] == 'Automatons']['Kills'].sum()}\n" +
+                         f"> <:helldiverHD:1370887412443648070> Deaths - {df[df['Enemy Type'] == 'Automatons']['Deaths'].sum()}\n" +
+                         f"> <:highprioritytarget:1370882658019704903> Highest Kills in Mission - {df[df['Enemy Type'] == 'Automatons']['Kills'].max()}\n\n" +
+
+                         f"> <:deployments:1370887552525139968> Deployments - {df[df['Enemy Type'] == 'Automatons']['Enemy Type'].count().sum()}\n" +
+                         f"> <:major_order:1356035244033048788> Major Order Deployments - {df[df['Enemy Type'] == 'Automatons']['Major Order'].astype(int).sum()}\n" +
+                         f"> <:dss:1356034406430806036> DSS Deployments - {df[df['Enemy Type'] == 'Automatons']['DSS Active'].astype(int).sum()}\n" +
+                         f"> <:lastdeployment:1370887542445965564> Last Deployment - {df[df['Enemy Type'] == 'Automatons']['Time'].max() if 'Time' in df.columns else 'No date available'}\n\n" +
+
+                         f"> <:liberation_campaign:1355955855572602962> Liberations - {df[df['Enemy Type'] == 'Automatons'][df['Mission Category'] == 'Liberation']['Mission Category'].count().sum()}\n" +
+                         f"> <:defence_campaign:1355955857480876282> Defenses - {df[df['Enemy Type'] == 'Automatons'][df['Mission Category'] == 'Defense']['Mission Category'].count().sum()}\n" +
+                         f"> <:invasion_campaign:1355955853588562202> Invasion - {df[df['Enemy Type'] == 'Automatons'][df['Mission Category'] == 'Invasion']['Mission Category'].count().sum()}\n" +
+                         f"> <:highprioritycampaign:1370787949372899328> High-Priority - {df[df['Enemy Type'] == 'Automatons'][df['Mission Category'] == 'High-Priority']['Mission Category'].count().sum()}\n\n",
+      
+    #   "<a:easyshine1:1349110651829747773> <:hd2bots:1337190442449502208> Automaton Legion Statistics <:hd2bots:1337190442449502208> <a:easyshine3:1349110648528699422>\n" +
+    #   "> Kills - \n" +
+    #   "> Deaths - \n" +
+    #   "> Highest Kills in Mission - \n" +
+    #   "> Deployments - \n" +
+    #   "> Major Order Deployments - \n" +
+    #   "> DSS Deployments - \n" +
+    #   "> Last Deployment - \n\n" +
+      
+    #   "<a:easyshine1:1349110651829747773> <:jetbrigade:1370887479506374736> Jet Brigade Statistics <:jetbrigade:1370887479506374736> <a:easyshine3:1349110648528699422>\n" +
+    #   "> Kills - \n" +
+    #   "> Deaths - \n" +
+    #   "> Highest Kills in Mission - \n" +
+    #   "> Deployments - \n" +
+    #   "> Major Order Deployments - \n" +
+    #   "> DSS Deployments - \n" +
+    #   "> Last Deployment - \n\n" +
+      
+    #   "<a:easyshine1:1349110651829747773> <:incinerationcorps:1355266318705627365> Incineration Corps Statistics <:incinerationcorps:1355266318705627365> <a:easyshine3:1349110648528699422>\n" +
+    #   "> Kills - \n" +
+    #   "> Deaths - \n" +
+    #   "> Highest Kills in Mission - \n" +
+    #   "> Deployments - \n" +
+    #   "> Major Order Deployments - \n" +
+    #   "> DSS Deployments - \n" +
+    #   "> Last Deployment - \n\n" +
+      
+    #   "<a:easyshine1:1349110651829747773> <:jetbrigade:1370887479506374736> Jet Brigade & Incineration Corps Stats <:incinerationcorps:1355266318705627365> <a:easyshine3:1349110648528699422>\n" +
+    #   "> Kills - \n" +
+    #   "> Deaths - \n" +
+    #   "> Highest Kills in Mission - \n" +
+    #   "> Deployments - \n" +
+    #   "> Major Order Deployments - \n" +
+    #   "> DSS Deployments - \n" +
+    #   "> Last Deployment -",
+
+      "color": 16739693,
+      "image": {
+        "url": "https://cdn.discordapp.com/attachments/1340508329977446484/1370786778465964193/automatonBanner.png?ex=6820c42b&is=681f72ab&hm=63213a37d29cfc25661737c7d20867ebea272fffc9e830116c32ef7df3cf1a24&"
+      },
+      "thumbnail": {
+        "url": "https://i.ibb.co/bgNp2q73/Automatons-Icon.png"
+      }
+    },
+    {
+      "title": "Illuminate Campaign Record",
+      "description": "<a:easyshine1:1349110651829747773> <:hd2squids:1337190439979319306> Illuminate Cult Statistics <:hd2squids:1337190439979319306> <a:easyshine3:1349110648528699422>\n" +
+                         f"> <:resistance:1370883421496148068> Kills - {df[df['Enemy Type'] == 'Illuminate']['Kills'].sum()}\n" +
+                         f"> <:helldiverHD:1370887412443648070> Deaths - {df[df['Enemy Type'] == 'Illuminate']['Deaths'].sum()}\n" +
+                         f"> <:highprioritytarget:1370882658019704903> Highest Kills in Mission - {df[df['Enemy Type'] == 'Illuminate']['Kills'].max()}\n\n" +
+
+                         f"> <:deployments:1370887552525139968> Deployments - {df[df['Enemy Type'] == 'Illuminate']['Enemy Type'].count().sum()}\n" +
+                         f"> <:major_order:1356035244033048788> Major Order Deployments - {df[df['Enemy Type'] == 'Illuminate']['Major Order'].astype(int).sum()}\n" +
+                         f"> <:dss:1356034406430806036> DSS Deployments - {df[df['Enemy Type'] == 'Illuminate']['DSS Active'].astype(int).sum()}\n" +
+                         f"> <:lastdeployment:1370887542445965564> Last Deployment - {df[df['Enemy Type'] == 'Illuminate']['Time'].max() if 'Time' in df.columns else 'No date available'}\n\n" +
+
+                         f"> <:liberation_campaign:1355955855572602962> Liberations - {df[df['Enemy Type'] == 'Illuminate'][df['Mission Category'] == 'Liberation']['Mission Category'].count().sum()}\n" +
+                         f"> <:defence_campaign:1355955857480876282> Defenses - {df[df['Enemy Type'] == 'Illuminate'][df['Mission Category'] == 'Defense']['Mission Category'].count().sum()}\n" +
+                         f"> <:invasion_campaign:1355955853588562202> Invasion - {df[df['Enemy Type'] == 'Illuminate'][df['Mission Category'] == 'Invasion']['Mission Category'].count().sum()}\n" +
+                         f"> <:highprioritycampaign:1370787949372899328> High-Priority - {df[df['Enemy Type'] == 'Illuminate'][df['Mission Category'] == 'High-Priority']['Mission Category'].count().sum()}\n\n",
+
+      "color": 9003210,
+      "image": {
+        "url": "https://cdn.discordapp.com/attachments/1340508329977446484/1370786787441774632/illuminateBanner.png?ex=6820c42e&is=681f72ae&hm=bc4d9e9f89bcae58521b9af1558816ecb0c336bee108862725663b87e5bb6079&"
+      },
+      "thumbnail": {
+        "url": "https://i.ibb.co/wr4Nm5HT/Illuminate-Icon.png"
+      }
+    }
     ],
     "attachments": []
 }
@@ -563,6 +729,18 @@ enemy_icons = {
     }
 }
 
+enemy_banners = {
+    "Automatons": {
+        "url": "https://cdn.discordapp.com/attachments/1340508329977446484/1370786778465964193/automatonBanner.png?ex=6820c42b&is=681f72ab&hm=63213a37d29cfc25661737c7d20867ebea272fffc9e830116c32ef7df3cf1a24&"
+    },
+    "Terminids": {
+        "url": "https://cdn.discordapp.com/attachments/1340508329977446484/1370786767128760420/terminidBanner.png?ex=6820c429&is=681f72a9&hm=3ca1e122e8063426a3dd1963791aca33ba6343a7a946b06287d344ce6c0f93a0&"
+    },
+    "Illuminate": {
+        "url": "https://cdn.discordapp.com/attachments/1340508329977446484/1370786787441774632/illuminateBanner.png?ex=6820c42e&is=681f72ae&hm=bc4d9e9f89bcae58521b9af1558816ecb0c336bee108862725663b87e5bb6079&"
+    }
+}
+
 # Group data by enemy type (faction)
 faction_stats = {}
 for enemy_type in enemy_types:
@@ -578,20 +756,54 @@ for enemy_type in enemy_types:
         }
 
 # Add enemy-specific embeds
-for enemy_type, stats in faction_stats.items():
-    faction_description = f"{enemy_icons.get(enemy_type, {'emoji': ''})['emoji']} **{enemy_type} Front Statistics**\n" + \
-        f"> Deployments - {stats['total_deployments']}\n" + \
-        f"> Major Order Deployments - {stats['major_orders']}\n" + \
-        f"> Kills - {stats['total_kills']}\n" + \
-        f"> Deaths - {stats['total_deaths']}\n" + \
-        f"> Last Deployment - {stats['last_deployment']}\n\n"
+# for enemy_type, stats in faction_stats.items():
+#     faction_description = f"{enemy_icons.get(enemy_type, {'emoji': ''})['emoji']} **{enemy_type} Front Statistics**\n" + \
+#         f"> Deployments - {stats['total_deployments']}\n" + \
+#         f"> Major Order Deployments - {stats['major_orders']}\n" + \
+#         f"> Kills - {stats['total_kills']}\n" + \
+#         f"> Deaths - {stats['total_deaths']}\n" + \
+#         f"> Last Deployment - {stats['last_deployment']}\n\n"
 
-    embed_data["embeds"].append({
-        "title": f"{enemy_type} Campaign Record",
-        "description": faction_description,
-        "color": enemy_icons.get(enemy_type, {"color": 7257043})["color"],
-        "thumbnail": {"url": enemy_icons.get(enemy_type, {"url": ""})["url"]}
-    })
+#     embed_data["embeds"].append({
+#         "title": f"{enemy_type} Campaign Record",
+#         "description": faction_description,
+#         "color": enemy_icons.get(enemy_type, {"color": 7257043})["color"],
+#         "thumbnail": {"url": enemy_icons.get(enemy_type, {"url": ""})["url"]},
+#         "image": {"url": enemy_banners.get(enemy_type, {"url": ""})["url"]}
+#     })
+
+# embed_data = {
+#     "content": None,
+#     "embeds": [
+#         {
+#             "title": "Terminids Campaign Record",
+#             "description": f"\n\n<a:easyshine1:1349110651829747773> <:hd2bugs:1337190441170370693> Terminid Front Statistics <:hd2bugs:1337190441170370693> <a:easyshine3:1349110648528699422>\n" + 
+#                         f"> Kills - {df[df["Enemy Type"] == "Terminids"]['Kills'].sum()}\n" +
+#                         f"> Deaths - {df[df["Enemy Type"] == "Terminids"]['Deaths'].sum()}\n" +
+#                         f"> Highest Kills in Mission - {df[df["Enemy Type"] == "Terminids"]['Kills'].max()}\n" +
+#                         f"> Deployments - {len(df["Enemy Type" == "Terminids"])}\n" +
+#                         f"> Major Order Deployments - {df[df["Enemy Type"] == "Terminids"]['Major Order'].astype(int).sum()}\n" +
+#                         f"> DSS Deployments - {df[df["Enemy Type"] == "Terminids"]['DSS Active'].astype(int).sum()}\n" +
+
+#                         f"\n<a:easyshine1:1349110651829747773>  <a:easyskullgold:1232018045791375360> Performance Statistics <a:easyskullgold:1232018045791375360> <a:easyshine3:1349110648528699422>\n" +                      
+#                         f"> Rating - {Rating} | {int(Rating_Percentage)}%\n" +
+
+#                         f"\n<a:easyshine1:1349110651829747773>  <:goldstar:1337818552094163034> Favourites <:goldstar:1337818552094163034> <a:easyshine3:1349110648528699422>\n" +     
+#                         f"> Mission - {df['Mission Type'].mode()[0]} {MISSION_ICONS.get(df['Mission Type'].mode()[0], '')} (x{MissionCount})\n" +
+#                         f"> Campaign - {df['Mission Category'].mode()[0]} {CAMPAIGN_ICONS.get(df['Mission Category'].mode()[0], '')} (x{CampaignCount})\n" +
+#                         f"> Faction - {df['Enemy Type'].mode()[0]} {ENEMY_ICONS.get(df['Enemy Type'].mode()[0], '')} (x{FactionCount})\n" +
+#                         f"> Difficulty - {df['Difficulty'].mode()[0]} {DIFFICULTY_ICONS.get(df['Difficulty'].mode()[0], '')} (x{DifficultyCount})\n" +
+#                         f"> Planet - {df['Planet'].mode()[0]} {PLANET_ICONS.get(df['Planet'].mode()[0], '')} (x{PlanetCount})\n" +
+#                         f"> Sector - {df['Sector'].mode()[0]} (x{SectorCount})\n",
+#             "color": 7257043,
+#             "author": {"name": "SEAF Battle Record"},
+#             "footer": {"text": config['Discord']['UID'],"icon_url": "https://cdn.discordapp.com/attachments/1340508329977446484/1356025859319926784/5cwgI15.png?ex=67eb10fe&is=67e9bf7e&hm=ab6326a9da1e76125238bf3668acac8ad1e43b24947fc6d878d7b94c8a60ab28&"},
+#             "image": {"url": f"{BIOME_BANNERS.get(df['Planet'].mode()[0], '')}"},
+#             "thumbnail": {"url": "https://i.ibb.co/5g2b9NXb/Super-Earth-Icon.png"}
+#         }
+#     ],
+#     "attachments": []
+# }
 
 # Send data to Discord
 webhook_urls = WEBHOOK_URLS['TEST'] if DEBUG else WEBHOOK_URLS['PROD']

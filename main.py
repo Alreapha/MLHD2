@@ -26,9 +26,9 @@ config.read('config.config')
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-#Constants
-DEBUG = config.getboolean('DEBUGGING', 'DEBUG', fallback=False)
-VERSION = "1.3.123"
+# Constants
+DEBUG = False
+VERSION = "1.3.125"
 DATE_FORMAT = "%d-%m-%Y %H:%M:%S"
 SETTINGS_FILE = 'user_settings.json'
 EXCEL_FILE_TEST = 'mission_log_test.xlsx'
@@ -419,7 +419,8 @@ SUBFACTION_ICONS = {
     "Jet Brigade": config['SubfactionIcons']['JetBrigade'],
     "Predator Strain": config['SubfactionIcons']['PredatorStrain'],
     "Incineration Corps": config['SubfactionIcons']['IncinerationCorps'],
-    "Jet Brigade & Incineration Corps": config['SubfactionIcons']['JetBrigadeIncinerationCorps']
+    "Jet Brigade & Incineration Corps": config['SubfactionIcons']['JetBrigadeIncinerationCorps'],
+    "Spore Burst Strain": config['SubfactionIcons']['SporeBurstStrain'],
 }
 
 # DSS icons for Modifiers
@@ -470,7 +471,8 @@ def normalize_subfaction_name(subfaction: str) -> str:
         "Jet Brigade": "JetBrigade",
         "Predator Strain": "PredatorStrain",
         "Incineration Corps": "IncinerationCorps",
-        "Jet Brigade & Incineration Corps": "JetBrigadeIncinerationCorps"
+        "Jet Brigade & Incineration Corps": "JetBrigadeIncinerationCorps",
+        "Spore Burst Strain": "SporeBurstStrain"
         # Add more mappings as needed
     }
     return replacements.get(normalized, normalized)
@@ -658,7 +660,7 @@ class MissionLogGUI:
              'ADMIRABLE ADMIRAL', 'COMMANDER', 'GALACTIC COMMANDER', 'HELL COMMANDER', 'GENERAL',
              '5-STAR GENERAL', '10-STAR GENERAL', 'PRIVATE', 'SUPER PRIVATE', 'SUPER CITIZEN',
              'VIPER COMMANDO', 'FIRE SAFETY OFFICER', 'EXPERT EXTERMINATOR', 'FREE OF THOUGHT',
-             'ASSAULT INFANTRY', 'SUPER PEDESTRIAN', 'SERVANT OF FREEDOM', 'SUPER SHERIFF']
+             'ASSAULT INFANTRY', 'SUPER PEDESTRIAN', 'SERVANT OF FREEDOM', 'SUPER SHERIFF', 'DECORATED HERO']
         self.title_combo = ttk.Combobox(mission_frame, textvariable=self.title, state='readonly', width=27)
         self.title_combo['values'] = self.titles
         self.title_combo.grid(row=2, column=5, padx=5, pady=5)
@@ -710,8 +712,8 @@ class MissionLogGUI:
         self.dss_frame = ttk.Frame(details_frame)
         self.dss_frame.grid(row=1, column=4, columnspan=2, sticky=tk.W, pady=5)
         ttk.Label(self.dss_frame, text="DSS Modifier:").pack(side=tk.LEFT)
-        dss_mods = ["None", "Orbital Blockade", "Heavy Ordnance Distribution", "Eagle Storm"]
-        self.DSSMod.set("None")  # Set default value
+        dss_mods = ["Inactive", "Orbital Blockade", "Heavy Ordnance Distribution", "Eagle Storm"]
+        self.DSSMod.set("Inactive")  # Set default value
         self.dss_combo = ttk.Combobox(self.dss_frame, textvariable=self.DSSMod, values=dss_mods, state='readonly', width=27)
         self.dss_combo.pack(side=tk.LEFT, padx=5)
         
