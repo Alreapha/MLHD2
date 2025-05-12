@@ -507,6 +507,12 @@ PlanetCount = df.apply(lambda row: row.astype(str).str.contains(search_planet, c
 search_sector = df['Sector'].mode()[0]
 SectorCount = df.apply(lambda row: row.astype(str).str.contains(search_sector, case=False).sum(), axis=1).sum()
 
+highest_streak = 0
+with open('streak_data.json', 'r') as f:
+    streak_data = json.load(f)
+    # Use "Helldiver" as the key or fall back to helldiver_ses if the first one doesn't exist
+    highest_streak = streak_data.get("Helldiver", streak_data.get(helldiver_ses, {})).get("highest_streak", 0)
+
 # Create embed data
 embed_data = {
     "content": None,
@@ -525,6 +531,7 @@ embed_data = {
 
                         f"\n<a:easyshine1:1349110651829747773>  <a:easyskullgold:1232018045791375360> Performance Statistics <a:easyskullgold:1232018045791375360> <a:easyshine3:1349110648528699422>\n" +                      
                         f"> Rating - {Rating} | {int(Rating_Percentage)}%\n" +
+                        f"> Highest Streak - {highest_streak} Missions\n" +
 
                         f"\n<a:easyshine1:1349110651829747773>  <:goldstar:1337818552094163034> Favourites <:goldstar:1337818552094163034> <a:easyshine3:1349110648528699422>\n" +     
                         f"> Mission - {df['Mission Type'].mode()[0]} {MISSION_ICONS.get(df['Mission Type'].mode()[0], '')} (x{MissionCount})\n" +

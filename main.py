@@ -1191,7 +1191,7 @@ class MissionLogGUI:
 
 
             # Logic to track streaks (submissions within an hour)
-            helldiver_name = data['Helldivers']
+            helldiver_name = "Helldiver"
             streak_file = 'streak_data.json'
             streak = 1  # Default streak value
             highest_streak = 0  # Default highest streak value
