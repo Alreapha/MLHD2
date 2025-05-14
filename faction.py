@@ -52,18 +52,23 @@ PLANET_ICONS = {
     "Hellmire": config['PlanetIcons']['Gloom'],
     "Omicron": config['PlanetIcons']['Gloom'],
     "Oshaune": config['PlanetIcons']['Gloom'],
-    "Fori Prime": config['PlanetIcons']['Gloom']
+    "Fori Prime": config['PlanetIcons']['Gloom'],
+    "Aurora Bay": config['PlanetIcons']['Jet Brigade Factories'],
+    "Chort Bay": config['PlanetIcons']['Jet Brigade Factories'],
+    "Widow's Harbor": config['PlanetIcons']['Free Springs Retreat']
 }
 
 # Campaign Icons
 CAMPAIGN_ICONS = {
     "Defense": config['CampaignIcons']['Defense'],
     "Liberation": config['CampaignIcons']['Liberation'],
-    "Invasion": config['CampaignIcons']['Invasion']
+    "Invasion": config['CampaignIcons']['Invasion'],
+    "High-Priority": config['CampaignIcons']['High-Priority']
 }
 
 # Mission Icons
 MISSION_ICONS = {
+    "Placeholder Mission": config['MissionIcons']['Placeholder Mission'],
     "Terminate Illegal Broadcast": config['MissionIcons']['Terminate Illegal Broadcast'],
     "Pump Fuel To ICBM": config['MissionIcons']['Pump Fuel To ICBM'],
     "Upload Escape Pod Data": config['MissionIcons']['Upload Escape Pod Data'],
