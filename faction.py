@@ -63,7 +63,8 @@ CAMPAIGN_ICONS = {
     "Defense": config['CampaignIcons']['Defense'],
     "Liberation": config['CampaignIcons']['Liberation'],
     "Invasion": config['CampaignIcons']['Invasion'],
-    "High-Priority": config['CampaignIcons']['High-Priority']
+    "High-Priority": config['CampaignIcons']['High-Priority'],
+    "Attrition": config['CampaignIcons']['Attrition']
 }
 
 # Mission Icons
@@ -566,7 +567,8 @@ embed_data = {
                          f"> <:liberation_campaign:1355955855572602962> Liberations - {df[df['Enemy Type'] == 'Terminids'][df['Mission Category'] == 'Liberation']['Mission Category'].count().sum()}\n" +
                          f"> <:defence_campaign:1355955857480876282> Defenses - {df[df['Enemy Type'] == 'Terminids'][df['Mission Category'] == 'Defense']['Mission Category'].count().sum()}\n" +
                          f"> <:invasion_campaign:1355955853588562202> Invasion - {df[df['Enemy Type'] == 'Terminids'][df['Mission Category'] == 'Invasion']['Mission Category'].count().sum()}\n" +
-                         f"> <:highprioritycampaign:1370787949372899328> High-Priority - {df[df['Enemy Type'] == 'Terminids'][df['Mission Category'] == 'High-Priority']['Mission Category'].count().sum()}\n\n",
+                         f"> <:highprioritycampaign:1370787949372899328> High-Priority - {df[df['Enemy Type'] == 'Terminids'][df['Mission Category'] == 'High-Priority']['Mission Category'].count().sum()}\n\n" +
+                         f"> <:attritioncampaign:1372535389469937735> Attrition - {df[df['Enemy Type'] == 'Terminids'][df['Mission Category'] == 'Attrition']['Mission Category'].count().sum()}\n\n",
       
     #   f"<a:easyshine1:1349110651829747773> <:hd2bugs:1337190441170370693> Terminid Horde Statistics <:hd2bugs:1337190441170370693> <a:easyshine3:1349110648528699422>\n" +
     #                      f"> <:resistance:1370883421496148068> Kills - {df[df['Enemy Subfaction'] == 'Terminid Horde']['Kills'].sum()}\n" +
@@ -646,7 +648,8 @@ embed_data = {
                          f"> <:liberation_campaign:1355955855572602962> Liberations - {df[df['Enemy Type'] == 'Automatons'][df['Mission Category'] == 'Liberation']['Mission Category'].count().sum()}\n" +
                          f"> <:defence_campaign:1355955857480876282> Defenses - {df[df['Enemy Type'] == 'Automatons'][df['Mission Category'] == 'Defense']['Mission Category'].count().sum()}\n" +
                          f"> <:invasion_campaign:1355955853588562202> Invasion - {df[df['Enemy Type'] == 'Automatons'][df['Mission Category'] == 'Invasion']['Mission Category'].count().sum()}\n" +
-                         f"> <:highprioritycampaign:1370787949372899328> High-Priority - {df[df['Enemy Type'] == 'Automatons'][df['Mission Category'] == 'High-Priority']['Mission Category'].count().sum()}\n\n",
+                         f"> <:highprioritycampaign:1370787949372899328> High-Priority - {df[df['Enemy Type'] == 'Terminids'][df['Mission Category'] == 'High-Priority']['Mission Category'].count().sum()}\n\n" +
+                         f"> <:attritioncampaign:1372535389469937735> Attrition - {df[df['Enemy Type'] == 'Terminids'][df['Mission Category'] == 'Attrition']['Mission Category'].count().sum()}\n\n",
       
     #   "<a:easyshine1:1349110651829747773> <:hd2bots:1337190442449502208> Automaton Legion Statistics <:hd2bots:1337190442449502208> <a:easyshine3:1349110648528699422>\n" +
     #   "> Kills - \n" +
@@ -707,7 +710,8 @@ embed_data = {
                          f"> <:liberation_campaign:1355955855572602962> Liberations - {df[df['Enemy Type'] == 'Illuminate'][df['Mission Category'] == 'Liberation']['Mission Category'].count().sum()}\n" +
                          f"> <:defence_campaign:1355955857480876282> Defenses - {df[df['Enemy Type'] == 'Illuminate'][df['Mission Category'] == 'Defense']['Mission Category'].count().sum()}\n" +
                          f"> <:invasion_campaign:1355955853588562202> Invasion - {df[df['Enemy Type'] == 'Illuminate'][df['Mission Category'] == 'Invasion']['Mission Category'].count().sum()}\n" +
-                         f"> <:highprioritycampaign:1370787949372899328> High-Priority - {df[df['Enemy Type'] == 'Illuminate'][df['Mission Category'] == 'High-Priority']['Mission Category'].count().sum()}\n\n",
+                         f"> <:highprioritycampaign:1370787949372899328> High-Priority - {df[df['Enemy Type'] == 'Terminids'][df['Mission Category'] == 'High-Priority']['Mission Category'].count().sum()}\n\n" +
+                         f"> <:attritioncampaign:1372535389469937735> Attrition - {df[df['Enemy Type'] == 'Terminids'][df['Mission Category'] == 'Attrition']['Mission Category'].count().sum()}\n\n",
 
       "color": 9003210,
       "image": {

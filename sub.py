@@ -63,7 +63,8 @@ CAMPAIGN_ICONS = {
     "Defense": config['CampaignIcons']['Defense'],
     "Liberation": config['CampaignIcons']['Liberation'],
     "Invasion": config['CampaignIcons']['Invasion'],
-    "High-Priority": config['CampaignIcons']['High-Priority']
+    "High-Priority": config['CampaignIcons']['High-Priority'],
+    "Attrition": config['CampaignIcons']['Attrition']
 }
 
 # Mission Icons

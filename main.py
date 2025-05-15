@@ -29,7 +29,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 
 # Constants
 DEBUG = config.getboolean('DEBUGGING', 'DEBUG', fallback=False)
-VERSION = "1.3.131"
+VERSION = "1.3.132"
 # Version layout: Core.Major.Patch
 
 DATE_FORMAT = "%d-%m-%Y %H:%M:%S"
@@ -103,7 +103,8 @@ CAMPAIGN_ICONS = {
     "Defense": config['CampaignIcons']['Defense'],
     "Liberation": config['CampaignIcons']['Liberation'],
     "Invasion": config['CampaignIcons']['Invasion'],
-    "High-Priority": config['CampaignIcons']['High-Priority']
+    "High-Priority": config['CampaignIcons']['High-Priority'],
+    "Attrition": config['CampaignIcons']['Attrition']
 }
 
 # Mission Icons
