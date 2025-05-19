@@ -29,7 +29,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 
 # Constants
 DEBUG = config.getboolean('DEBUGGING', 'DEBUG', fallback=False)
-VERSION = "1.3.130"
+VERSION = "1.3.132"
 # Version layout: Core.Major.Patch
 
 DATE_FORMAT = "%d-%m-%Y %H:%M:%S"
@@ -92,18 +92,24 @@ PLANET_ICONS = {
     "Hellmire": config['PlanetIcons']['Gloom'],
     "Omicron": config['PlanetIcons']['Gloom'],
     "Oshaune": config['PlanetIcons']['Gloom'],
-    "Fori Prime": config['PlanetIcons']['Gloom']
+    "Fori Prime": config['PlanetIcons']['Gloom'],
+    "Aurora Bay": config['PlanetIcons']['Jet Brigade Factories'],
+    "Chort Bay": config['PlanetIcons']['Jet Brigade Factories'],
+    "Widow's Harbor": config['PlanetIcons']['Free Springs Retreat']
 }
 
 # Campaign Icons
 CAMPAIGN_ICONS = {
     "Defense": config['CampaignIcons']['Defense'],
     "Liberation": config['CampaignIcons']['Liberation'],
-    "Invasion": config['CampaignIcons']['Invasion']
+    "Invasion": config['CampaignIcons']['Invasion'],
+    "High-Priority": config['CampaignIcons']['High-Priority'],
+    "Attrition": config['CampaignIcons']['Attrition']
 }
 
 # Mission Icons
 MISSION_ICONS = {
+    "Placeholder Mission": config['MissionIcons']['Placeholder Mission'],
     "Terminate Illegal Broadcast": config['MissionIcons']['Terminate Illegal Broadcast'],
     "Pump Fuel To ICBM": config['MissionIcons']['Pump Fuel To ICBM'],
     "Upload Escape Pod Data": config['MissionIcons']['Upload Escape Pod Data'],
@@ -424,6 +430,7 @@ SUBFACTION_ICONS = {
     "Incineration Corps": config['SubfactionIcons']['IncinerationCorps'],
     "Jet Brigade & Incineration Corps": config['SubfactionIcons']['JetBrigadeIncinerationCorps'],
     "Spore Burst Strain": config['SubfactionIcons']['SporeBurstStrain'],
+    "The Great Host": config['SubfactionIcons']['TheGreatHost']
 }
 
 # DSS icons for Modifiers
@@ -475,7 +482,8 @@ def normalize_subfaction_name(subfaction: str) -> str:
         "Predator Strain": "PredatorStrain",
         "Incineration Corps": "IncinerationCorps",
         "Jet Brigade & Incineration Corps": "JetBrigadeIncinerationCorps",
-        "Spore Burst Strain": "SporeBurstStrain"
+        "Spore Burst Strain": "SporeBurstStrain",
+        "The Great Host": "TheGreatHost"
         # Add more mappings as needed
     }
     return replacements.get(normalized, normalized)
@@ -1032,7 +1040,7 @@ class MissionLogGUI:
             self._show_error("ADVISORY: Volatile spacetime fluctuations currently prohibit FTL travel to the Meridian Black Hole.")
             return
 
-        if self.planet.get() == "Angel's Venture" or self.planet.get() == "Moradesh":
+        if self.planet.get() == "Angel's Venture" or self.planet.get() == "Moradesh" or self.planet.get() == "Ivis":
             self._show_error("ADVISORY: You cannot deploy on a fractured planet")
             return
 
