@@ -1,6 +1,37 @@
 """
 CREDITS TO DEAN FOR THE STUPID AMOUNT OF DATA HE PROVIDED FOR THE JSON FILES
 CREDITS TO ADAM FOR THE SCRIPT AND THE GUI
+
+                                 ⣴⠂⣶⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⣿⠂⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⣿⠀⣿⡁⣿⠇⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⠀⣿⡄⣿⠃⢸⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣭⣤⣶⣶⡶⠶⠶⠦⢬⣄⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⣶⣿⣿⣿⣿⡿⠿⠿⠟⠈⠶⣷⣶⣖⣛⠛⠲⢤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⣿⣿⣿⣿⣿⣿⣃⠀⠀⠀⠀⠀⠀⠀⢿⣿⣿⣧⣀⠸⣿⣧⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⣿⣿⡿⠛⢿⣿⢭⡟⠔⠃⠀⠀⠀⠀⠀⠀⠈⣙⣿⣿⣿⣿⣿⣿⣿⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣾⣿⣿⣋⣀⡀⣏⣥⠟⠈⣛⣳⠀⠀⠀⠀⠀⠀⢤⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⡿⣿⣿⣿⣿⡯⠘⠙⢁⣤⣾⣿⣿⠧⠀⠀⠀⠀⠀⠘⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⡿⠀⠈⢏⣻⠟⠀⠀⣴⠿⠿⣿⠟⠁⠀⠀⠀⠀⠀⢢⣈⣫⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠀⣼⠃⠀⠀⠀⠃⠀⠀⠀⠀⠀⠀⣦⡄⠀⠀⠀⣠⣦⣄⢠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⢀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⣦⠀⠀⠀⠀⠀⠀⡿⠀⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣼⠟⣽⣷⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⢸⡄⠀⠀⠀⠀⠀⣸⡄⠀⠀
+⠐⢶⣾⣿⣷⠶⠂⠀⡆⠀⡗⠀⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⢖⠀⢘⣻⠃⣵⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⢹⡇⢸⡇⢀⡆⠀⠲⣶⣿⣿⡶⠒
+⠀⢠⡿⠛⢿⡄⠀⠀⣇⠀⣿⠀⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⣿⣴⣾⣿⣿⣿⣿⣿⣿⣿⣿⠹⣿⣿⣿⣿⣿⣿⣿⣿⡇⣸⡇⢸⠃⢸⡇⠀⠀⡼⠟⠻⣇⠀
+⠀⠀⠀⠀⠀⠈⠀⠀⢿⠀⢹⡄⢻⣇⠀⠀⠀⠀⠀⠀⠀⠀⢀⣶⣤⡿⠿⢿⡻⣿⣿⡿⠉⣃⣙⣿⣶⣀⣿⣿⣿⣿⡿⡿⣿⣇⣿⠀⣿⠀⣸⠀⠀⠀⠀⠀⠀⠈⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠸⣇⠈⣧⠈⣿⡄⠀⠀⠀⠀⠀⠀⠀⣈⣟⣋⣀⣀⡇⠙⠚⠯⠹⠾⠟⣿⣿⣿⡿⢿⢟⣟⠁⠀⠀⠉⣿⠇⣸⠇⢠⡟⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⡄⠸⣇⠘⣿⡄⠀⠀⠀⢠⣾⣿⣿⣿⣿⣿⣿⣧⣄⣀⣤⣤⣤⡴⢿⣿⣿⣿⣶⣾⠏⠀⠀⢀⣼⠏⢠⡟⠀⣾⠁⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⢠⠀⠀⠈⢻⡄⠹⣧⡈⢿⣆⠀⠀⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⡙⠻⣿⠟⡃⠀⠀⣠⣾⠋⣰⠟⢀⣾⠃⠀⠀⢠⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠠⣤⣤⣾⣧⣤⡤⠀⠻⣆⠈⢷⣄⠙⢷⣄⠈⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣶⠞⠁⣠⣾⠟⢁⡾⠋⢠⡾⠁⠠⣤⣤⣿⣦⣤⡄⠀⠀⠀
+⠀⠀⠀⠀⠈⣹⣿⣿⡏⠀⠀⠀⠙⢷⣄⠙⢷⣄⠙⠿⣦⣄⡉⠉⠉⠻⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⣁⣴⡾⠛⣡⣴⠟⢁⣴⠟⠀⠀⠀⠈⣿⣿⣿⡁⠀⠀⠀⠀
+⠀⠀⠀⠀⠐⠋⠀⠈⠓⠀⠀⠀⠀⠀⠙⢷⣄⡙⠻⣦⣌⡙⠻⢷⣶⣤⣬⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿⠛⣁⣴⡾⠋⣠⣴⠟⠁⠀⠀⠀⠀⠘⠋⠀⠉⠃⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⢻⣶⡄⠙⢻⣷⣶⣤⡌⠉⠉⠉⠉⠉⠉⠉⢩⣤⣶⣾⡟⠋⢡⣴⣾⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡄⠀⠉⠛⠷⡦⠄⣉⣥⣴⠶⠾⠿⠿⠿⠿⠟⠛⣛⣉⣥⣴⡾⠟⠋⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⣸⣷⣀⣀⠀⢀⣴⠟⠋⠁⠰⠶⠾⠿⠿⠿⠿⠿⠿⠛⠛⠉⢤⣄⢀⣀⣰⣿⣀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢹⣿⣿⣟⠁⣴⠋⠀⠀⠀⠀⠀⠀⠀⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠙⢧⡙⣿⣿⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠚⠉⠈⠙⠀⠀⠀⠀⠀⠀⠀⠀⡀⠀⢠⣷⠀⠀⡀⠀⠀⠀⠀⠀⠀⠀⠘⠉⠀⠙⠆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠻⣿⣿⣿⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⠛⠙⠻⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+
 """
 
 import tkinter as tk
@@ -29,7 +60,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 
 # Constants
 DEBUG = config.getboolean('DEBUGGING', 'DEBUG', fallback=False)
-VERSION = "1.3.132"
+VERSION = "1.3.133"
 # Version layout: Core.Major.Patch
 
 DATE_FORMAT = "%d-%m-%Y %H:%M:%S"
@@ -440,6 +471,123 @@ DSS_ICONS = {
     "Heavy Ordnance Distribution": config['MiscIcon']['Heavy Ordnance Distribution']
 }
 
+# Title icons for Titles
+TITLE_ICONS = {
+    "CADET": config['TitleIcons']['CADET'],
+    "SPACE CADET": config['TitleIcons']['SPACE CADET'], 
+    "SERGEANT": config['TitleIcons']['SERGEANT'],
+    "MASTER SERGEANT": config['TitleIcons']['MASTER SERGEANT'],
+    "CHIEF": config['TitleIcons']['CHIEF'],
+    "SPACE CHIEF PRIME": config['TitleIcons']['SPACE CHIEF PRIME'],
+    "DEATH CAPTAIN": config['TitleIcons']['DEATH CAPTAIN'],
+    "MARSHAL": config['TitleIcons']['MARSHAL'],
+    "STAR MARSHAL": config['TitleIcons']['STAR MARSHAL'],
+    "ADMIRAL": config['TitleIcons']['ADMIRAL'], 
+    "SKULL ADMIRAL": config['TitleIcons']['SKULL ADMIRAL'],
+    "FLEET ADMIRAL": config['TitleIcons']['FLEET ADMIRAL'],
+    "ADMIRABLE ADMIRAL": config['TitleIcons']['ADMIRABLE ADMIRAL'],
+    "COMMANDER": config['TitleIcons']['COMMANDER'],
+    "GALACTIC COMMANDER": config['TitleIcons']['GALACTIC COMMANDER'],
+    "HELL COMMANDER": config['TitleIcons']['HELL COMMANDER'],
+    "GENERAL": config['TitleIcons']['GENERAL'],
+    "5-STAR GENERAL": config['TitleIcons']['5-STAR GENERAL'],
+    "10-STAR GENERAL": config['TitleIcons']['10-STAR GENERAL'],
+    "PRIVATE": config['TitleIcons']['PRIVATE'],
+    "SUPER PRIVATE": config['TitleIcons']['SUPER PRIVATE'],
+    "SUPER CITIZEN": config['TitleIcons']['SUPER CITIZEN'],
+    "VIPER COMMANDO": config['TitleIcons']['VIPER COMMANDO'],
+    "FIRE SAFETY OFFICER": config['TitleIcons']['FIRE SAFETY OFFICER'],
+    "EXPERT EXTERMINATOR": config['TitleIcons']['EXPERT EXTERMINATOR'],
+    "FREE OF THOUGHT": config['TitleIcons']['FREE OF THOUGHT'],
+    "SUPER PEDESTRIAN": config['TitleIcons']['SUPER PEDESTRIAN'],
+    "ASSAULT INFANTRY": config['TitleIcons']['ASSAULT INFANTRY'],
+    "SERVANT OF FREEDOM": config['TitleIcons']['SERVANT OF FREEDOM'],
+    "SUPER SHERIFF": config['TitleIcons']['SUPER SHERIFF'],
+    "DECORATED HERO": config['TitleIcons']['DECORATED HERO']
+}
+
+# Profile Pictures for Exports
+PROFILE_PICTURES = {
+    "B-01 Tactical": config['ProfilePictures']['B-01 Tactical'],
+    "TR-7 Ambassador of the Brand": config['ProfilePictures']['TR-7 Ambassador of the Brand'],
+    "TR-9 Cavalier of Democracy": config['ProfilePictures']['TR-9 Cavalier of Democracy'],
+    "TR-62 Knight": config['ProfilePictures']['TR-62 Knight'],
+    "DP-53 Savior of the Free": config['ProfilePictures']['DP-53 Savior of the Free'],
+    "TR-117 Alpha Commander": config['ProfilePictures']['TR-117 Alpha Commander'],
+    "SC-37 Legionnaire": config['ProfilePictures']['SC-37 Legionnaire'],
+    "SC-15 Drone Master": config['ProfilePictures']['SC-15 Drone Master'],
+    "SC-34 Infiltrator": config['ProfilePictures']['SC-34 Infiltrator'],
+    "FS-05 Marksman": config['ProfilePictures']['FS-05 Marksman'],
+    "CD-35 Trench Engineer": config['ProfilePictures']['CD-35 Trench Engineer'],
+    "CM-09 Bonesnapper": config['ProfilePictures']['CM-09 Bonesnapper'],
+    "DP-40 Hero of the Federation": config['ProfilePictures']['DP-40 Hero of the Federation'],
+    "FS-23 Battle Master": config['ProfilePictures']['FS-23 Battle Master'],
+    "SC-30 Trailblazer Scout": config['ProfilePictures']['SC-30 Trailblazer Scout'],
+    "SA-04 Combat Technician": config['ProfilePictures']['SA-04 Combat Technician'],
+    "CM-14 Physician": config['ProfilePictures']['CM-14 Physician'],
+    "DP-11 Champion of the People": config['ProfilePictures']['DP-11 Champion of the People'],
+    "SA-25 Steel Trooper": config['ProfilePictures']['SA-25 Steel Trooper'],
+    "SA-12 Servo Assisted": config['ProfilePictures']['SA-12 Servo Assisted'],
+    "SA-32 Dynamo": config['ProfilePictures']['SA-32 Dynamo'],
+    "B-24 Enforcer": config['ProfilePictures']['B-24 Enforcer'],
+    "CE-74 Breaker": config['ProfilePictures']['CE-74 Breaker'],
+    "B-27 Fortified Commando": config['ProfilePictures']['B-27 Fortified Commando'],
+    "FS-38 Eradicator": config['ProfilePictures']['FS-38 Eradicator'],
+    "B-08 Light Gunner": config['ProfilePictures']['B-08 Light Gunner'],
+    "FS-61 Dreadnought": config['ProfilePictures']['FS-61 Dreadnought'],
+    "FS-11 Executioner": config['ProfilePictures']['FS-11 Executioner'],
+    "CM-21 Trench Paramedic": config['ProfilePictures']['CM-21 Trench Paramedic'],
+    "CE-81 Juggernaut": config['ProfilePictures']['CE-81 Juggernaut'],
+    "FS-34 Exterminator": config['ProfilePictures']['FS-34 Exterminator'],
+    "CE-67 Titan": config['ProfilePictures']['CE-67 Titan'],
+    "CM-17 Butcher": config['ProfilePictures']['CM-17 Butcher'],
+    "EX-03 Prototype 3": config['ProfilePictures']['EX-03 Prototype 3'],
+    "EX-16 Prototype 16": config['ProfilePictures']['EX-16 Prototype 16'],
+    "EX-00 Prototype X": config['ProfilePictures']['EX-00 Prototype X'],
+    "CE-27 Ground Breaker": config['ProfilePictures']['CE-27 Ground Breaker'],
+    "CE-07 Demolition Specialist": config['ProfilePictures']['CE-07 Demolition Specialist'],
+    "FS-55 Devastator": config['ProfilePictures']['FS-55 Devastator'],
+    "CM-10 Clinician": config['ProfilePictures']['CM-10 Clinician'],
+    "FS-37 Ravager": config['ProfilePictures']['FS-37 Ravager'],
+    "CW-9 White Wolf": config['ProfilePictures']['CW-9 White Wolf'],
+    "CE-64 Grenadier": config['ProfilePictures']['CE-64 Grenadier'],
+    "CW-36 Winter Warrior": config['ProfilePictures']['CW-36 Winter Warrior'],
+    "CW-22 Kodiak": config['ProfilePictures']['CW-22 Kodiak'],
+    "CW-4 Arctic Ranger": config['ProfilePictures']['CW-4 Arctic Ranger'],
+    "PH-56 Jaguar": config['ProfilePictures']['PH-56 Jaguar'],
+    "CE-101 Guerilla Gorilla": config['ProfilePictures']['CE-101 Guerilla Gorilla'],
+    "PH-9 Predator": config['ProfilePictures']['PH-9 Predator'],
+    "PH-202 Twigsnapper": config['ProfilePictures']['PH-202 Twigsnapper'],
+    "TR-40 Gold Eagle": config['ProfilePictures']['TR-40 Gold Eagle'],
+    "I-44 Salamander": config['ProfilePictures']['I-44 Salamander'],
+    "I-92 Fire Fighter": config['ProfilePictures']['I-92 Fire Fighter'],
+    "I-09 Heatseeker": config['ProfilePictures']['I-09 Heatseeker'],
+    "I-102 Draconaught": config['ProfilePictures']['I-102 Draconaught'],
+    "AF-52 Lockdown": config['ProfilePictures']['AF-52 Lockdown'],
+    "AF-91 Field Chemist": config['ProfilePictures']['AF-91 Field Chemist'],
+    "AF-50 Noxious Ranger": config['ProfilePictures']['AF-50 Noxious Ranger'],
+    "AF-02 Haz-Master": config['ProfilePictures']['AF-02 Haz-Master'],
+    "DP-00 Tactical": config['ProfilePictures']['DP-00 Tactical'],
+    "UF-84 Doubt Killer": config['ProfilePictures']['UF-84 Doubt Killer'],
+    "UF-50 Bloodhound": config['ProfilePictures']['UF-50 Bloodhound'],
+    "UF-16 Inspector": config['ProfilePictures']['UF-16 Inspector'],
+    "SR-64 Cinderblock": config['ProfilePictures']['SR-64 Cinderblock'],
+    "SR-24 Street Scout": config['ProfilePictures']['SR-24 Street Scout'],
+    "SR-18 Roadblock": config['ProfilePictures']['SR-18 Roadblock'],
+    "AC-1 Dutiful": config['ProfilePictures']['AC-1 Dutiful'],
+    "AC-2 Obedient": config['ProfilePictures']['AC-2 Obedient'],
+    "IE-57 Hell-Bent": config['ProfilePictures']['IE-57 Hell-Bent'],
+    "IE-3 Martyr": config['ProfilePictures']['IE-3 Martyr'], 
+    "IE-12 Righteous": config['ProfilePictures']['IE-12 Righteous'],
+    "B-22 Model Citizen": config['ProfilePictures']['B-22 Model Citizen'],
+    "GS-11 Democracy's Deputy": config['ProfilePictures']['GS-11 Democracy\'s Deputy'],
+    "GS-17 Frontier Marshal": config['ProfilePictures']['GS-17 Frontier Marshal'],
+    "GS-66 Lawmaker": config['ProfilePictures']['GS-66 Lawmaker'],
+    "RE-824 Bearer of the Standard": config['ProfilePictures']['RE-824 Bearer of the Standard'],
+    "RE-2310 Honorary Guard": config['ProfilePictures']['RE-2310 Honorary Guard'],
+    "RE-1861 Parade Commander": config['ProfilePictures']['RE-1861 Parade Commander']
+}
+
 def get_enemy_icon(enemy_type: str) -> str:
     """Get the Discord emoji icon for an enemy type."""
     return ENEMY_ICONS.get(enemy_type, "NaN")
@@ -471,6 +619,14 @@ def get_biome_banner(planet: str) -> str:
 def get_dss_icon(dss_modifier: str) -> str:
     """Get DSS Icons"""
     return DSS_ICONS.get(dss_modifier, "")
+
+def get_title_icon(title: str) -> str:
+    """Get Title Icons"""
+    return TITLE_ICONS.get(title, "")
+
+def get_profile_picture(profile_picture: str) -> str:
+    """Get Profile Pictures"""
+    return PROFILE_PICTURES.get(profile_picture, "")
 
 def normalize_subfaction_name(subfaction: str) -> str:
     """Normalize subfaction name to match config keys."""
@@ -550,6 +706,7 @@ class MissionLogGUI:
         """Initialize tkinter variables with validation."""
         self.sector = tk.StringVar()
         self.planet = tk.StringVar()
+        self.mega_cities = tk.StringVar()
         self.mission_type = tk.StringVar()
         self.kills = tk.StringVar()
         self.deaths = tk.StringVar()
@@ -569,6 +726,7 @@ class MissionLogGUI:
         self.shipName1 = tk.StringVar()
         self.shipName2 = tk.StringVar()
         self.FullShipName = tk.StringVar()
+        self.profile_picture = tk.StringVar()
 
         # Add validation for numeric fields
         validate_cmd = self.root.register(self._validate_numeric_input)
@@ -637,7 +795,6 @@ class MissionLogGUI:
             sectors_data = json.load(f)
             sector_list = list(sectors_data.keys())
 
-
         # Mission Info Grid
         ttk.Label(mission_frame, text="Destroyer Name:").grid(row=0, column=0, sticky=tk.W, pady=5)
 
@@ -677,6 +834,31 @@ class MissionLogGUI:
         self.title_combo.grid(row=2, column=5, padx=5, pady=5)
         self.title_combo.set(self.titles[0])
 
+        ttk.Label(mission_frame, text="Profile:").grid(row=3, column=4, sticky=tk.W, pady=5)
+        self.profile_pictures = ['B-01 Tactical', 'TR-7 Ambassador of the Brand', 'TR-9 Cavalier of Democracy', 'TR-62 Knight', 
+               'DP-53 Savior of the Free', 'TR-117 Alpha Commander', 'SC-37 Legionnaire', 'SC-15 Drone Master',
+               'SC-34 Infiltrator', 'FS-05 Marksman', 'CD-35 Trench Engineer', 'CM-09 Bonesnapper',
+               'DP-40 Hero of the Federation', 'FS-23 Battle Master', 'SC-30 Trailblazer Scout',
+               'SA-04 Combat Technician', 'CM-14 Physician', 'DP-11 Champion of the People', 'SA-25 Steel Trooper',
+               'SA-12 Servo Assisted', 'SA-32 Dynamo', 'B-24 Enforcer', 'CE-74 Breaker', 'B-27 Fortified Commando',
+               'FS-38 Eradicator', 'B-08 Light Gunner', 'FS-61 Dreadnought', 'FS-11 Executioner', 
+               'CM-21 Trench Paramedic', 'CE-81 Juggernaut', 'FS-34 Exterminator', 'CE-67 Titan', 'CM-17 Butcher',
+               'EX-03 Prototype 3', 'EX-16 Prototype 16', 'EX-00 Prototype X', 'CE-27 Ground Breaker',
+               'CE-07 Demolition Specialist', 'FS-55 Devastator', 'CM-10 Clinician', 'FS-37 Ravager', 
+               'CW-9 White Wolf', 'CE-64 Grenadier', 'CW-36 Winter Warrior', 'CW-22 Kodiak', 'CW-4 Arctic Ranger',
+               'PH-56 Jaguar', 'CE-101 Guerilla Gorilla', 'PH-9 Predator', 'PH-202 Twigsnapper', 'TR-40 Gold Eagle',
+               'I-44 Salamander', 'I-92 Fire Fighter', 'I-09 Heatseeker', 'I-102 Draconaught', 'AF-52 Lockdown',
+               'AF-91 Field Chemist', 'AF-50 Noxious Ranger', 'AF-02 Haz-Master', 'DP-00 Tactical', 
+               'UF-84 Doubt Killer', 'UF-50 Bloodhound', 'UF-16 Inspector', 'SR-64 Cinderblock',
+               'SR-24 Street Scout', 'SR-18 Roadblock', 'AC-1 Dutiful', 'AC-2 Obedient', 'IE-57 Hell-Bent',
+               'IE-3 Martyr', 'IE-12 Righteous', 'B-22 Model Citizen', 'GS-11 Democracy\'s Deputy', 
+               'GS-17 Frontier Marshal', 'GS-66 Lawmaker', 'RE-824 Bearer of the Standard', 
+               'RE-2310 Honorary Guard', 'RE-1861 Parade Commander']
+        self.profile_picture_combo = ttk.Combobox(mission_frame, textvariable=self.profile_picture, state='readonly', width=27)
+        self.profile_picture_combo['values'] = self.profile_pictures
+        self.profile_picture_combo.grid(row=3, column=5, padx=5, pady=5)
+        self.profile_picture_combo.set(self.profile_pictures[0])
+
         ttk.Label(mission_frame, text="Sector:").grid(row=3, column=0, sticky=tk.W, pady=5)
         sector_combo = ttk.Combobox(mission_frame, textvariable=self.sector, values=sector_list, state='readonly', width=27)
         sector_combo.grid(row=3, column=1, padx=5, pady=5)
@@ -688,6 +870,11 @@ class MissionLogGUI:
         self.sector_combo = sector_combo
         self.planet_combo = planet_combo
 
+        ttk.Label(mission_frame, text="Mega City:").grid(row=4, column=2, sticky=tk.W, pady=5)
+        mega_cities_combo = ttk.Combobox(mission_frame, textvariable=self.mega_cities, state='readonly', width=15)
+        mega_cities_combo.grid(row=4, column=2, sticky=tk.E, padx=5, pady=5)
+        self.mega_cities_combo = mega_cities_combo
+
         def update_planets(*args):
             selected_sector = self.sector.get()
             planet_list = sectors_data[selected_sector]["planets"]
@@ -696,6 +883,25 @@ class MissionLogGUI:
 
         sector_combo.bind('<<ComboboxSelected>>', update_planets)
         update_planets()
+
+        """def update_mega_cities(*args):
+            selected_planet = self.planet.get()
+            mega_cities_list = planetary_data[selected_planet]["mega_cities"]
+            mega_cities_combo['values'] = mega_cities_list
+            mega_cities_combo.set(mega_cities_list[0] if mega_cities_list else "None")"""
+        
+        def update_mega_cities(*args):
+            with open('MegaCityPlanets.json', 'r') as f:
+                mega_city_data = json.load(f)
+                mega_cities_list = list(mega_city_data.keys())
+            selected_planet = self.planet.get()
+            if selected_planet in mega_cities_list:
+                mega_city = mega_city_data[selected_planet]["mega_cities"]
+                mega_cities_combo['values'] = mega_city
+                mega_cities_combo.set(mega_city[0] if mega_city else "None")
+        
+        mega_cities_combo.bind('<<ComboboxSelected>>', update_mega_cities)
+        update_mega_cities()
 
         # Mission Details Section
         details_frame = ttk.LabelFrame(content, text="Mission Details", padding=10)
@@ -760,17 +966,6 @@ class MissionLogGUI:
         ttk.Label(details_frame, text="Mission Type:").grid(row=3, column=0, sticky=tk.W, pady=5)
         mission_type_combo = ttk.Combobox(details_frame, textvariable=self.mission_type, state='readonly', width=27)
         mission_type_combo.grid(row=3, column=1, padx=5, pady=5)
-
-        # Biome Banner
-        def display_image_from_url(biome_banner):
-            with urllib.request.urlopen(biome_banner) as u:
-                raw_data = u.read()
-
-            planet_image = Image.open(io.BytesIO(raw_data))
-            planet_photo = ImageTk.PhotoImage(planet_image)
-
-            planet_label = tk.Label(content, planet_image=planet_photo)
-            planet_label.pack()
 
         def update_subfactions(*args):
             enemy = self.enemy_type.get()
@@ -989,6 +1184,8 @@ class MissionLogGUI:
 
         if settings.get('title') in self.titles:
             self.title.set(settings.get('title'))
+        if settings.get('profile_picture') in self.profile_pictures:
+            self.profile_picture.set(settings.get('profile_picture'))
         if settings.get('sector') in self.sector_combo['values']:
             self.sector.set(settings.get('sector'))
             self.root.update()
@@ -1012,7 +1209,8 @@ class MissionLogGUI:
             'campaign': self.mission_category.get(),
             'subfaction': self.subfaction_type.get(),
             'shipName1': self.shipName1.get(),
-            'shipName2': self.shipName2.get()
+            'shipName2': self.shipName2.get(),
+            'profile_picture': self.profile_picture.get(),
         }
         try:
             with open(self.settings_file, 'w') as f:
@@ -1198,6 +1396,8 @@ class MissionLogGUI:
             mission_icon = get_mission_icon(data['Mission Type'])
             biome_banner = get_biome_banner(data['Planet'])
             dss_icon = get_dss_icon(data['DSS Modifier'])
+            title_icon = get_title_icon(data['Title'])
+            profile_picture = get_profile_picture(self.profile_picture.get())
 
 
             # Logic to track streaks (submissions within an hour)
@@ -1206,6 +1406,7 @@ class MissionLogGUI:
             streak = 1  # Default streak value
             highest_streak = 0  # Default highest streak value
             streak_emoji = ""  # No streak emoji by default
+            profile_picture_name = profile_picture
 
             try:
                 # Load streak data for all users
@@ -1252,7 +1453,8 @@ class MissionLogGUI:
                 streak_data[helldiver_name] = {
                     'streak': streak,
                     'highest_streak': highest_streak,
-                    'last_time': datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                    'last_time': datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                    'profile_picture_name': profile_picture_name
                 }
                 
                 # Save updated streak data
@@ -1289,8 +1491,8 @@ class MissionLogGUI:
             message_content2 = {
                 "content": None,
                 "embeds": [{
-                    "title": f"{data['Super Destroyer']}\nDeployed {data['Helldivers']}\nLevel {data['Level']} | {data['Title']}\nMission: {total_missions_main}",
-                    "description": f"<a:easyshine1:1349110651829747773> <:hd1superearth:1103949794285723658> **Galactic Intel** {planet_icon} <a:easyshine3:1349110648528699422>\n> Sector: {data['Sector']}\n> Planet: {data['Planet']}\n> Major Order: {MICo}\n> DSS Active: {DSSIco}\n> DSS Modifier: {data['DSS Modifier']} {dss_icon}\n\n",
+                    "title": f"{data['Super Destroyer']}\nDeployed {data['Helldivers']}",
+                    "description": f"**Level {data['Level']} | {data['Title']} {title_icon}\nMission: {total_missions_main}**\n\n<a:easyshine1:1349110651829747773> <:hd1superearth:1103949794285723658> **Galactic Intel** {planet_icon} <a:easyshine3:1349110648528699422>\n> Sector: {data['Sector']}\n> Planet: {data['Planet']}\n> Major Order: {MICo}\n> DSS Active: {DSSIco}\n> DSS Modifier: {data['DSS Modifier']} {dss_icon}\n\n",
                     "color": system_color,
                     "fields": [{
                         "name": f"<a:easyshine1:1349110651829747773> {enemy_icon} **Enemy Intel** {subfaction_icon} <a:easyshine3:1349110648528699422>",
@@ -1305,7 +1507,7 @@ class MissionLogGUI:
                     "icon_url": "https://cdn.discordapp.com/attachments/1340508329977446484/1356025859319926784/5cwgI15.png?ex=67eb10fe&is=67e9bf7e&hm=ab6326a9da1e76125238bf3668acac8ad1e43b24947fc6d878d7b94c8a60ab28&"
                     },
                     "image": {"url": f"{biome_banner}"},
-                    "thumbnail": {"url": "https://cdn.discordapp.com/attachments/1337173158377033779/1337468193777782845/super-earth-helldivers-svg-logo-v0-0cvbn5nesrvc1.png?ex=67a78dd2&is=67a63c52&hm=3a9d304d5aafbf928ed549190ed427a7c510afc594f54d14ba582ea3e72445e6&"}                   
+                    "thumbnail": {"url": f"{profile_picture}"},                   
                 }],
                 "attachments": []
                 

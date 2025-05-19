@@ -1,15 +1,16 @@
 {
-    "helldiver": "Helldiver",
-    "level": 1,
-    "title": "CADET",
-    "sector": "Sol System",
-    "planet": "Super Earth",
-    "difficulty": "10 - SUPER HELLDIVE",
-    "mission": "Neutralize Orbital Defenses",
+    "helldiver": "CalamitusXIII",
+    "level": 150,
+    "title": "SERVANT OF FREEDOM",
+    "sector": "Altus Sector",
+    "planet": "New Haven",
+    "difficulty": "1 - TRIVIAL",
+    "mission": "Terminate Illegal Broadcast",
     "DSS": false,
     "DSSMod": "Inactive",
-    "campaign": "Defence",
+    "campaign": "Defense",
     "subfaction": "Automaton Legion",
-    "shipName1": "SES Beacon",
-    "shipName2": "of Courage"
+    "shipName1": "SES Herald",
+    "shipName2": "of Wrath",
+    "profile_picture": "TR-7 Ambassador of the Brand"
 }
