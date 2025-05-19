@@ -1,5 +1,11 @@
 {
   "Super Earth": {
-    "mega_cities": ["EAGLEOPOLIS", "ADMINISTRATIVE CENTER 02"]
+    "mega_cities": ["EAGLEOPOLIS", "ADMINISTRATIVE CENTER 02", "REMEMBERANCE", "YORK SUPREME", "PORT MERCY", "PROSPERITY CITY", "EQUALITY-ON-SEA"]
+  },
+  "New Cyberstan": {
+    "mega_cities": ["WIP", "BLESTRAIL", "HILDOARA CENTRAL"]
+  },
+  "Klen Dahth II": {
+    "mega_cities": ["WIP"]
   }
 }

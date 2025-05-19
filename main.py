@@ -60,8 +60,11 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 
 # Constants
 DEBUG = config.getboolean('DEBUGGING', 'DEBUG', fallback=False)
-VERSION = "1.3.133"
+VERSION = "1.3.333"
 # Version layout: Core.Major.Patch
+# Core: Major changes, Major features
+# Major: Minor changes, Minor features
+# Patch: Bug fixes, Minor changes
 
 DATE_FORMAT = "%d-%m-%Y %H:%M:%S"
 SETTINGS_FILE = 'user_settings.json'
@@ -755,6 +758,7 @@ class MissionLogGUI:
         style = ttk.Style()
         style.configure('TLabel', font=('Arial', 10))
         style.configure('TButton', font=('Arial', 10, 'bold'))
+        style.configure('TExportButton', font=('Arial', 7))
 
 
     def _setup_discord_rpc(self) -> None:
@@ -805,8 +809,8 @@ class MissionLogGUI:
         self.ship1_combo.grid(row=0, column=1, padx=5, pady=5)
         self.ship1_combo.set(self.shipName1s[0])
 
-        self.ship2_combo = ttk.Combobox(mission_frame, textvariable=self.shipName2, values=self.shipName2s, state='readonly', width=27)
-        self.ship2_combo.grid(row=0, column=2, padx=5, pady=5)
+        self.ship2_combo = ttk.Combobox(mission_frame, textvariable=self.shipName2, values=self.shipName2s, state='readonly', width=39)
+        self.ship2_combo.grid(row=0, column=2, sticky=tk.W, padx=(3,0), pady=5)
         self.ship2_combo.set(self.shipName2s[0])
 
         def update_full_ship_name(*args):
@@ -819,22 +823,22 @@ class MissionLogGUI:
         ttk.Label(mission_frame, text="Helldiver:").grid(row=2, column=0, sticky=tk.W, pady=5)
         ttk.Entry(mission_frame, textvariable=self.Helldivers, width=30).grid(row=2, column=1, padx=5, pady=5)
 
-        ttk.Label(mission_frame, text="Level:").grid(row=2, column=2, sticky=tk.W, padx=5, pady=5)
-        ttk.Entry(mission_frame, textvariable=self.level, width=10).grid(row=2, column=2, sticky=tk.E, padx=(0,5), pady=5)
+        ttk.Label(mission_frame, text="Level:").grid(row=2, column=2, sticky=tk.W, padx=0, pady=5)
+        ttk.Entry(mission_frame, textvariable=self.level, width=35).grid(row=2, column=2, sticky=tk.W, padx=(45,0), pady=5)
 
-        ttk.Label(mission_frame, text="Title:").grid(row=2, column=4, sticky=tk.W, pady=5)
+        ttk.Label(mission_frame, text="Title:").grid(row=3, column=2, sticky=tk.W, pady=5)
         self.titles = ['CADET', 'SPACE CADET', 'SERGEANT', 'MASTER SERGEANT', 'CHIEF', 'SPACE CHIEF PRIME', 
              'DEATH CAPTAIN', 'MARSHALL', 'STAR MARSHALL', 'ADMIRAL', 'SKULL ADMIRAL', 'FLEET ADMIRAL',
              'ADMIRABLE ADMIRAL', 'COMMANDER', 'GALACTIC COMMANDER', 'HELL COMMANDER', 'GENERAL',
              '5-STAR GENERAL', '10-STAR GENERAL', 'PRIVATE', 'SUPER PRIVATE', 'SUPER CITIZEN',
              'VIPER COMMANDO', 'FIRE SAFETY OFFICER', 'EXPERT EXTERMINATOR', 'FREE OF THOUGHT',
              'ASSAULT INFANTRY', 'SUPER PEDESTRIAN', 'SERVANT OF FREEDOM', 'SUPER SHERIFF', 'DECORATED HERO']
-        self.title_combo = ttk.Combobox(mission_frame, textvariable=self.title, state='readonly', width=27)
+        self.title_combo = ttk.Combobox(mission_frame, textvariable=self.title, state='readonly', width=32)
         self.title_combo['values'] = self.titles
-        self.title_combo.grid(row=2, column=5, padx=5, pady=5)
+        self.title_combo.grid(row=3, column=2, sticky=tk.W, padx=(45,0), pady=5)
         self.title_combo.set(self.titles[0])
 
-        ttk.Label(mission_frame, text="Profile:").grid(row=3, column=4, sticky=tk.W, pady=5)
+        ttk.Label(mission_frame, text="Profile:").grid(row=4, column=2, sticky=tk.W, pady=5)
         self.profile_pictures = ['B-01 Tactical', 'TR-7 Ambassador of the Brand', 'TR-9 Cavalier of Democracy', 'TR-62 Knight', 
                'DP-53 Savior of the Free', 'TR-117 Alpha Commander', 'SC-37 Legionnaire', 'SC-15 Drone Master',
                'SC-34 Infiltrator', 'FS-05 Marksman', 'CD-35 Trench Engineer', 'CM-09 Bonesnapper',
@@ -854,9 +858,9 @@ class MissionLogGUI:
                'IE-3 Martyr', 'IE-12 Righteous', 'B-22 Model Citizen', 'GS-11 Democracy\'s Deputy', 
                'GS-17 Frontier Marshal', 'GS-66 Lawmaker', 'RE-824 Bearer of the Standard', 
                'RE-2310 Honorary Guard', 'RE-1861 Parade Commander']
-        self.profile_picture_combo = ttk.Combobox(mission_frame, textvariable=self.profile_picture, state='readonly', width=27)
+        self.profile_picture_combo = ttk.Combobox(mission_frame, textvariable=self.profile_picture, state='readonly', width=32)
         self.profile_picture_combo['values'] = self.profile_pictures
-        self.profile_picture_combo.grid(row=3, column=5, padx=5, pady=5)
+        self.profile_picture_combo.grid(row=4, column=2, sticky=tk.W, padx=(45,0), pady=5)
         self.profile_picture_combo.set(self.profile_pictures[0])
 
         ttk.Label(mission_frame, text="Sector:").grid(row=3, column=0, sticky=tk.W, pady=5)
@@ -870,9 +874,9 @@ class MissionLogGUI:
         self.sector_combo = sector_combo
         self.planet_combo = planet_combo
 
-        ttk.Label(mission_frame, text="Mega City:").grid(row=4, column=2, sticky=tk.W, pady=5)
-        mega_cities_combo = ttk.Combobox(mission_frame, textvariable=self.mega_cities, state='readonly', width=15)
-        mega_cities_combo.grid(row=4, column=2, sticky=tk.E, padx=5, pady=5)
+        ttk.Label(mission_frame, text="Mega City:").grid(row=5, column=0, sticky=tk.W, pady=5)
+        mega_cities_combo = ttk.Combobox(mission_frame, textvariable=self.mega_cities, state='readonly', width=27)
+        mega_cities_combo.grid(row=5, column=1, sticky=tk.E, padx=5, pady=5)
         self.mega_cities_combo = mega_cities_combo
 
         def update_planets(*args):
@@ -884,23 +888,19 @@ class MissionLogGUI:
         sector_combo.bind('<<ComboboxSelected>>', update_planets)
         update_planets()
 
-        """def update_mega_cities(*args):
-            selected_planet = self.planet.get()
-            mega_cities_list = planetary_data[selected_planet]["mega_cities"]
-            mega_cities_combo['values'] = mega_cities_list
-            mega_cities_combo.set(mega_cities_list[0] if mega_cities_list else "None")"""
-        
         def update_mega_cities(*args):
-            with open('MegaCityPlanets.json', 'r') as f:
-                mega_city_data = json.load(f)
-                mega_cities_list = list(mega_city_data.keys())
             selected_planet = self.planet.get()
-            if selected_planet in mega_cities_list:
-                mega_city = mega_city_data[selected_planet]["mega_cities"]
-                mega_cities_combo['values'] = mega_city
-                mega_cities_combo.set(mega_city[0] if mega_city else "None")
-        
-        mega_cities_combo.bind('<<ComboboxSelected>>', update_mega_cities)
+            with open("MegaCityPlanets.json", "r") as f:
+                planetary_data = json.load(f)
+            if selected_planet not in planetary_data:
+                mega_cities_combo['values'] = ["None"]
+                mega_cities_combo.set("None")
+            else:
+                mega_cities_list = planetary_data[selected_planet]["mega_cities"]
+                mega_cities_combo['values'] = mega_cities_list
+                mega_cities_combo.set(mega_cities_list[0] if mega_cities_list else "None")
+
+        planet_combo.bind('<<ComboboxSelected>>', update_mega_cities)
         update_mega_cities()
 
         # Mission Details Section
@@ -920,19 +920,19 @@ class MissionLogGUI:
 
         # Major Order checkbox
         ttk.Label(details_frame, text="Major Order:").grid(row=3, column=2, sticky=tk.W, pady=5)
-        ttk.Checkbutton(details_frame, variable=self.MO).grid(row=3, column=3, padx=5, pady=5)
+        ttk.Checkbutton(details_frame, variable=self.MO).grid(row=3, column=2, sticky=tk.W, padx=(100,0), pady=5)
 
         # DSS Modifier dropdown
         ttk.Label(details_frame, text="DSS Active:").grid(row=1, column=2, sticky=tk.W, pady=5)
-        ttk.Checkbutton(details_frame, variable=self.DSS).grid(row=1, column=3, padx=5, pady=5)
+        ttk.Checkbutton(details_frame, variable=self.DSS).grid(row=1, column=2, sticky=tk.W, padx=(100,0), pady=5)
 
         self.dss_frame = ttk.Frame(details_frame)
-        self.dss_frame.grid(row=1, column=4, columnspan=2, sticky=tk.W, pady=5)
+        self.dss_frame.grid(row=2, column=2, sticky=tk.W, pady=5)
         ttk.Label(self.dss_frame, text="DSS Modifier:").pack(side=tk.LEFT)
         dss_mods = ["Inactive", "Orbital Blockade", "Heavy Ordnance Distribution", "Eagle Storm"]
         self.DSSMod.set("Inactive")  # Set default value
         self.dss_combo = ttk.Combobox(self.dss_frame, textvariable=self.DSSMod, values=dss_mods, state='readonly', width=27)
-        self.dss_combo.pack(side=tk.LEFT, padx=5)
+        self.dss_combo.pack(side=tk.LEFT, padx=(40,0))
         
         # Initially hide the dropdown
         self.dss_frame.grid_remove()
@@ -950,7 +950,7 @@ class MissionLogGUI:
         # Subfaction Selection
         ttk.Label(details_frame, text="Enemy Subfaction:").grid(row=0, column=2, sticky=tk.W, pady=5)
         subfaction_combo = ttk.Combobox(details_frame, textvariable=self.subfaction_type, state='readonly', width=27)
-        subfaction_combo.grid(row=0, column=3, padx=5, pady=5)
+        subfaction_combo.grid(row=0, column=2, sticky=tk.E, padx=(125,0), pady=5)
 
         # Mission Campaign Selection
         ttk.Label(details_frame, text="Mission Campaign:").grid(row=1, column=0, sticky=tk.W, pady=5)
@@ -1084,8 +1084,8 @@ class MissionLogGUI:
         ttk.Label(style_frame, text="Report Style:").pack(side=tk.LEFT)
 
         # Export section (right side)
-        export_frame = ttk.LabelFrame(bottom_frame, text="Exporting", padding=10)
-        export_frame.pack(side=tk.RIGHT, padx=5)
+        export_frame = ttk.LabelFrame(content, text="Exporting", padding=10)
+        export_frame.grid(row=4, column=0, pady=5, sticky=(tk.W, tk.E))
 
         self.report_style = tk.StringVar()
         report_styles = ['Modern', 'Fax']
@@ -1093,17 +1093,17 @@ class MissionLogGUI:
         style_combo.pack(side=tk.LEFT, padx=5)
         style_combo.set(report_styles[0])
 
-        #export button by planet
-        export_button = ttk.Button(export_frame, text="Export Excel Data to Webhook", command=lambda: os.system('python sub.py'))
-        export_button.grid(row=6, column=0, pady=15)
-
         #open export GUI
-        GUIbutton = ttk.Button(export_frame, text="Open Export GUI", command=lambda: subprocess.run(['python', 'exportGUI.py'], shell=False))
-        GUIbutton.grid(row=5, column=0, pady=15)
+        GUIbutton = ttk.Button(export_frame, text=" Open\nExport\n  GUI", command=lambda: subprocess.run(['python', 'exportGUI.py'], shell=False), padding=(6,5), width=15)
+        GUIbutton.grid(row=4, column=0, pady=15, padx=(80,0))
+
+        #export button by planet
+        export_button = ttk.Button(export_frame, text="Export Excel\n    Data to\n  Webhook", command=lambda: subprocess.run(['python', 'sub.py']), padding=(6,5), width=15)
+        export_button.grid(row=4, column=1, padx=(60,0), pady=15)
 
         #export button by faction
-        export_button = ttk.Button(export_frame, text="Export Faction Data to Webhook", command=lambda: os.system('python faction.py'))
-        export_button.grid(row=7, column=0, pady=15)
+        export_button = ttk.Button(export_frame, text="Export Faction\n      Data to\n    Webhook", command=lambda: subprocess.run(['python', 'faction.py']), padding=(6,5), width=15)
+        export_button.grid(row=4, column=2, padx=(60,0), pady=15)
 
 
     def _update_discord_presence(self) -> None:
