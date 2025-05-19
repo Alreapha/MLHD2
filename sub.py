@@ -380,6 +380,123 @@ BIOME_BANNERS = {
     "Meridia": config['BiomeBanners']['Black Hole']
 }
 
+# Title icons for Titles
+TITLE_ICONS = {
+    "CADET": config['TitleIcons']['CADET'],
+    "SPACE CADET": config['TitleIcons']['SPACE CADET'], 
+    "SERGEANT": config['TitleIcons']['SERGEANT'],
+    "MASTER SERGEANT": config['TitleIcons']['MASTER SERGEANT'],
+    "CHIEF": config['TitleIcons']['CHIEF'],
+    "SPACE CHIEF PRIME": config['TitleIcons']['SPACE CHIEF PRIME'],
+    "DEATH CAPTAIN": config['TitleIcons']['DEATH CAPTAIN'],
+    "MARSHAL": config['TitleIcons']['MARSHAL'],
+    "STAR MARSHAL": config['TitleIcons']['STAR MARSHAL'],
+    "ADMIRAL": config['TitleIcons']['ADMIRAL'], 
+    "SKULL ADMIRAL": config['TitleIcons']['SKULL ADMIRAL'],
+    "FLEET ADMIRAL": config['TitleIcons']['FLEET ADMIRAL'],
+    "ADMIRABLE ADMIRAL": config['TitleIcons']['ADMIRABLE ADMIRAL'],
+    "COMMANDER": config['TitleIcons']['COMMANDER'],
+    "GALACTIC COMMANDER": config['TitleIcons']['GALACTIC COMMANDER'],
+    "HELL COMMANDER": config['TitleIcons']['HELL COMMANDER'],
+    "GENERAL": config['TitleIcons']['GENERAL'],
+    "5-STAR GENERAL": config['TitleIcons']['5-STAR GENERAL'],
+    "10-STAR GENERAL": config['TitleIcons']['10-STAR GENERAL'],
+    "PRIVATE": config['TitleIcons']['PRIVATE'],
+    "SUPER PRIVATE": config['TitleIcons']['SUPER PRIVATE'],
+    "SUPER CITIZEN": config['TitleIcons']['SUPER CITIZEN'],
+    "VIPER COMMANDO": config['TitleIcons']['VIPER COMMANDO'],
+    "FIRE SAFETY OFFICER": config['TitleIcons']['FIRE SAFETY OFFICER'],
+    "EXPERT EXTERMINATOR": config['TitleIcons']['EXPERT EXTERMINATOR'],
+    "FREE OF THOUGHT": config['TitleIcons']['FREE OF THOUGHT'],
+    "SUPER PEDESTRIAN": config['TitleIcons']['SUPER PEDESTRIAN'],
+    "ASSAULT INFANTRY": config['TitleIcons']['ASSAULT INFANTRY'],
+    "SERVANT OF FREEDOM": config['TitleIcons']['SERVANT OF FREEDOM'],
+    "SUPER SHERIFF": config['TitleIcons']['SUPER SHERIFF'],
+    "DECORATED HERO": config['TitleIcons']['DECORATED HERO']
+}
+
+# Profile Pictures for Exports
+PROFILE_PICTURES = {
+    "B-01 Tactical": config['ProfilePictures']['B-01 Tactical'],
+    "TR-7 Ambassador of the Brand": config['ProfilePictures']['TR-7 Ambassador of the Brand'],
+    "TR-9 Cavalier of Democracy": config['ProfilePictures']['TR-9 Cavalier of Democracy'],
+    "TR-62 Knight": config['ProfilePictures']['TR-62 Knight'],
+    "DP-53 Savior of the Free": config['ProfilePictures']['DP-53 Savior of the Free'],
+    "TR-117 Alpha Commander": config['ProfilePictures']['TR-117 Alpha Commander'],
+    "SC-37 Legionnaire": config['ProfilePictures']['SC-37 Legionnaire'],
+    "SC-15 Drone Master": config['ProfilePictures']['SC-15 Drone Master'],
+    "SC-34 Infiltrator": config['ProfilePictures']['SC-34 Infiltrator'],
+    "FS-05 Marksman": config['ProfilePictures']['FS-05 Marksman'],
+    "CD-35 Trench Engineer": config['ProfilePictures']['CD-35 Trench Engineer'],
+    "CM-09 Bonesnapper": config['ProfilePictures']['CM-09 Bonesnapper'],
+    "DP-40 Hero of the Federation": config['ProfilePictures']['DP-40 Hero of the Federation'],
+    "FS-23 Battle Master": config['ProfilePictures']['FS-23 Battle Master'],
+    "SC-30 Trailblazer Scout": config['ProfilePictures']['SC-30 Trailblazer Scout'],
+    "SA-04 Combat Technician": config['ProfilePictures']['SA-04 Combat Technician'],
+    "CM-14 Physician": config['ProfilePictures']['CM-14 Physician'],
+    "DP-11 Champion of the People": config['ProfilePictures']['DP-11 Champion of the People'],
+    "SA-25 Steel Trooper": config['ProfilePictures']['SA-25 Steel Trooper'],
+    "SA-12 Servo Assisted": config['ProfilePictures']['SA-12 Servo Assisted'],
+    "SA-32 Dynamo": config['ProfilePictures']['SA-32 Dynamo'],
+    "B-24 Enforcer": config['ProfilePictures']['B-24 Enforcer'],
+    "CE-74 Breaker": config['ProfilePictures']['CE-74 Breaker'],
+    "B-27 Fortified Commando": config['ProfilePictures']['B-27 Fortified Commando'],
+    "FS-38 Eradicator": config['ProfilePictures']['FS-38 Eradicator'],
+    "B-08 Light Gunner": config['ProfilePictures']['B-08 Light Gunner'],
+    "FS-61 Dreadnought": config['ProfilePictures']['FS-61 Dreadnought'],
+    "FS-11 Executioner": config['ProfilePictures']['FS-11 Executioner'],
+    "CM-21 Trench Paramedic": config['ProfilePictures']['CM-21 Trench Paramedic'],
+    "CE-81 Juggernaut": config['ProfilePictures']['CE-81 Juggernaut'],
+    "FS-34 Exterminator": config['ProfilePictures']['FS-34 Exterminator'],
+    "CE-67 Titan": config['ProfilePictures']['CE-67 Titan'],
+    "CM-17 Butcher": config['ProfilePictures']['CM-17 Butcher'],
+    "EX-03 Prototype 3": config['ProfilePictures']['EX-03 Prototype 3'],
+    "EX-16 Prototype 16": config['ProfilePictures']['EX-16 Prototype 16'],
+    "EX-00 Prototype X": config['ProfilePictures']['EX-00 Prototype X'],
+    "CE-27 Ground Breaker": config['ProfilePictures']['CE-27 Ground Breaker'],
+    "CE-07 Demolition Specialist": config['ProfilePictures']['CE-07 Demolition Specialist'],
+    "FS-55 Devastator": config['ProfilePictures']['FS-55 Devastator'],
+    "CM-10 Clinician": config['ProfilePictures']['CM-10 Clinician'],
+    "FS-37 Ravager": config['ProfilePictures']['FS-37 Ravager'],
+    "CW-9 White Wolf": config['ProfilePictures']['CW-9 White Wolf'],
+    "CE-64 Grenadier": config['ProfilePictures']['CE-64 Grenadier'],
+    "CW-36 Winter Warrior": config['ProfilePictures']['CW-36 Winter Warrior'],
+    "CW-22 Kodiak": config['ProfilePictures']['CW-22 Kodiak'],
+    "CW-4 Arctic Ranger": config['ProfilePictures']['CW-4 Arctic Ranger'],
+    "PH-56 Jaguar": config['ProfilePictures']['PH-56 Jaguar'],
+    "CE-101 Guerilla Gorilla": config['ProfilePictures']['CE-101 Guerilla Gorilla'],
+    "PH-9 Predator": config['ProfilePictures']['PH-9 Predator'],
+    "PH-202 Twigsnapper": config['ProfilePictures']['PH-202 Twigsnapper'],
+    "TR-40 Gold Eagle": config['ProfilePictures']['TR-40 Gold Eagle'],
+    "I-44 Salamander": config['ProfilePictures']['I-44 Salamander'],
+    "I-92 Fire Fighter": config['ProfilePictures']['I-92 Fire Fighter'],
+    "I-09 Heatseeker": config['ProfilePictures']['I-09 Heatseeker'],
+    "I-102 Draconaught": config['ProfilePictures']['I-102 Draconaught'],
+    "AF-52 Lockdown": config['ProfilePictures']['AF-52 Lockdown'],
+    "AF-91 Field Chemist": config['ProfilePictures']['AF-91 Field Chemist'],
+    "AF-50 Noxious Ranger": config['ProfilePictures']['AF-50 Noxious Ranger'],
+    "AF-02 Haz-Master": config['ProfilePictures']['AF-02 Haz-Master'],
+    "DP-00 Tactical": config['ProfilePictures']['DP-00 Tactical'],
+    "UF-84 Doubt Killer": config['ProfilePictures']['UF-84 Doubt Killer'],
+    "UF-50 Bloodhound": config['ProfilePictures']['UF-50 Bloodhound'],
+    "UF-16 Inspector": config['ProfilePictures']['UF-16 Inspector'],
+    "SR-64 Cinderblock": config['ProfilePictures']['SR-64 Cinderblock'],
+    "SR-24 Street Scout": config['ProfilePictures']['SR-24 Street Scout'],
+    "SR-18 Roadblock": config['ProfilePictures']['SR-18 Roadblock'],
+    "AC-1 Dutiful": config['ProfilePictures']['AC-1 Dutiful'],
+    "AC-2 Obedient": config['ProfilePictures']['AC-2 Obedient'],
+    "IE-57 Hell-Bent": config['ProfilePictures']['IE-57 Hell-Bent'],
+    "IE-3 Martyr": config['ProfilePictures']['IE-3 Martyr'], 
+    "IE-12 Righteous": config['ProfilePictures']['IE-12 Righteous'],
+    "B-22 Model Citizen": config['ProfilePictures']['B-22 Model Citizen'],
+    "GS-11 Democracy's Deputy": config['ProfilePictures']['GS-11 Democracy\'s Deputy'],
+    "GS-17 Frontier Marshal": config['ProfilePictures']['GS-17 Frontier Marshal'],
+    "GS-66 Lawmaker": config['ProfilePictures']['GS-66 Lawmaker'],
+    "RE-824 Bearer of the Standard": config['ProfilePictures']['RE-824 Bearer of the Standard'],
+    "RE-2310 Honorary Guard": config['ProfilePictures']['RE-2310 Honorary Guard'],
+    "RE-1861 Parade Commander": config['ProfilePictures']['RE-1861 Parade Commander']
+}
+
 # Read the Excel file
 try:
     df = pd.read_excel('mission_log_test.xlsx') if DEBUG else pd.read_excel('mission_log.xlsx')
@@ -410,7 +527,6 @@ helldiver_ses = df['Super Destroyer'].iloc[-1] if 'Super Destroyer' in df.column
 helldiver_name = df['Helldivers'].iloc[-1] if 'Helldivers' in df.columns else "Unknown"
 helldiver_level = df['Level'].iloc[-1] if 'Level' in df.columns else 0
 helldiver_title = df['Title'].iloc[-1] if 'Title' in df.columns else "Unknown"
-
 
 if Rating_Percentage >= 90:
     Rating = "Outstanding Patriotism"
@@ -513,10 +629,12 @@ search_sector = df['Sector'].mode()[0]
 SectorCount = df.apply(lambda row: row.astype(str).str.contains(search_sector, case=False).sum(), axis=1).sum()
 
 highest_streak = 0
+profile_picture = ""
 with open('streak_data.json', 'r') as f:
     streak_data = json.load(f)
     # Use "Helldiver" as the key or fall back to helldiver_ses if the first one doesn't exist
     highest_streak = streak_data.get("Helldiver", streak_data.get(helldiver_ses, {})).get("highest_streak", 0)
+    profile_picture = streak_data.get("Helldiver", streak_data.get(helldiver_ses, {})).get("profile_picture_name", "")
     
 
 # Create embed data
@@ -525,7 +643,7 @@ embed_data = {
     "embeds": [
         {
             "title": "",  # Empty title, will be set below
-            "description": f"\"{latest_note}\"\n\n<a:easyshine1:1349110651829747773>  <a:easyshine2:1349110649753698305> Combat Statistics <a:easyshine2:1349110649753698305> <a:easyshine3:1349110648528699422>\n" + 
+            "description": f"**Level {helldiver_level} | {helldiver_title} {TITLE_ICONS.get(df['Title'].mode()[0], '')}**\n\n\"{latest_note}\"\n\n<a:easyshine1:1349110651829747773>  <a:easyshine2:1349110649753698305> Combat Statistics <a:easyshine2:1349110649753698305> <a:easyshine3:1349110648528699422>\n" + 
                         f"> Kills - {df['Kills'].sum()}\n" +
                         f"> Deaths - {df['Deaths'].sum()}\n" +
                         f"> Highest Kills in Mission - {df['Kills'].max()}\n" +
@@ -550,14 +668,14 @@ embed_data = {
             "author": {"name": "SEAF Battle Record"},
             "footer": {"text": config['Discord']['UID'],"icon_url": "https://cdn.discordapp.com/attachments/1340508329977446484/1356025859319926784/5cwgI15.png?ex=67eb10fe&is=67e9bf7e&hm=ab6326a9da1e76125238bf3668acac8ad1e43b24947fc6d878d7b94c8a60ab28&"},
             "image": {"url": f"{BIOME_BANNERS.get(df['Planet'].mode()[0], '')}"},
-            "thumbnail": {"url": "https://i.ibb.co/5g2b9NXb/Super-Earth-Icon.png"}
+            "thumbnail": {"url": f"{profile_picture}"}
         }
     ],
     "attachments": []
 }
 
 # Update the embed title with name and level
-embed_data["embeds"][0]["title"] = f"{helldiver_ses}\nHelldiver: {helldiver_name}\nLevel {helldiver_level} | {helldiver_title}"
+embed_data["embeds"][0]["title"] = f"{helldiver_ses}\nHelldiver: {helldiver_name}"
 
 # Enemy type specific embeds with icons
 enemy_icons = {
