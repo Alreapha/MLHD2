@@ -1094,17 +1094,66 @@ class MissionLogGUI:
         style_combo.set(report_styles[0])
 
         #open export GUI
-        GUIbutton = ttk.Button(export_frame, text=" Open\nExport\n  GUI", command=lambda: subprocess.run(['python', 'exportGUI.py'], shell=False), padding=(6,5), width=15)
-        GUIbutton.grid(row=4, column=0, pady=15, padx=(80,0))
+        GUIbutton = ttk.Button(export_frame, text=" Open\nExport\n  GUI", command=lambda: subprocess.run(['python', 'exportGUI.py'], shell=False), padding=(6,5), width=14)
+        GUIbutton.grid(row=4, column=0, pady=15, padx=(20,0))
 
         #export button by planet
-        export_button = ttk.Button(export_frame, text="Export Excel\n    Data to\n  Webhook", command=lambda: subprocess.run(['python', 'sub.py']), padding=(6,5), width=15)
-        export_button.grid(row=4, column=1, padx=(60,0), pady=15)
+        export_button = ttk.Button(export_frame, text="Export Excel\n    Data to\n  Webhook", command=lambda: subprocess.run(['python', 'sub.py']), padding=(6,5), width=14)
+        export_button.grid(row=4, column=1, padx=(40,0), pady=15)
 
         #export button by faction
-        export_button = ttk.Button(export_frame, text="Export Faction\n      Data to\n    Webhook", command=lambda: subprocess.run(['python', 'faction.py']), padding=(6,5), width=15)
-        export_button.grid(row=4, column=2, padx=(60,0), pady=15)
+        export_button = ttk.Button(export_frame, text="Export Faction\n      Data to\n    Webhook", command=lambda: subprocess.run(['python', 'faction.py']), padding=(6,5), width=14)
+        export_button.grid(row=4, column=2, padx=(40,0), pady=15)
 
+        # Create a frame for the image button (example placement in the mission_frame)
+        image_button_frame = ttk.Frame(mission_frame)
+        image_button_frame.grid(row=5, column=4, padx=5, pady=5)
+
+        # Load the image for the button
+        try:
+            # Store the image as an instance attribute to prevent garbage collection
+            self.button_image = tk.PhotoImage(file="achievement.png")
+            # You may need to resize the image if it's too large
+            self.button_image = self.button_image.subsample(2, 2)  # Reduce size by half
+            
+            # Create the button with the image in the export frame
+            image_button = ttk.Button(export_frame, image=self.button_image, command=print("Image button clicked"), width=7)
+            # Set compound to prevent text from showing if you decide to add text later
+            image_button.configure(compound=tk.CENTER)
+            image_button.grid(row=4, column=3, padx=(125,0), pady=15)  # Match the grid layout of other buttons
+            
+            # Optionally add a tooltip
+            tooltip_text = "This is an image button"
+            # You would need to implement a tooltip system or use a library like tktooltip
+            
+        except Exception as e:
+            logging.error(f"Failed to load button image: {e}")
+            # Fallback to text button if image loading fails
+            fallback_button = ttk.Button(export_frame, text="Image Button", command=print("Fallback button clicked"))
+            fallback_button.grid(row=4, column=3, padx=(125,0), pady=15)  # Match the grid layout of other buttons
+
+        # Load the image for the button
+        try:
+            # Store the image as an instance attribute to prevent garbage collection
+            self.invite_image = tk.PhotoImage(file="invite.png")
+            # You may need to resize the image if it's too large
+            self.invite_image = self.invite_image.subsample(60, 60)  # Reduce size by half
+            
+            # Create the button with the image in the export frame
+            invite_button = ttk.Button(export_frame, image=self.invite_image, command=print("Invite button clicked"), width=7)
+            # Set compound to prevent text from showing if you decide to add text later
+            invite_button.configure(compound=tk.CENTER)
+            invite_button.grid(row=4, column=3, padx=(0,20), pady=15)  # Match the grid layout of other buttons
+            
+            # Optionally add a tooltip
+            tooltip_text = "Invite to Discord server"
+            # You would need to implement a tooltip system or use a library like tktooltip
+            
+        except Exception as e:
+            logging.error(f"Failed to load invite button image: {e}")
+            # Fallback to text button if image loading fails
+            invite_fallback = ttk.Button(export_frame, text="Invite Button", command=print("Invite fallback clicked"))
+            invite_fallback.grid(row=4, column=3, padx=(0,20), pady=15)  # Match the grid layout of other buttons
 
     def _update_discord_presence(self) -> None:
         """Update Discord Rich Presence with current mission information."""
