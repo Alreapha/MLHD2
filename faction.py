@@ -773,7 +773,7 @@ embed_data = {
                          f"> <:defence_campaign:1355955857480876282> Defenses - {df[df['Enemy Type'] == 'Automatons'][df['Mission Category'] == 'Defense']['Mission Category'].count().sum()}\n" +
                          f"> <:invasion_campaign:1355955853588562202> Invasion - {df[df['Enemy Type'] == 'Automatons'][df['Mission Category'] == 'Invasion']['Mission Category'].count().sum()}\n" +
                          f"> <:highprioritycampaign:1370787949372899328> High-Priority - {df[df['Enemy Type'] == 'Automatons'][df['Mission Category'] == 'High-Priority']['Mission Category'].count().sum()}\n" +
-                         f"> <:attritioncampaign:1372535389469937735> Attrition - {df[df['Enemy Type'] == 'Automatons'][df['Mission Category'] == 'Attrition']['Mission Category'].count().sum()}\n", +
+                         f"> <:attritioncampaign:1372535389469937735> Attrition - {df[df['Enemy Type'] == 'Automatons'][df['Mission Category'] == 'Attrition']['Mission Category'].count().sum()}\n" +
                          f"> <:invasion_campaign:1355955853588562202> Battle for Super Earth - {df[df['Enemy Type'] == 'Automatons'][df['Mission Category'] == 'Battle for Super Earth']['Mission Category'].count().sum()}\n\n",
       
     #   "<a:easyshine1:1349110651829747773> <:hd2bots:1337190442449502208> Automaton Legion Statistics <:hd2bots:1337190442449502208> <a:easyshine3:1349110648528699422>\n" +
