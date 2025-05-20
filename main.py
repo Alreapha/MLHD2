@@ -50,6 +50,7 @@ import os
 import subprocess
 import random
 import re
+import webbrowser
 
 # Read configuration from config.config
 config = configparser.ConfigParser()
@@ -1117,19 +1118,15 @@ class MissionLogGUI:
             self.button_image = self.button_image.subsample(2, 2)  # Reduce size by half
             
             # Create the button with the image in the export frame
-            image_button = ttk.Button(export_frame, image=self.button_image, command=print("Image button clicked"), width=7)
+            image_button = ttk.Button(export_frame, image=self.button_image, command=lambda: subprocess.run(['python', 'Achievements.py']), width=7)
             # Set compound to prevent text from showing if you decide to add text later
             image_button.configure(compound=tk.CENTER)
             image_button.grid(row=4, column=3, padx=(125,0), pady=15)  # Match the grid layout of other buttons
             
-            # Optionally add a tooltip
-            tooltip_text = "This is an image button"
-            # You would need to implement a tooltip system or use a library like tktooltip
-            
         except Exception as e:
             logging.error(f"Failed to load button image: {e}")
             # Fallback to text button if image loading fails
-            fallback_button = ttk.Button(export_frame, text="Image Button", command=print("Fallback button clicked"))
+            fallback_button = ttk.Button(export_frame, text="Image Button", command=lambda: subprocess.run(['python', 'Achievements.py']))
             fallback_button.grid(row=4, column=3, padx=(125,0), pady=15)  # Match the grid layout of other buttons
 
         # Load the image for the button
@@ -1140,19 +1137,16 @@ class MissionLogGUI:
             self.invite_image = self.invite_image.subsample(60, 60)  # Reduce size by half
             
             # Create the button with the image in the export frame
-            invite_button = ttk.Button(export_frame, image=self.invite_image, command=print("Invite button clicked"), width=7)
+            invite_button = ttk.Button(export_frame, image=self.invite_image, command=lambda: webbrowser.open("https://discord.gg/U6ydgwFKZG"), width=7)
             # Set compound to prevent text from showing if you decide to add text later
             invite_button.configure(compound=tk.CENTER)
             invite_button.grid(row=4, column=3, padx=(0,20), pady=15)  # Match the grid layout of other buttons
             
-            # Optionally add a tooltip
-            tooltip_text = "Invite to Discord server"
-            # You would need to implement a tooltip system or use a library like tktooltip
-            
         except Exception as e:
             logging.error(f"Failed to load invite button image: {e}")
             # Fallback to text button if image loading fails
-            invite_fallback = ttk.Button(export_frame, text="Invite Button", command=print("Invite fallback clicked"))
+            # Import webbrowser at the top of your file if not already there
+            invite_fallback = ttk.Button(export_frame, text="Invite Button", command=lambda: webbrowser.open("https://discord.gg/U6ydgwFKZG"))
             invite_fallback.grid(row=4, column=3, padx=(0,20), pady=15)  # Match the grid layout of other buttons
 
     def _update_discord_presence(self) -> None:
