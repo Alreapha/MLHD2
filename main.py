@@ -61,7 +61,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 
 # Constants
 DEBUG = config.getboolean('DEBUGGING', 'DEBUG', fallback=False)
-VERSION = "1.3.333"
+VERSION = "1.4.0"
 # Version layout: Core.Major.Patch
 # Core: Major changes, Major features
 # Major: Minor changes, Minor features
@@ -1145,12 +1145,12 @@ class MissionLogGUI:
             with open("MegaCityPlanets.json", "r") as f:
                 planetary_data = json.load(f)
             if selected_planet not in planetary_data:
-                mega_cities_combo['values'] = ["None"]
-                mega_cities_combo.set("None")
+                mega_cities_combo['values'] = ["NONE"]
+                mega_cities_combo.set("NONE")
             else:
                 mega_cities_list = planetary_data[selected_planet]["mega_cities"]
                 mega_cities_combo['values'] = mega_cities_list
-                mega_cities_combo.set(mega_cities_list[0] if mega_cities_list else "None")
+                mega_cities_combo.set(mega_cities_list[0] if mega_cities_list else "NONE")
 
         planet_combo.bind('<<ComboboxSelected>>', update_mega_cities)
         update_mega_cities()
@@ -1627,6 +1627,7 @@ class MissionLogGUI:
             'Title': self.title.get(),
             'Sector': self.sector.get(),
             'Planet': self.planet.get(),
+            'Mega City': self.mega_cities.get(),
             'Enemy Type': self.enemy_type.get(),
             'Enemy Subfaction': self.subfaction_type.get(),
             'Major Order': self.MO.get(),
@@ -1804,7 +1805,7 @@ class MissionLogGUI:
                 "content": None,
                 "embeds": [{
                     "title": f"{data['Super Destroyer']}\nDeployed {data['Helldivers']}",
-                    "description": f"**Level {data['Level']} | {data['Title']} {title_icon}\nMission: {total_missions_main}**\n\n<a:easyshine1:1349110651829747773> <:hd1superearth:1103949794285723658> **Galactic Intel** {planet_icon} <a:easyshine3:1349110648528699422>\n> Sector: {data['Sector']}\n> Planet: {data['Planet']}\n> Major Order: {MICo}\n> DSS Active: {DSSIco}\n> DSS Modifier: {data['DSS Modifier']} {dss_icon}\n\n",
+                    "description": f"**Level {data['Level']} | {data['Title']} {title_icon}\nMission: {total_missions_main}**\n\n<a:easyshine1:1349110651829747773> <:hd1superearth:1103949794285723658> **Galactic Intel** {planet_icon} <a:easyshine3:1349110648528699422>\n> Sector: {data['Sector']}\n> Planet: {data['Planet']}\n> Mega City: {data['Mega City']}\n> Major Order: {MICo}\n> DSS Active: {DSSIco}\n> DSS Modifier: {data['DSS Modifier']} {dss_icon}\n\n",
                     "color": system_color,
                     "fields": [{
                         "name": f"<a:easyshine1:1349110651829747773> {enemy_icon} **Enemy Intel** {subfaction_icon} <a:easyshine3:1349110648528699422>",

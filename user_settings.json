@@ -1,1 +1,17 @@
-{"helldiver": "Helldiver", "level": 0, "title": "Cadet", "sector": "Altus Sector", "planet": "New Haven", "difficulty": "1 - TRIVIAL", "mission": "Terminate Illegal Broadcast", "DSS": false, "DSSMod": "Inactive", "campaign": "Defense", "subfaction": "Automaton Legion", "shipName1": "SES Herald", "shipName2": "of Wrath", "profile_picture": "TR-7 Ambassador of the Brand", "theme": "light"}
+{
+    "helldiver": "Helldiver",
+    "level": 1,
+    "title": "CADET",
+    "sector": "Sol System",
+    "planet": "Mars",
+    "difficulty": "1 - TRIVIAL",
+    "mission": "Terminate Illegal Broadcast",
+    "DSS": false,
+    "DSSMod": "Inactive",
+    "campaign": "Defense",
+    "subfaction": "Automaton Legion",
+    "shipName1": "SES Champion",
+    "shipName2": "of Democracy",
+    "profile_picture": "B-01 Tactical",
+    "theme": "light"
+}
