@@ -61,7 +61,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 
 # Constants
 DEBUG = config.getboolean('DEBUGGING', 'DEBUG', fallback=False)
-VERSION = "1.4.002"
+VERSION = "1.4.003"
 # Version layout: Core.Major.Patch
 # Core: Major changes, Major features
 # Major: Minor changes, Minor features
@@ -309,7 +309,8 @@ CAMPAIGN_ICONS = {
     "Liberation": config['CampaignIcons']['Liberation'],
     "Invasion": config['CampaignIcons']['Invasion'],
     "High-Priority": config['CampaignIcons']['High-Priority'],
-    "Attrition": config['CampaignIcons']['Attrition']
+    "Attrition": config['CampaignIcons']['Attrition'],
+    "Battle for Super Earth": config['CampaignIcons']['Battle for Super Earth'],
 }
 
 # Mission Icons
@@ -358,7 +359,9 @@ MISSION_ICONS = {
     "Collect Gloom-Infused Oil": config['MissionIcons']['Collect Gloom-Infused Oil'],
     "Blitz: Secure Research Site": config['MissionIcons']['Blitz Secure Research Site'],
     "Collect Gloom Spore Readings": config['MissionIcons']['Collect Gloom Spore Readings'],
-    "Chart Terminid Tunnels": config['MissionIcons']['Chart Terminid Tunnels']
+    "Chart Terminid Tunnels": config['MissionIcons']['Chart Terminid Tunnels'],
+    "Take Down Overship": config['MissionIcons']['Take Down Overship'],
+    "Repel Invasion Fleet": config['MissionIcons']['Repel Invasion Fleet']
 }
 
 # Biome banners for Planets
