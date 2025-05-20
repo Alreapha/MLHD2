@@ -61,7 +61,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 
 # Constants
 DEBUG = config.getboolean('DEBUGGING', 'DEBUG', fallback=False)
-VERSION = "1.4.003"
+VERSION = "1.4.004"
 # Version layout: Core.Major.Patch
 # Core: Major changes, Major features
 # Major: Minor changes, Minor features
@@ -361,7 +361,8 @@ MISSION_ICONS = {
     "Collect Gloom Spore Readings": config['MissionIcons']['Collect Gloom Spore Readings'],
     "Chart Terminid Tunnels": config['MissionIcons']['Chart Terminid Tunnels'],
     "Take Down Overship": config['MissionIcons']['Take Down Overship'],
-    "Repel Invasion Fleet": config['MissionIcons']['Repel Invasion Fleet']
+    "Repel Invasion Fleet": config['MissionIcons']['Repel Invasion Fleet'],
+    "Evacuate Citizens": config['MissionIcons']['Evacuate Citizens']
 }
 
 # Biome banners for Planets

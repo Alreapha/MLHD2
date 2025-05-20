@@ -116,7 +116,8 @@ MISSION_ICONS = {
     "Collect Gloom Spore Readings": config['MissionIcons']['Collect Gloom Spore Readings'],
     "Chart Terminid Tunnels": config['MissionIcons']['Chart Terminid Tunnels'],
     "Take Down Overship": config['MissionIcons']['Take Down Overship'],
-    "Repel Invasion Fleet": config['MissionIcons']['Repel Invasion Fleet']
+    "Repel Invasion Fleet": config['MissionIcons']['Repel Invasion Fleet'],
+    "Evacuate Citizens": config['MissionIcons']['Evacuate Citizens']
 }
 
 # Biome banners for Planets
