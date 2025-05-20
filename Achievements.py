@@ -211,71 +211,142 @@ TITLE_ICONS = {
 if achievements["CmdFavourite"]:
     CmdFavourite_message = "Log 1000 Missions"
 else:
-    CmdFavourite_message = "You have the strength and the courage... to be free"
+    CmdFavourite_message = "HINT: You have the strength and the courage... to be free"
+
+if achievements["CmdFavourite"]:
+    CmdFavourite_title = "<a:EasyAwardBaftaMP2025:1363545915352289371> **HIGH COMMAND'S FAVOURITE**"
+else:
+    CmdFavourite_title = "<:achievement_style_3:1374174049726632067> **~~HIGH COMMAND'S FAVOURITE~~**"
 
 if achievements["ReliableDiver"]:
     ReliableDiver_message = "More than 50% of your logged missions are involved in a Major Order :major_order: "
 else:
-    ReliableDiver_message = "You're one to obey orders"
+    ReliableDiver_message = "HINT: You're one to obey orders"
+
+if achievements["ReliableDiver"]:
+    ReliableDiver_title = "<a:EasyAwardBaftaMusic2025:1359268029850058974> **RELIABLE DIVER**"
+else:
+    ReliableDiver_title = "<:achievement_style_1:1374174053254041640> **~~RELIABLE DIVER~~**"
 
 if achievements["DSSDiver"]:
     DSSDiver_message = "More than 50% of your logged Missions are involved with the Democracy Space Station :dss: "
 else:
-    DSSDiver_message = "You like a good bit of support"
+    DSSDiver_message = "HINT: You like a good bit of support"
+
+if achievements["DSSDiver"]:
+    DSSDiver_title = "<a:EasyAwardBaftaMusic2025:1359268029850058974> **I <3 DSS**"
+else:
+    DSSDiver_title = "<:achievement_style_1:1374174053254041640> **~~I <3 DSS~~**"
 
 if achievements["OutbreakPerfected"]:
-    OutbreakPerfected_message = "Log 250 Terminid Missions :hd2bugs:"
+    OutbreakPerfected_message = "Log 250 Terminid Missions"
 else:
-    OutbreakPerfected_message = "You're rather familiar with E-710"
+    OutbreakPerfected_message = "HINT: You're rather familiar with E-710"
+
+if achievements["OutbreakPerfected"]:
+    OutbreakPerfected_title = "<a:EasyMedal:1233854253077102653> **OUTBREAK PERFECTED**"
+else:
+    OutbreakPerfected_title = "<:achievement_style_2:1374174051551154267> **~~OUTBREAK PERFECTED~~**"
 
 if achievements["AutomatonPerfected"]:
-    AutomatonPerfected_message = "Log 250 Automaton Missions :hd2bots:"
+    AutomatonPerfected_message = "Log 250 Automaton Missions"
 else:
-    AutomatonPerfected_message = "You're rather familiar with losing access to your Stratagems"
+    AutomatonPerfected_message = "HINT: You're rather familiar with losing access to your Stratagems"
+
+if achievements["AutomatonPerfected"]:
+    AutomatonPerfected_title = "<a:EasyMedal:1233854253077102653> **INCURSION DEVASTATED**"
+else:
+    AutomatonPerfected_title = "<:achievement_style_2:1374174051551154267> **~~INCURSION DEVASTATED~~**"
 
 if achievements["IlluminatePerfected"]:
-    IlluminatePerfected_message = "Log 250 Illuminates Missions :hd2illuminates:"
+    IlluminatePerfected_message = "Log 250 Illuminates Missions"
 else:
-    IlluminatePerfected_message = "You're rather familiar with their autocratic intentions"
+    IlluminatePerfected_message = "HINT: You're rather familiar with their autocratic intentions"
+
+if achievements["IlluminatePerfected"]:
+    IlluminatePerfected_title = "<a:EasyMedal:1233854253077102653> **INVASION ABOLISHED**"
+else:
+    IlluminatePerfected_title = "<:achievement_style_2:1374174051551154267> **~~INVASION ABOLISHED~~**"
 
 if achievements["TerminidHunter"]:
-    TerminidHunter_message = "Log 100,000 Kills against the Terminids :hd2bugs:"
+    TerminidHunter_message = "Log 100,000 Kills against the Terminids"
 else:
-    TerminidHunter_message = "You douse yourself in E-710"
+    TerminidHunter_message = "HINT: You douse yourself in E-710"
+
+if achievements["TerminidHunter"]:
+    TerminidHunter_title = "<a:EasyAwardBaftaMP2025:1363545915352289371> **BUG STOMPER**"
+else:
+    TerminidHunter_title = "<:achievement_style_3:1374174049726632067> **~~BUG STOMPER~~**"
 
 if achievements["AutomatonHunter"]:
-    AutomatonHunter_message = "Log 100,000 Kills against the Automatons :hd2bots:"
+    AutomatonHunter_message = "Log 100,000 Kills against the Automatons"
 else:
-    AutomatonHunter_message = "You make things out of scrap metal in your spare time"
+    AutomatonHunter_message = "HINT: You make things out of scrap metal in your spare time"
+
+if achievements["AutomatonHunter"]:
+    AutomatonHunter_title = "<a:EasyAwardBaftaMP2025:1363545915352289371> **CLANKER SCRAPPER**"
+else:
+    AutomatonHunter_title = "<:achievement_style_3:1374174049726632067> **~~CLANKER SCRAPPER~~**"
+
 if achievements["IlluminateHunter"]:
-    IlluminateHunter_message = "Log 100,000 Kills against the Illuminates :hd2illuminates:"
+    IlluminateHunter_message = "Log 100,000 Kills against the Illuminates"
 else:
-    IlluminateHunter_message = "You single handedly make an effort of wiping them out of the Second Galactic War"
+    IlluminateHunter_message = "HINT: You single handedly make an effort of wiping them out of the Second Galactic War"
+
+if achievements["IlluminateHunter"]:
+    IlluminateHunter_title = "<a:EasyAwardBaftaMP2025:1363545915352289371> **SQUID SEVERER**"
+else:
+    IlluminateHunter_title = "<:achievement_style_3:1374174049726632067> **~~SQUID SEVERER~~**"
 
 if achievements["MalevelonCreek"]:
-    MalevelonCreek_message = "Serve on Malevelon Creek :malevelon_creek:"
+    MalevelonCreek_message = "Serve on Malevelon Creek"
 else:
-    MalevelonCreek_message = "You remember..."
+    MalevelonCreek_message = "HINT: You remember..."
+
+if achievements["MalevelonCreek"]:
+    MalevelonCreek_title = "<a:EasyAwardBaftaMusic2025:1359268029850058974> **NEVER FORGET**"
+else:
+    MalevelonCreek_title = "<:achievement_style_1:1374174053254041640> **~~NEVER FORGET~~**"
 
 if achievements["DisgracefulConduct"]:
     DisgracefulConduct_message = "Get a Performance Rating of Disgraceful Conduct on a Mission"
 else:
-    DisgracefulConduct_message = "You... why?"
+    DisgracefulConduct_message = "HINT: You... why?"
+
+if achievements["DisgracefulConduct"]:
+    DisgracefulConduct_title = "<a:EasyMedal:1233854253077102653> **you got this on purpose...**"
+else:
+    DisgracefulConduct_title = "<:achievement_style_2:1374174051551154267> **~~you got this on purpose...~~"
 
 if achievements["SuperEarth"]:
-    SuperEarth_message = " Serve on Super Earth :human_homeworld: "
+    SuperEarth_message = "Serve on Super Earth"
 else:
-    SuperEarth_message = "You feel very welcome"
+    SuperEarth_message = "HINT: You feel very welcome"
+
+if achievements["SuperEarth"]:
+    SuperEarth_title = "<a:EasyAwardBaftaMusic2025:1359268029850058974> **HOME SUPER HOME**"
+else:
+    SuperEarth_title = "<:achievement_style_1:1374174053254041640> **~~HOME SUPER HOME~~**"
 
 if achievements["Cyberstan"]:
-    Cyberstan_message = "Serve on an Enemy Homeworld :automaton_homeworld: "
+    Cyberstan_message = "Serve on an Enemy Homeworld"
 else:
-    Cyberstan_message = "You don't feel very welcome... like they have a choice"
+    Cyberstan_message = "HINT: You don't feel very welcome... like they have a choice"
+
+if achievements["Cyberstan"]:
+    Cyberstan_title = "<a:EasyAwardBaftaMusic2025:1359268029850058974> **ON THE ENEMY'S DOORSTEP**"
+else:
+    Cyberstan_title = "<:achievement_style_1:1374174053254041640> **~~ON THE ENEMY'S DOORSTEP~~**"
 
 if achievements["Streak30"]:
-    Streak30_message = "Reach a Streak of 30 🔥"
+    Streak30_message = "Reach a Streak of 30"
 else:
-    Streak30_message = "You need to take some annual leave... seriously. Democracy Applauds You!"
+    Streak30_message = "HINT: You'll need to take some annual leave after this... seriously... Democracy Applauds You!"
+
+if achievements["Streak30"]:
+    Streak30_title = "<a:EasyMedal:1233854253077102653> **INFLAMMABLE**"
+else:
+    Streak30_title = "<:achievement_style_2:1374174051551154267> **~~INFLAMMABLE~~**"
 
 # generate embed message
 
@@ -295,48 +366,48 @@ embed_data = {
     "content": None,
     "embeds": [
         {
-            "title": "",  # Empty title, will be set below
+            "title": "{helldiver_ses}\nHelldiver: {helldiver_name}",  # Empty title, will be set below
             "description": f"**Level {helldiver_level} | {helldiver_title} {TITLE_ICONS.get(df['Title'].mode()[0], '')}**\n\n\"{latest_note}\"\n\n<a:easyshine1:1349110651829747773> <a:easymedal:1233854253077102653> Achievements <a:easymedal:1233854253077102653> <a:easyshine3:1349110648528699422>\n" + 
-                        f"> <a:EasyAwardBaftaMP2025:1363545915352289371> **HIGH COMMAND'S FAVOURITE**\n" +
-                        f"> *{CmdFavourite_message}*\n\n" +
-
-                        f"> <a:EasyAwardBaftaMusic2025:1359268029850058974> **RELIABLE DIVER**\n" +
-                        f"> *{ReliableDiver_message}*\n\n" +
-
-                        f"> <a:EasyAwardBaftaMusic2025:1359268029850058974> **I <3 DSS**\n" +
-                        f"> *{DSSDiver_message}*\n\n" +
-
-                        f"> <a:EasyMedal:1233854253077102653> **OUTBREAK PERFECTED**\n" +
-                        f"> *{OutbreakPerfected_message}*\n\n" +
-
-                        f"> <a:EasyMedal:1233854253077102653> **INCURSION DEVASTATED**\n" +
-                        f"> *{AutomatonPerfected_message}*\n\n" +
-
-                        f"> <a:EasyMedal:1233854253077102653> **INVASION ABOLISHED**\n" +
-                        f"> *{IlluminatePerfected_message}*\n\n" +
-
-                        f"> <a:EasyAwardBaftaMP2025:1363545915352289371> **BUG STOMPER**\n" +
-                        f"> *{TerminidHunter_message}*\n\n" +
-
-                        f"> <a:EasyAwardBaftaMP2025:1363545915352289371> **CLANKER SCRAPPER**\n" +
-                        f"> *{AutomatonHunter_message}*\n\n" +
-
-                        f"> <a:EasyAwardBaftaMP2025:1363545915352289371> **SQUID SEVERER**\n" +
-                        f"> *{IlluminateHunter_message}*\n\n" +
-
-                        f"> <a:EasyAwardBaftaMusic2025:1359268029850058974> **NEVER FORGET**\n" +
-                        f"> *{MalevelonCreek_message}*\n\n" +
-
-                        f"> <a:EasyMedal:1233854253077102653> **you got this on purpose...**\n" +
-                        f"> *{DisgracefulConduct_message}*\n\n" +
-
-                        f"> <a:EasyAwardBaftaMusic2025:1359268029850058974> **HOME SUPER HOME**\n" +
-                        f"> *{SuperEarth_message}*\n\n" +
-
-                        f"> <a:EasyAwardBaftaMusic2025:1359268029850058974> **ON THE ENEMY'S DOORSTEP**\n" +
-                        f"> *{Cyberstan_message}*\n\n" +
-
-                        f"> <a:EasyMedal:1233854253077102653> **INFLAMMABLE**\n" +
+                        f"> {CmdFavourite_title}\n" +
+                        f"> *{CmdFavourite_message}*\n" +
+                        f"> \n" +
+                        f"> {ReliableDiver_title}\n" +
+                        f"> *{ReliableDiver_message}*\n" +
+                        f"> \n" +
+                        f"> {DSSDiver_title}\n" +
+                        f"> *{DSSDiver_message}*\n" +
+                        f"> \n" +
+                        f"> {OutbreakPerfected_title}\n" +
+                        f"> *{OutbreakPerfected_message}*\n" +
+                        f"> \n" +
+                        f"> {AutomatonPerfected_title}\n" +
+                        f"> *{AutomatonPerfected_message}*\n" +
+                        f"> \n" +
+                        f"> {IlluminatePerfected_title}\n" +
+                        f"> *{IlluminatePerfected_message}*\n" +
+                        f"> \n" +
+                        f"> {TerminidHunter_title}\n" +
+                        f"> *{TerminidHunter_message}*\n" +
+                        f"> \n" +
+                        f"> {AutomatonHunter_title}\n" +
+                        f"> *{AutomatonHunter_message}*\n" +
+                        f"> \n" +
+                        f"> {IlluminateHunter_title}\n" +
+                        f"> *{IlluminateHunter_message}*\n" +
+                        f"> \n" +
+                        f"> {MalevelonCreek_title}\n" +
+                        f"> *{MalevelonCreek_message}*\n" +
+                        f"> \n" +
+                        f"> {DisgracefulConduct_title}\n" +
+                        f"> *{DisgracefulConduct_message}*\n" +
+                        f"> \n" +
+                        f"> {SuperEarth_title}\n" +
+                        f"> *{SuperEarth_message}*\n" +
+                        f"> \n" +
+                        f"> {Cyberstan_title}\n" +
+                        f"> *{Cyberstan_message}*\n" +
+                        f"> \n" +
+                        f"> {Streak30_title}\n" +
                         f"> *{Streak30_message}*\n\n",
                         
             "color": 7257043,
