@@ -4,14 +4,262 @@ import configparser
 import pandas as pd
 import threading
 from tkinter import messagebox
+import json
+import os
 
 # Read configuration from config.config
 config = configparser.ConfigParser()
 config.read('config.config')
 
-#Constants
+# Constants
 DEBUG = config.getboolean('DEBUGGING', 'DEBUG', fallback=False)
+SETTINGS_FILE = 'user_settings.json'
 
+# Theme settings
+light_theme = {
+    ".": { 
+        "configure": {
+            "background": "#f0f0f0",  # Light grey background
+            "foreground": "#000000",  # Black text
+        }
+    },
+    "TLabel": {
+        "configure": {
+            "background": "#ffffff",
+            "foreground": "#000000",  # Black text
+        }
+    },
+    "TButton": {
+        "configure": {
+            "background": "#e0e0e0",  # Light grey button
+            "foreground": "#000000",  # Black text
+        }
+    },
+    "TEntry": {
+        "configure": {
+            "background": "#ffffff",
+            "foreground": "#000000",  # Black text
+            "fieldbackground": "#ffffff",
+            "insertcolor": "#000000",
+            "bordercolor": "#c0c0c0",
+            "lightcolor": "#ffffff",
+            "darkcolor": "#c0c0c0",
+        }
+    },
+    "TCheckbutton": {
+        "configure": {
+            "background": "#ffffff",
+            "foreground": "#000000",  # Black text
+            "indicatorbackground": "#ffffff", 
+            "indicatorforeground": "#000000",
+        }
+    },
+    "TCombobox": {
+        "configure": {
+            "background": "#ffffff",
+            "foreground": "#000000",  # Black text
+            "fieldbackground": "#ffffff",
+            "insertcolor": "#000000",
+            "bordercolor": "#c0c0c0",
+            "lightcolor": "#ffffff",
+            "darkcolor": "#c0c0c0",
+            "arrowcolor": "#000000"
+        },
+    },
+    "TFrame": {
+        "configure": {
+            "background": "#ffffff",
+        }
+    },
+    "TLabelframe": {
+        "configure": {
+            "background": "#ffffff",
+            "foreground": "#000000",
+        }
+    },
+    "TLabelframe.Label": {
+        "configure": {
+            "background": "#ffffff",
+            "foreground": "#000000",
+        }
+    },
+    "TNotebook": {
+        "configure": {
+            "background": "#f0f0f0",
+        }
+    },
+    "TNotebook.Tab": {
+        "configure": {
+            "background": "#e0e0e0",
+            "foreground": "#000000",
+        }
+    },
+    "Treeview": {
+        "configure": {
+            "background": "#ffffff",
+            "foreground": "#000000",
+            "fieldbackground": "#ffffff",
+        }
+    },
+    "Treeview.Heading": {
+        "configure": {
+            "background": "#e0e0e0",
+            "foreground": "#000000",
+        }
+    }
+}
+
+dark_theme = {
+    ".": { 
+        "configure": {
+            "background": "#1e1e1e",  # Dark grey background
+            "foreground": "white",    # White text
+        }
+    },
+    "TLabel": {
+        "configure": {
+            "background": "#252526",
+            "foreground": "white",    # White text
+        }
+    },
+    "TButton": {
+        "configure": {
+            "background": "#444444",  # Dark gray button
+            "foreground": "white",    # Gray text by default
+        },
+        "map": {
+            "foreground": [("hover", "white"), ("active", "white")],
+            "background": [("hover", "black"), ("active", "black")]
+        }
+    },
+    "TEntry": {
+        "configure": {
+            "background": "#252526",
+            "foreground": "white",    # White text
+            "fieldbackground": "#3c3c3c",
+            "insertcolor": "#a3a3a3",
+            "bordercolor": "black",
+            "lightcolor": "#4d4d4d",
+            "darkcolor": "black",
+        }
+    },
+    "TCheckbutton": {
+        "configure": {
+            "background": "#252526",
+            "foreground": "white",    # White text
+            "indicatorbackground": "white", 
+            "indicatorforeground": "black",
+        }
+    },
+    "TCombobox": {
+        "configure": {
+            "background": "#444444",
+            "foreground": "black",
+            "fieldbackground": "#444444",
+            "insertcolor": "white",
+            "bordercolor": "black",
+            "lightcolor": "#4d4d4d",
+            "darkcolor": "black",
+            "arrowcolor": "gray",
+        },
+    },
+    "TFrame": {
+        "configure": {
+            "background": "#252526",
+        }
+    },
+    "TLabelframe": {
+        "configure": {
+            "background": "#252526",
+            "foreground": "white",
+        }
+    },
+    "TLabelframe.Label": {
+        "configure": {
+            "background": "#252526",
+            "foreground": "white",
+        }
+    },
+    "TNotebook": {
+        "configure": {
+            "background": "#444444",
+        }
+    },
+    "TNotebook.Tab": {
+        "configure": {
+            "background": "#444444",
+            "foreground": "white",
+        }
+    },
+    "Treeview": {
+        "configure": {
+            "background": "#2d2d2d",
+            "foreground": "white",
+            "fieldbackground": "#2d2d2d",
+        }
+    },
+    "Treeview.Heading": {
+        "configure": {
+            "background": "#444444",
+            "foreground": "white",
+        }
+    }
+}
+
+THEMES = {
+    "light": light_theme,
+    "dark": dark_theme
+}
+
+def apply_theme(root, theme_name):
+    """Apply the selected theme to all widgets."""
+    if theme_name not in THEMES:
+        print(f"Unknown theme: {theme_name}")
+        return
+        
+    theme = THEMES[theme_name]
+    style = ttk.Style()
+    style.theme_use('clam')  # Use 'clam' as a base theme
+    
+    # Apply theme styles to all widget types
+    for widget_type, settings in theme.items():
+        if 'configure' in settings:
+            try:
+                style.configure(widget_type, **settings['configure'])
+            except Exception as e:
+                print(f"Error applying theme to {widget_type}: {e}")
+                
+        if 'map' in settings:
+            try:
+                style.map(widget_type, **settings['map'])
+            except Exception as e:
+                print(f"Error applying map for {widget_type}: {e}")
+    
+    # Special handling for Combobox dropdown
+    if theme_name == 'dark':
+        root.option_add("*TCombobox*Listbox*Background", '#2d2d2d')
+        root.option_add("*TCombobox*Listbox*Foreground", 'white')
+    else:
+        root.option_add("*TCombobox*Listbox*Background", '#ffffff')
+        root.option_add("*TCombobox*Listbox*Foreground", 'black')
+    
+    # Configure the root background
+    if '.' in theme and 'configure' in theme['.']:
+        root_bg = theme['.']['configure'].get('background')
+        if root_bg:
+            root.configure(background=root_bg)
+            
+    return theme_name
+
+def load_theme_preference():
+    """Load theme preference from settings file."""
+    try:
+        with open(SETTINGS_FILE, 'r') as f:
+            settings = json.load(f)
+            return settings.get('theme', 'light')
+    except (FileNotFoundError, json.JSONDecodeError):
+        # Default to light theme if settings file doesn't exist
+        return 'light'
 
 def main():
     # Create the main window
@@ -19,17 +267,25 @@ def main():
     root.title("Excel Data Viewer")
     root.geometry("1980x1000")
     
+    # Apply theme
+    current_theme = load_theme_preference()
+    apply_theme(root, current_theme)
+    
     # Configure root grid layout
     root.grid_rowconfigure(0, weight=1)
     root.grid_columnconfigure(0, weight=1)
     
     # Create a frame for the table
-    table_frame = tk.Frame(root)
+    table_frame = ttk.Frame(root)
     table_frame.grid(row=0, column=0, padx=10, pady=10, sticky="nsew")
     
     # Configure table_frame grid
     table_frame.grid_rowconfigure(0, weight=1)
     table_frame.grid_columnconfigure(0, weight=1)
+    
+    # Create the button frame FIRST - before it's referenced
+    button_frame = ttk.Frame(root)
+    button_frame.grid(row=1, column=0, padx=10, pady=10, sticky="ew")
     
     # Create the table with ttk.Treeview
     try:
@@ -40,11 +296,19 @@ def main():
             excel_file = "mission_log.xlsx"
         
         # Create a label to show loading status
-        status_label = tk.Label(table_frame, text="Loading data...", font=("Arial", 12))
+        status_label = ttk.Label(table_frame, text="Loading data...", font=("Arial", 12))
         status_label.grid(row=0, column=0, sticky="nsew")
         
         # Create the table structure (but don't load data yet)
         table = ttk.Treeview(table_frame, show="headings", selectmode="extended")
+        
+        # Variables for virtual scrolling
+        PAGE_SIZE = 50  # Number of rows to load at once
+        current_offset = 0  # Current position in the dataset
+        total_rows = 0  # Total number of rows in the dataset
+        filtered_df = None  # Will hold the filtered dataframe
+        scroll_timer = None  # Timer for debouncing scroll events
+        last_scroll_position = 0  # Track last scroll position
         
         # Function to load data in background
         def load_data():
@@ -56,28 +320,52 @@ def main():
                 # Configure columns on the main thread
                 root.after(0, lambda: setup_columns(columns))
                 
-                # Read the entire Excel file
-                chunk_size = 1000
-                df = pd.read_excel(excel_file)
+                # Store the dataframe for later use instead of loading all rows
+                global full_data_df
+                full_data_df = pd.read_excel(excel_file)
                 
-                chunk_count = 0
-                total_rows = len(df)
-                for i in range(0, total_rows, chunk_size):
-                    chunk = df.iloc[i:i+chunk_size]
-                    batch = []
-                    for _, row in chunk.iterrows():
-                        values = [str(val) if pd.notna(val) else "" for val in row]
-                        batch.append(values)
-                    
-                    # Update UI in the main thread with this batch
-                    chunk_count += 1
-                    root.after(0, lambda b=batch, c=chunk_count: insert_batch(b, c, chunk_size))
+                # Set filtered_df to the full dataset initially
+                nonlocal filtered_df, total_rows
+                filtered_df = full_data_df
+                total_rows = len(filtered_df)
                 
-                # Final UI update when complete
+                # Only load the first set of visible rows initially
+                display_rows(0, PAGE_SIZE)
+                
+                # Update row counter
+                update_row_counter()
+                
+                # Hide loading indicator when done with initial load
                 root.after(0, lambda: status_label.grid_forget())
-                
+                    
             except Exception as e:
                 root.after(0, lambda e=e: show_error(f"Error loading Excel file: {e}"))
+
+        def display_rows(start_idx, count):
+            # Clear existing rows
+            for item in table.get_children():
+                table.delete(item)
+            
+            # Check if we have a filtered dataframe
+            if filtered_df is None or filtered_df.empty:
+                return
+                
+            # Make sure start_idx is within bounds
+            start_idx = max(0, min(start_idx, len(filtered_df) - 1 if len(filtered_df) > 0 else 0))
+            nonlocal current_offset
+            current_offset = start_idx
+            
+            # Load only the visible chunk
+            end_idx = min(start_idx + count, len(filtered_df))
+            visible_df = filtered_df.iloc[start_idx:end_idx]
+            
+            # Insert visible rows
+            for _, row in visible_df.iterrows():
+                values = [str(val) if pd.notna(val) else "" for val in row]
+                table.insert("", tk.END, values=values)
+                
+            # Update the row counter
+            update_row_counter()
         
         def setup_columns(columns):
             table["columns"] = columns
@@ -85,15 +373,105 @@ def main():
                 table.heading(col, text=col)
                 table.column(col, width=100, anchor=tk.CENTER)
         
-        def insert_batch(batch, chunk_num, chunk_size):
-            for values in batch:
-                table.insert("", tk.END, values=values)
-            status_label.config(text=f"Loading data... (Loaded {chunk_num * chunk_size} rows)")
-        
         def show_error(message):
             status_label.grid_forget()
             messagebox.showerror("Error", message)
             print(message)
+            
+        # Row counter label - now button_frame exists
+        row_counter = ttk.Label(button_frame, text="Showing rows 0-0 of 0")
+        row_counter.pack(side=tk.LEFT, padx=(10, 0))
+        
+        def update_row_counter():
+            end_idx = min(current_offset + PAGE_SIZE, total_rows)
+            row_counter.config(text=f"Showing rows {current_offset+1}-{end_idx} of {total_rows}")
+        
+        # Handle scrollbar movements to implement virtual scrolling with debouncing
+        def on_scroll(*args):
+            # Get the current position of the scrollbar
+            try:
+                # Extract the scrollbar position from args (yview returns values 0.0 to 1.0)
+                position = float(args[0])
+                
+                # Store the position for later use
+                nonlocal last_scroll_position
+                last_scroll_position = position
+                
+                # Cancel previous timer if it exists
+                nonlocal scroll_timer
+                if scroll_timer:
+                    root.after_cancel(scroll_timer)
+                
+                # Set a new timer to update the display after scrolling stops
+                scroll_timer = root.after(100, lambda: update_after_scroll(position))
+                
+            except (ValueError, IndexError):
+                pass
+            return True  # Continue normal scrolling behavior
+        
+        # Function to update display after scrolling stops (called by timer)
+        def update_after_scroll(position):
+            # Calculate the corresponding row index based on position
+            if total_rows > 0:
+                row_index = int(position * total_rows)
+                # Only redraw if we've scrolled enough to show a new page
+                if abs(row_index - current_offset) >= PAGE_SIZE / 2:
+                    display_rows(row_index, PAGE_SIZE)
+            
+            # Reset the timer
+            nonlocal scroll_timer
+            scroll_timer = None
+        
+        # Function to handle mousewheel scrolling
+        def on_mousewheel(event):
+            # This helps smooth the mousewheel scrolling experience
+            # Get current position
+            nonlocal current_offset
+            delta = -1 if event.delta > 0 else 1  # Invert for natural scrolling
+            
+            # Adjust the scroll speed
+            scroll_amount = 3 * delta
+            new_offset = current_offset + scroll_amount
+            
+            # Ensure we stay within bounds
+            if 0 <= new_offset < total_rows:
+                # Update the scrollbar position
+                new_position = new_offset / total_rows if total_rows > 0 else 0
+                y_scrollbar.set(new_position, new_position + (PAGE_SIZE / total_rows if total_rows > 0 else 1))
+                
+                # Only redraw if we've moved enough
+                if abs(new_offset - current_offset) >= PAGE_SIZE / 4:
+                    display_rows(new_offset, PAGE_SIZE)
+        
+        # Function to filter data based on all selected filters
+        def filter_data():
+            # Apply filters to the full dataset
+            nonlocal filtered_df, total_rows, current_offset
+            df = full_data_df.copy()
+            
+            # Apply enemy type filter
+            if filters['enemy_type'] != 'All':
+                df = df[df['Enemy Type'] == filters['enemy_type']]
+            
+            # Apply subfaction filter
+            if filters['Enemy Subfaction'] != 'All':
+                df = df[df['Enemy Subfaction'] == filters['Enemy Subfaction']]
+                
+            # Apply sector filter
+            if filters['sector'] != 'All':
+                df = df[df['Sector'] == filters['sector']]
+                
+            # Apply planet filter
+            if filters['planet'] != 'All':
+                df = df[df['Planet'] == filters['planet']]
+            
+            # Update our filtered dataframe
+            filtered_df = df
+            total_rows = len(filtered_df)
+            current_offset = 0
+            
+            # Display the first page
+            display_rows(0, PAGE_SIZE)
         
         # Start the loading thread
         threading.Thread(target=load_data, daemon=True).start()
@@ -106,17 +484,113 @@ def main():
     x_scrollbar = ttk.Scrollbar(table_frame, orient=tk.HORIZONTAL, command=table.xview)
     table.configure(yscrollcommand=y_scrollbar.set, xscrollcommand=x_scrollbar.set)
     
+    # Configure the scrollbar to use our virtual scrolling with improved performance
+    # Use a better method for binding scrolling events
+    def custom_yview(*args):
+        on_scroll(args[1])
+        return table.yview(*args)
+        
+    y_scrollbar.configure(command=custom_yview)
+    
+    # Bind mousewheel for smoother scrolling
+    table.bind("<MouseWheel>", on_mousewheel)
+    
+    # Add keyboard navigation for smoother experience
+    def on_key(event):
+        nonlocal current_offset
+        key = event.keysym
+        
+        if key == "Down":
+            new_offset = current_offset + 1
+            if new_offset < total_rows:
+                if new_offset % PAGE_SIZE == 0:
+                    display_rows(new_offset, PAGE_SIZE)
+                else:
+                    # Just update scrollbar position without redrawing
+                    new_position = new_offset / total_rows if total_rows > 0 else 0
+                    y_scrollbar.set(new_position, new_position + (PAGE_SIZE / total_rows if total_rows > 0 else 1))
+                    current_offset = new_offset
+                    update_row_counter()
+                    
+        elif key == "Up":
+            new_offset = max(0, current_offset - 1)
+            if new_offset % PAGE_SIZE == PAGE_SIZE - 1 or current_offset == 0:
+                display_rows(new_offset, PAGE_SIZE)
+            else:
+                # Just update scrollbar position without redrawing
+                new_position = new_offset / total_rows if total_rows > 0 else 0
+                y_scrollbar.set(new_position, new_position + (PAGE_SIZE / total_rows if total_rows > 0 else 1))
+                current_offset = new_offset
+                update_row_counter()
+                
+        elif key == "Next":  # Page Down
+            new_offset = min(total_rows - 1, current_offset + PAGE_SIZE)
+            display_rows(new_offset, PAGE_SIZE)
+            
+        elif key == "Prior":  # Page Up
+            new_offset = max(0, current_offset - PAGE_SIZE)
+            display_rows(new_offset, PAGE_SIZE)
+            
+        elif key == "Home":
+            display_rows(0, PAGE_SIZE)
+            
+        elif key == "End":
+            display_rows(max(0, total_rows - PAGE_SIZE), PAGE_SIZE)
+    
+    # Bind keyboard navigation
+    table.bind("<Key>", on_key)
+    
+    # Add navigation buttons
+    def next_page():
+        nonlocal current_offset
+        new_offset = current_offset + PAGE_SIZE
+        if new_offset < total_rows:
+            display_rows(new_offset, PAGE_SIZE)
+            
+    def prev_page():
+        nonlocal current_offset
+        new_offset = max(0, current_offset - PAGE_SIZE)
+        display_rows(new_offset, PAGE_SIZE)
+    
+    # Add navigation buttons to button_frame
+    nav_frame = ttk.Frame(button_frame)
+    nav_frame.pack(side=tk.LEFT, padx=(20, 0))
+    
+    prev_button = ttk.Button(nav_frame, text="Previous Page", command=prev_page)
+    prev_button.pack(side=tk.LEFT)
+    
+    next_button = ttk.Button(nav_frame, text="Next Page", command=next_page)
+    next_button.pack(side=tk.LEFT, padx=(5, 0))
+    
+    # Add a slider for adjusting page size
+    page_size_frame = ttk.Frame(button_frame)
+    page_size_frame.pack(side=tk.LEFT, padx=(20, 0))
+    
+    ttk.Label(page_size_frame, text="Rows per page:").pack(side=tk.LEFT)
+    
+    def update_page_size(event=None):
+        nonlocal PAGE_SIZE
+        try:
+            new_size = int(page_size_var.get())
+            if 10 <= new_size <= 200:
+                PAGE_SIZE = new_size
+                display_rows(current_offset, PAGE_SIZE)
+        except ValueError:
+            pass
+    
+    page_size_var = tk.StringVar(value=str(PAGE_SIZE))
+    page_size_combo = ttk.Combobox(page_size_frame, textvariable=page_size_var, width=5, 
+                                  values=["25", "50", "75", "100", "150", "200"])
+    page_size_combo.pack(side=tk.LEFT, padx=(5, 0))
+    page_size_combo.bind("<<ComboboxSelected>>", update_page_size)
+    page_size_combo.bind("<Return>", update_page_size)
+    
     # Grid layout for the table and scrollbars
     table.grid(row=0, column=0, sticky="nsew")
     y_scrollbar.grid(row=0, column=1, sticky="ns")
     x_scrollbar.grid(row=1, column=0, sticky="ew")
     
-    # Create a button frame
-    button_frame = tk.Frame(root)
-    button_frame.grid(row=1, column=0, padx=10, pady=10, sticky="ew")
-    
     # Add a button
-    
     def button_action():
         selected = table.selection()
         if selected:
@@ -128,12 +602,34 @@ def main():
             print("No item selected")
     
     # Add a quit button
-    quit_button = tk.Button(button_frame, text="Quit", command=root.quit)
+    quit_button = ttk.Button(button_frame, text="Quit", command=root.quit)
     quit_button.pack(side=tk.RIGHT)
 
     # Add a process selection button
-    button = tk.Button(button_frame, text="Process Selection", command=button_action)
+    button = ttk.Button(button_frame, text="Process Selection", command=button_action)
     button.pack(side=tk.RIGHT)
+
+    # Add a theme toggle button
+    def toggle_theme():
+        nonlocal current_theme
+        new_theme = "dark" if current_theme == "light" else "light"
+        current_theme = apply_theme(root, new_theme)
+        
+        # Save theme preference
+        try:
+            settings = {}
+            if os.path.exists(SETTINGS_FILE):
+                with open(SETTINGS_FILE, 'r') as f:
+                    settings = json.load(f)
+            
+            settings['theme'] = current_theme
+            with open(SETTINGS_FILE, 'w') as f:
+                json.dump(settings, f)
+        except Exception as e:
+            print(f"Error saving theme preference: {e}")
+            
+    theme_button = ttk.Button(button_frame, text="Toggle Theme", command=toggle_theme)
+    theme_button.pack(side=tk.RIGHT, padx=10)
 
     # Add filters section
     # Global variables to track filter selections
@@ -144,42 +640,8 @@ def main():
         'planet': 'All'
     }
     
-    # Function to filter data based on all selected filters
-    def filter_data():
-        # Clear the table
-        for item in table.get_children():
-            table.delete(item)
-        
-        # Reload data based on all selected filters
-        try:
-            df = pd.read_excel(excel_file)
-            
-            # Apply enemy type filter
-            if filters['enemy_type'] != 'All':
-                df = df[df['Enemy Type'] == filters['enemy_type']]
-            
-            # Apply subfaction filter
-            if filters['Enemy Subfaction'] != 'All':
-                df = df[df['Enemy Subfaction'] == filters['Enemy Subfaction']]
-            # Apply sector filter
-            if filters['sector'] != 'All':
-                df = df[df['Sector'] == filters['sector']]
-                
-            # Apply planet filter
-            if filters['planet'] != 'All':
-                df = df[df['Planet'] == filters['planet']]
-            
-            # Insert filtered data into table
-            # Insert filtered data into table
-            for _, row in df.iterrows():
-                values = [str(val) if pd.notna(val) else "" for val in row]
-                table.insert("", tk.END, values=values)
-                
-        except Exception as e:
-            show_error(f"Error filtering data: {e}")
-
     # Enemy Type filter
-    enemy_label = tk.Label(button_frame, text="Select enemy Type:")
+    enemy_label = ttk.Label(button_frame, text="Select enemy Type:")
     enemy_label.pack(side=tk.LEFT)
     enemy_var = tk.StringVar()
     enemy_dropdown = ttk.Combobox(button_frame, textvariable=enemy_var)
@@ -194,7 +656,7 @@ def main():
     enemy_dropdown.bind("<<ComboboxSelected>>", on_enemy_select)
     
     # Subfaction filter
-    subfaction_label = tk.Label(button_frame, text="Select subfaction:")
+    subfaction_label = ttk.Label(button_frame, text="Select subfaction:")
     subfaction_label.pack(side=tk.LEFT, padx=(10, 0))
     subfaction_var = tk.StringVar()
     subfaction_dropdown = ttk.Combobox(button_frame, textvariable=subfaction_var)
@@ -211,7 +673,7 @@ def main():
     subfaction_dropdown.bind("<<ComboboxSelected>>", on_subfaction_select)
     
     # Sector filter
-    sector_label = tk.Label(button_frame, text="Select sector:")
+    sector_label = ttk.Label(button_frame, text="Select sector:")
     sector_label.pack(side=tk.LEFT, padx=(10, 0))
     sector_var = tk.StringVar()
     sector_dropdown = ttk.Combobox(button_frame, textvariable=sector_var)
@@ -228,8 +690,8 @@ def main():
     
     sector_dropdown.bind("<<ComboboxSelected>>", on_sector_select)
 
-    #planet filter
-    planet_label = tk.Label(button_frame, text="Select planet:")
+    # Planet filter
+    planet_label = ttk.Label(button_frame, text="Select planet:")
     planet_label.pack(side=tk.LEFT, padx=(10, 0))
     planet_var = tk.StringVar()
     planet_dropdown = ttk.Combobox(button_frame, textvariable=planet_var)
@@ -250,8 +712,6 @@ def main():
     planet_dropdown.current(0)
     planet_dropdown.pack(side=tk.LEFT)
 
-    planet_dropdown.bind("<<ComboboxSelected>>", on_planet_select)
-
     # Add a button to clear filters
     def clear_filters():
         filters['enemy_type'] = 'All'
@@ -265,7 +725,7 @@ def main():
         planet_dropdown.current(0)
         
         filter_data()
-    clear_button = tk.Button(button_frame, text="Clear Filters", command=clear_filters)
+    clear_button = ttk.Button(button_frame, text="Clear Filters", command=clear_filters)
     clear_button.pack(side=tk.LEFT, padx=(10, 0))
     
     # Run the main event loop

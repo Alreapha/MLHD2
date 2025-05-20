@@ -82,6 +82,176 @@ WEBHOOK_URLS = {
 }
 ACTIVE_WEBHOOK = WEBHOOK_URLS['TEST'] if DEBUG else WEBHOOK_URLS['PROD']
 
+# Theme settings
+light_theme = {
+    ".": { 
+        "configure": {
+            "background": "#f0f0f0",  # Light grey background
+            "foreground": "#000000",  # Black text
+        }
+    },
+    "TLabel": {
+        "configure": {
+            "background": "#ffffff",
+            "foreground": "#000000",  # Black text
+        }
+    },
+    "TButton": {
+        "configure": {
+            "background": "#e0e0e0",  # Light grey button
+            "foreground": "#000000",  # Black text
+        }
+    },
+    "TEntry": {
+        "configure": {
+            "background": "#ffffff",
+            "foreground": "#000000",  # Black text
+            "fieldbackground": "#ffffff",
+            "insertcolor": "#000000",
+            "bordercolor": "#c0c0c0",
+            "lightcolor": "#ffffff",
+            "darkcolor": "#c0c0c0",
+        }
+    },
+    "TCheckbutton": {
+        "configure": {
+            "background": "#ffffff",
+            "foreground": "#000000",  # Black text
+            "indicatorbackground": "#ffffff", 
+            "indicatorforeground": "#000000",
+        }
+    },
+    "TCombobox": {
+        "configure": {
+            "background": "#ffffff",
+            "foreground": "#000000",  # Black text
+            "fieldbackground": "#ffffff",
+            "insertcolor": "#000000",
+            "bordercolor": "#c0c0c0",
+            "lightcolor": "#ffffff",
+            "darkcolor": "#c0c0c0",
+            "arrowcolor": "#000000"
+        },
+    },
+    "TFrame": {
+        "configure": {
+            "background": "#ffffff",
+        }
+    },
+    "TLabelframe": {
+        "configure": {
+            "background": "#ffffff",
+            "foreground": "#000000",
+        }
+    },
+    "TLabelframe.Label": {
+        "configure": {
+            "background": "#ffffff",
+            "foreground": "#000000",
+        }
+    },
+    "TNotebook": {
+        "configure": {
+            "background": "#f0f0f0",
+        }
+    },
+    "TNotebook.Tab": {
+        "configure": {
+            "background": "#e0e0e0",
+            "foreground": "#000000",
+        }
+    }
+}
+
+dark_theme = {
+    ".": { 
+        "configure": {
+            "background": "#1e1e1e",  # Dark grey background
+            "foreground": "white",    # White text
+        }
+    },
+    "TLabel": {
+        "configure": {
+            "background": "#252526",
+            "foreground": "white",    # White text
+        }
+    },
+    "TButton": {
+        "configure": {
+            "background": "#444444",  # Dark gray button
+            "foreground": "white",    # Gray text by default
+        },
+        "map": {
+            "foreground": [("hover", "white"), ("active", "white")],
+            "background": [("hover", "black"), ("active", "black")]
+        }
+    },
+    "TEntry": {
+        "configure": {
+            "background": "#252526",
+            "foreground": "white",    # White text
+            "fieldbackground": "#3c3c3c",
+            "insertcolor": "#a3a3a3",
+            "bordercolor": "black",
+            "lightcolor": "#4d4d4d",
+            "darkcolor": "black",
+        }
+    },
+    "TCheckbutton": {
+        "configure": {
+            "background": "#252526",
+            "foreground": "white",    # White text
+            "indicatorbackground": "white", 
+            "indicatorforeground": "black",
+        }
+    },
+    "TCombobox": {
+        "configure": {
+            "background": "#444444",
+            "foreground": "black",
+            "fieldbackground": "#444444",
+            "insertcolor": "white",
+            "bordercolor": "black",
+            "lightcolor": "#4d4d4d",
+            "darkcolor": "black",
+            "arrowcolor": "gray",
+        },
+    },
+    "TFrame": {
+        "configure": {
+            "background": "#252526",
+        }
+    },
+    "TLabelframe": {
+        "configure": {
+            "background": "#252526",
+            "foreground": "white",
+        }
+    },
+    "TLabelframe.Label": {
+        "configure": {
+            "background": "#252526",
+            "foreground": "white",
+        }
+    },
+    "TNotebook": {
+        "configure": {
+            "background": "#444444",
+        }
+    },
+    "TNotebook.Tab": {
+        "configure": {
+            "background": "#444444",
+            "foreground": "white",
+        }
+    }
+}
+
+THEMES = {
+    "light": light_theme,
+    "dark": dark_theme
+}
+
 # Enemy icons and colors from config
 ENEMY_ICONS = {
     "Automatons": config['EnemyIcons']['Automatons'],
@@ -664,7 +834,82 @@ def total_missions():
 
 class MissionLogGUI:
     """GUI application for logging Helldiver 2 mission data."""
-    
+    def toggle_theme(self):
+        """Toggle between light and dark themes."""
+        new_theme = "dark" if self.current_theme == "light" else "light"
+        self.apply_theme(new_theme)
+
+    def apply_theme(self, theme_name):
+        """Apply the selected theme to all widgets."""
+        if theme_name not in THEMES:
+            logging.error(f"Unknown theme: {theme_name}")
+            return
+            
+        theme = THEMES[theme_name]
+        style = ttk.Style()
+        style.theme_use('clam')  # Use 'clam' as a base theme
+        
+        # Apply theme styles to all widget types
+        for widget_type, settings in theme.items():
+            if 'configure' in settings:
+                try:
+                    style.configure(widget_type, **settings['configure'])
+                except Exception as e:
+                    logging.error(f"Error applying theme to {widget_type}: {e}")
+            if 'map' in settings:
+                        try:
+                            style.map(widget_type, **settings['map'])
+                        except Exception as e:
+                            logging.error(f"Error applying map for {widget_type}: {e}")
+                
+        
+        # Special handling for Combobox dropdown
+        if theme_name == 'dark':
+            self.root.option_add("*TCombobox*Listbox*Background", '#2d2d2d')
+            self.root.option_add("*TCombobox*Listbox*Foreground", 'white')
+        else:
+            self.root.option_add("*TCombobox*Listbox*Background", '#ffffff')
+            self.root.option_add("*TCombobox*Listbox*Foreground", 'black')
+        
+        # Configure the root background
+        if '.' in theme and 'configure' in theme['.']:
+            root_bg = theme['.']['configure'].get('background')
+            if root_bg:
+                self.root.configure(background=root_bg)
+        
+        # Update frame style
+        if 'TFrame' in theme and 'configure' in theme['TFrame']:
+            frame_bg = theme['TFrame']['configure'].get('background')
+            if frame_bg:
+                style.configure('Custom.TFrame', background=frame_bg)
+                self.frame.configure(style='Custom.TFrame')
+        
+        # Store current theme
+        self.current_theme = theme_name
+        
+        # Save theme preference
+        settings = {}
+        try:
+            with open(self.settings_file, 'r') as f:
+                settings = json.load(f)
+        except (FileNotFoundError, json.JSONDecodeError):
+            pass
+        
+        settings['theme'] = theme_name
+        with open(self.settings_file, 'w') as f:
+            json.dump(settings, f)
+
+    def load_theme(self):
+        """Load theme preference from settings."""
+        try:
+            with open(self.settings_file, 'r') as f:
+                settings = json.load(f)
+                theme_name = settings.get('theme', 'light')
+                self.apply_theme(theme_name)
+        except (FileNotFoundError, json.JSONDecodeError):
+            # Default to light theme if settings file doesn't exist
+            self.apply_theme('light')
+
     def __init__(self, root: tk.Tk) -> None:
         """Initialize the GUI application."""
         self.root = root
@@ -674,6 +919,8 @@ class MissionLogGUI:
             self.root.title("Helldiver Mission Log Manager V-{}".format(VERSION))
         
         self.root.resizable(False, False)
+        # Initialize theme
+        self.current_theme = "light"  # Default theme
         
         # Load icon in a separate thread
         def load_icon():
@@ -693,7 +940,7 @@ class MissionLogGUI:
         
         # Delay loading settings
         self.root.after(100, self.load_settings)
-        
+        self.load_theme()
         # Start RPC updates after a short delay
         self.root.after(1000, self._periodic_rpc_update)
 
@@ -753,10 +1000,14 @@ class MissionLogGUI:
 
     def _create_main_frame(self) -> None:
         """Create the main application frame."""
-        self.frame = ttk.Frame(self.root, padding="10")
-        self.frame.grid(row=0, column=0, sticky=(tk.W, tk.E, tk.N, tk.S))
-        
         style = ttk.Style()
+        # Make sure to use a default theme in case current_theme is not set yet
+        theme_name = getattr(self, 'current_theme', 'light')
+        style.configure('Custom.TFrame', background=THEMES[theme_name]['TFrame']['configure']['background'])
+
+        self.frame = ttk.Frame(self.root, padding="10", style='Custom.TFrame')
+        self.frame.grid(row=0, column=0, sticky=(tk.W, tk.E, tk.N, tk.S))
+
         style.configure('TLabel', font=('Arial', 10))
         style.configure('TButton', font=('Arial', 10, 'bold'))
         style.configure('TExportButton', font=('Arial', 7))
@@ -1149,6 +1400,10 @@ class MissionLogGUI:
             invite_fallback = ttk.Button(export_frame, text="Invite Button", command=lambda: webbrowser.open("https://discord.gg/U6ydgwFKZG"))
             invite_fallback.grid(row=4, column=3, padx=(0,20), pady=15)  # Match the grid layout of other buttons
 
+        # Add this to the export frame section where you set up the buttons
+        theme_button = ttk.Button(export_frame, text="Toggle\nTheme", command=self.toggle_theme, padding=(6,5), width=14)
+        theme_button.grid(row=4, column=4, padx=(40,0), pady=15)
+
     def _update_discord_presence(self) -> None:
         """Update Discord Rich Presence with current mission information."""
         if not hasattr(self, 'RPC') or self.RPC is None:
@@ -1207,6 +1462,17 @@ class MissionLogGUI:
 
         threading.Thread(target=load, daemon=True).start()
 
+    def load_theme(self):
+        """Load theme preference from settings."""
+        try:
+            with open(self.settings_file, 'r') as f:
+                settings = json.load(f)
+                theme_name = settings.get('theme', 'light')
+                self.apply_theme(theme_name)
+        except (FileNotFoundError, json.JSONDecodeError):
+            # Default to light theme if settings file doesn't exist
+            self.apply_theme('light')
+
     def _apply_settings(self, settings: Dict) -> None:
         """Apply loaded settings to UI elements."""
         self.Helldivers.set(settings.get('helldiver', ''))
@@ -1216,6 +1482,8 @@ class MissionLogGUI:
         self.DSS.set(settings.get('DSS', False))
         self.shipName1.set(settings.get('shipName1', 'SES Adjudicator'))
         self.shipName2.set(settings.get('shipName2', 'of Allegiance'))
+        if 'theme' in settings:
+            self.apply_theme(settings['theme'])
 
 
         if settings.get('DSS'):
@@ -1254,6 +1522,7 @@ class MissionLogGUI:
             'shipName1': self.shipName1.get(),
             'shipName2': self.shipName2.get(),
             'profile_picture': self.profile_picture.get(),
+             'theme': self.current_theme,
         }
         try:
             with open(self.settings_file, 'w') as f:

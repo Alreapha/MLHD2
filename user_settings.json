@@ -1,16 +1,1 @@
-{
-    "helldiver": "CalamitusXIII",
-    "level": 150,
-    "title": "SERVANT OF FREEDOM",
-    "sector": "Altus Sector",
-    "planet": "New Haven",
-    "difficulty": "1 - TRIVIAL",
-    "mission": "Terminate Illegal Broadcast",
-    "DSS": false,
-    "DSSMod": "Inactive",
-    "campaign": "Defense",
-    "subfaction": "Automaton Legion",
-    "shipName1": "SES Herald",
-    "shipName2": "of Wrath",
-    "profile_picture": "TR-7 Ambassador of the Brand"
-}
+{"helldiver": "Helldiver", "level": 0, "title": "Cadet", "sector": "Altus Sector", "planet": "New Haven", "difficulty": "1 - TRIVIAL", "mission": "Terminate Illegal Broadcast", "DSS": false, "DSSMod": "Inactive", "campaign": "Defense", "subfaction": "Automaton Legion", "shipName1": "SES Herald", "shipName2": "of Wrath", "profile_picture": "TR-7 Ambassador of the Brand", "theme": "light"}
