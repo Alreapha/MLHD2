@@ -61,7 +61,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 
 # Constants
 DEBUG = config.getboolean('DEBUGGING', 'DEBUG', fallback=False)
-VERSION = "1.4.0"
+VERSION = "1.4.001"
 # Version layout: Core.Major.Patch
 # Core: Major changes, Major features
 # Major: Minor changes, Minor features
