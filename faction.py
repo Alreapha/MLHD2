@@ -377,7 +377,8 @@ BIOME_BANNERS = {
 	"Skitter": config['BiomeBanners']['Haunted Swamp'],
     "Angel's Venture": config['BiomeBanners']['Fractured Planet'],
     "Moradesh": config['BiomeBanners']['Fractured Planet'],
-    "Meridia": config['BiomeBanners']['Black Hole']
+    "Meridia": config['BiomeBanners']['Black Hole'],
+    "Super Earth": config['BiomeBanners']['Super Earth']
 }
 
 # Title icons for Titles

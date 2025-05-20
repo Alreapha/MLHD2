@@ -61,7 +61,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 
 # Constants
 DEBUG = config.getboolean('DEBUGGING', 'DEBUG', fallback=False)
-VERSION = "1.4.001"
+VERSION = "1.4.002"
 # Version layout: Core.Major.Patch
 # Core: Major changes, Major features
 # Major: Minor changes, Minor features
@@ -622,7 +622,8 @@ BIOME_BANNERS = {
 	"Skitter": config['BiomeBanners']['Haunted Swamp'],
     "Angel's Venture": config['BiomeBanners']['Fractured Planet'],
     "Moradesh": config['BiomeBanners']['Fractured Planet'],
-    "Meridia": config['BiomeBanners']['Black Hole']
+    "Meridia": config['BiomeBanners']['Black Hole'],
+    "Super Earth": config['BiomeBanners']['Super Earth']
 }
 
 # Enemy icons for Subfactions
