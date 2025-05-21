@@ -27,7 +27,7 @@
     "planets": ["Kelvinor", "Martyr's Bay", "Freedom Peak", "Viridia Prime", "Obari"]
   },
   "Celeste Sector": {
-    "planets": ["Sulfura", "Nublaria I", "Krakatwo", "Ivis", "Slif", "Moradesh"]
+    "planets": ["Sulfura", "Nublaria I", "Krakatwo", "Ivis", "Slif", "Moradesh", "Meridia"]
   },
   "Draco Sector": {
     "planets": ["Crimsica", "Estanu", "Fori Prime"]
@@ -125,11 +125,8 @@
   "Severin Sector": {
     "planets": ["Maia", "Malevelon Creek", "Durgen", "Ubanea", "Tibit"]
   },
-  "Sol Sector": {
+  "Sol System": {
     "planets": ["Super Earth", "Mars"]
-  },
-  "Sten Sector": {
-    "planets": ["Trandor", "Peacock", "Partion", "Overgoe Prime", "Azur Secundus"]
   },
   "Talus Sector": {
     "planets": ["Shallus", "Shelt", "Gaellivare", "Imber"]
@@ -147,7 +144,7 @@
     "planets": ["Varylia 5", "Choepessa IV", "Ustotu", "Troost", "Vandalon IV"]
   },
   "Umlaut Sector": {
-    "planets": ["Erata Prime", "Fenrir III", "Meridia", "Turing"]
+    "planets": ["Erata Prime", "Fenrir III", "Turing"]
   },
   "Ursa Sector": {
     "planets": ["Skaash", "Acrab XI", "Acrux IX", "Gemma"]
@@ -159,7 +156,7 @@
     "planets": ["Skat Bay", "Sirius", "Siemnot", "Shete"]
   },
   "Xzar Sector": {
-    "planets": ["Mort", "Pöpli IX", "Ingmar", "Mantes", "Draupnir"]
+    "planets": ["Mort", "P\u00F6pli IX", "Ingmar", "Mantes", "Draupnir"]
   },
   "Ymir Sector": {
     "planets": ["Meissa", "Wasat", "X-45", "Vega Bay", "Wezen"]
