@@ -20,7 +20,7 @@ ENEMY_TYPES = ['All', 'Automatons', 'Illuminate', 'Terminids']
 SUBFACTIONS = [
     'All', 'Terminid Horde', 'Predator Strain', 'Spore Burst Strain', 
     'Automaton Legion', 'Jet Brigade', 'Incineration Corps', 
-    'Jet Brigade & Incineration Corps', 'Illuminate Cult'
+    'Jet Brigade & Incineration Corps', 'Illuminate Cult', 'The Great Host'
 ]
 SECTORS = [
     'All', 'Akira Sector', 'Alstrad Sector', 'Altus Sector', 'Andromeda Sector', 'Arturion Sector', 'Barnard Sector', 'Borgus Sector', 'Cancri Sector', 'Cantolus Sector', 'Celeste Sector', 'Draco Sector', 'Falstaff Sector', 'Farsight Sector', 'Ferris Sector', 'Gallux Sector',
