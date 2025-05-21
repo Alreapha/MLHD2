@@ -1560,7 +1560,7 @@ class MissionLogGUI:
 
         if self._save_to_excel(data):
             if self._send_to_discord(data):
-                self._show_success("Mission report submitted successfully!")
+                print("Sent To Discord")
             
     def _validate_submission(self) -> bool:
         """Validate all required fields before submission."""
@@ -1697,7 +1697,10 @@ class MissionLogGUI:
             diff_icon = get_difficulty_icon(data['Difficulty'])
             subfaction_icon = get_subfaction_icon(data['Enemy Subfaction'])
             campaign_icon = get_campaign_icon(data['Mission Category'])
-            mission_icon = get_mission_icon(data['Mission Type'])
+            if data['Mission Type'] == "Blitz: Search and Destroy" and data['Enemy Type'] == "Automatons":
+                mission_icon = get_mission_icon("PLACEHOLDER")
+            else:
+                mission_icon = get_mission_icon(data['Mission Type'])
             biome_banner = get_biome_banner(data['Planet'])
             dss_icon = get_dss_icon(data['DSS Modifier'])
             title_icon = get_title_icon(data['Title'])
