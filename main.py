@@ -1901,7 +1901,7 @@ class MissionLogGUI:
 
 if __name__ == "__main__":
     try:
-        with open('settings.json', 'r') as f:
+        with open('Dcord.json', 'r') as f:
             settings_data = json.load(f)
             discord_uid = settings_data.get('discord_uid', '0')
             if not (re.match(r'^\d{17,19}$', discord_uid) or (DEBUG and discord_uid == '0')):
