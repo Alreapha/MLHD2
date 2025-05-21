@@ -7,7 +7,7 @@ CREDITS TO ADAM FOR THE SCRIPT AND THE GUI
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⣿⠀⣿⡁⣿⠇⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⠀⣿⡄⣿⠃⢸⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣭⣤⣶⣶⡶⠶⠶⠦⢬⣄⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⣶⣿⣿⣿⣿⡿⠿⠿⠟⠈⠶⣷⣶⣖⣛⠛⠲⢤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⣶⣿⣿⣿⣿⡿⠿⠿⠟⠈⠶⣷⣶⣖⣛⠛⠲⢤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⣿⣿⣿⣿⣿⣿⣃⠀⠀⠀⠀⠀⠀⠀⢿⣿⣿⣧⣀⠸⣿⣧⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⣿⣿⡿⠛⢿⣿⢭⡟⠔⠃⠀⠀⠀⠀⠀⠀⠈⣙⣿⣿⣿⣿⣿⣿⣿⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣾⣿⣿⣋⣀⡀⣏⣥⠟⠈⣛⣳⠀⠀⠀⠀⠀⠀⢤⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -17,23 +17,16 @@ CREDITS TO ADAM FOR THE SCRIPT AND THE GUI
 ⠀⠀⠀⣦⠀⠀⠀⠀⠀⠀⡿⠀⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣼⠟⣽⣷⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⢸⡄⠀⠀⠀⠀⠀⣸⡄⠀⠀
 ⠐⢶⣾⣿⣷⠶⠂⠀⡆⠀⡗⠀⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⢖⠀⢘⣻⠃⣵⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⢹⡇⢸⡇⢀⡆⠀⠲⣶⣿⣿⡶⠒
 ⠀⢠⡿⠛⢿⡄⠀⠀⣇⠀⣿⠀⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⣿⣴⣾⣿⣿⣿⣿⣿⣿⣿⣿⠹⣿⣿⣿⣿⣿⣿⣿⣿⡇⣸⡇⢸⠃⢸⡇⠀⠀⡼⠟⠻⣇⠀
-⠀⠀⠀⠀⠀⠈⠀⠀⢿⠀⢹⡄⢻⣇⠀⠀⠀⠀⠀⠀⠀⠀⢀⣶⣤⡿⠿⢿⡻⣿⣿⡿⠉⣃⣙⣿⣶⣀⣿⣿⣿⣿⡿⡿⣿⣇⣿⠀⣿⠀⣸⠀⠀⠀⠀⠀⠀⠈⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠸⣇⠈⣧⠈⣿⡄⠀⠀⠀⠀⠀⠀⠀⣈⣟⣋⣀⣀⡇⠙⠚⠯⠹⠾⠟⣿⣿⣿⡿⢿⢟⣟⠁⠀⠀⠉⣿⠇⣸⠇⢠⡟⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⡄⠸⣇⠘⣿⡄⠀⠀⠀⢠⣾⣿⣿⣿⣿⣿⣿⣧⣄⣀⣤⣤⣤⡴⢿⣿⣿⣿⣶⣾⠏⠀⠀⢀⣼⠏⢠⡟⠀⣾⠁⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⢠⠀⠀⠈⢻⡄⠹⣧⡈⢿⣆⠀⠀⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⡙⠻⣿⠟⡃⠀⠀⣠⣾⠋⣰⠟⢀⣾⠃⠀⠀⢠⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠠⣤⣤⣾⣧⣤⡤⠀⠻⣆⠈⢷⣄⠙⢷⣄⠈⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣶⠞⠁⣠⣾⠟⢁⡾⠋⢠⡾⠁⠠⣤⣤⣿⣦⣤⡄⠀⠀⠀
-⠀⠀⠀⠀⠈⣹⣿⣿⡏⠀⠀⠀⠙⢷⣄⠙⢷⣄⠙⠿⣦⣄⡉⠉⠉⠻⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⣁⣴⡾⠛⣡⣴⠟⢁⣴⠟⠀⠀⠀⠈⣿⣿⣿⡁⠀⠀⠀⠀
-⠀⠀⠀⠀⠐⠋⠀⠈⠓⠀⠀⠀⠀⠀⠙⢷⣄⡙⠻⣦⣌⡙⠻⢷⣶⣤⣬⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿⠛⣁⣴⡾⠋⣠⣴⠟⠁⠀⠀⠀⠀⠘⠋⠀⠉⠃⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⢻⣶⡄⠙⢻⣷⣶⣤⡌⠉⠉⠉⠉⠉⠉⠉⢩⣤⣶⣾⡟⠋⢡⣴⣾⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡄⠀⠉⠛⠷⡦⠄⣉⣥⣴⠶⠾⠿⠿⠿⠿⠟⠛⣛⣉⣥⣴⡾⠟⠋⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⣸⣷⣀⣀⠀⢀⣴⠟⠋⠁⠰⠶⠾⠿⠿⠿⠿⠿⠿⠛⠛⠉⢤⣄⢀⣀⣰⣿⣀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢹⣿⣿⣟⠁⣴⠋⠀⠀⠀⠀⠀⠀⠀⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠙⢧⡙⣿⣿⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠚⠉⠈⠙⠀⠀⠀⠀⠀⠀⠀⠀⡀⠀⢠⣷⠀⠀⡀⠀⠀⠀⠀⠀⠀⠀⠘⠉⠀⠙⠆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠻⣿⣿⣿⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⠛⠙⠻⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
-
+⠀⠀⠀⠀⠀⠈⠀⠀⢿⠀⢹⡄⢻⣇⠀⠀⠀⠀⠀⠀⠀⢀⣶⣤⡿⠿⢿⡻⣿⣿⡿⠉⣃⣙⣿⣶⣀⣿⣿⣿⣿⡿⡿⣿⣇⣿⠀⣿⠀⣸⠀⠀⠀⠀⠀⠀⠈⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠸⣇⠈⣧⠈⣿⡄⠀⠀⠀⠀⠀⠀⣈⣟⣋⣀⣀⡇⠙⠚⠯⠹⠾⠟⣿⣿⣿⡿⢿⢟⣟⠁⠀⠀⠉⣿⠇⣸⠇⢠⡟⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⡄⠸⣇⠘⣿⡄⠀⠀⠀⢠⣾⣿⣿⣿⣿⣿⣧⣄⣀⣤⣤⣤⡴⢿⣿⣿⣿⣶⣾⠏⠀⠀⢀⣼⠏⢠⡟⠀⣾⠁⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⢠⠀⠀⠈⢻⡄⠹⣧⡈⢿⣆⠀⠀⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣶⠞⠁⣠⣾⠟⢁⣴⠟⠁⢀⣾⠃⠀⠀⢠⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠠⣤⣤⣾⣧⣤⡤⠀⠻⣆⠈⢷⣄⠙⢷⣄⠈⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣶⠞⠁⣠⣾⠟⢁⡾⠋⢀⣤⣤⣿⣦⣤⡄⠀⠀⠀
+⠀⠀⠀⠀⠈⣹⣿⣿⡏⠀⠀⠀⠙⢷⣄⠙⢷⣄⠙⠿⣦⣄⡉⠉⠉⠻⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣀⣸⣿⠟⢁⣴⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠐⠋⠀⠈⠓⠀⠀⠀⠀⠀⠙⢻⣶⡄⠙⢻⣷⣶⣤⡌⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠁⣠⣾⠟⢁⣴⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡄⠀⠉⠛⠷⡦⠄⣉⣥⣴⠶⠾⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠛⠛⠉⢀⣠⣾⠟⢁⣴⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 """
-
 import tkinter as tk
 from tkinter import ttk, messagebox
 import requests
@@ -52,35 +45,24 @@ import random
 import re
 import webbrowser
 
-# Read configuration from config.config
+
+
+VERSION = "1.4.004"
+RPC_UPDATE_INTERVAL = 15  # seconds
+DATE_FORMAT = "%d-%m-%Y %H:%M:%S"
+
+# File paths
+SETTINGS_FILE = 'settings.json'
+PERSISTENCE_FILE = 'persistent.json'
+EXCEL_FILE_PROD = 'mission_log.xlsx'
+EXCEL_FILE_TEST = 'mission_log_test.xlsx'
+
+# Load config
 config = configparser.ConfigParser()
 config.read('config.config')
-
-# Configure logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
-
-# Constants
-DEBUG = config.getboolean('DEBUGGING', 'DEBUG', fallback=False)
-VERSION = "1.4.004"
-# Version layout: Core.Major.Patch
-# Core: Major changes, Major features
-# Major: Minor changes, Minor features
-# Patch: Bug fixes, Minor changes
-
-DATE_FORMAT = "%d-%m-%Y %H:%M:%S"
-SETTINGS_FILE = 'user_settings.json'
-EXCEL_FILE_TEST = 'mission_log_test.xlsx'
-EXCEL_FILE_PROD = 'mission_log.xlsx'
-
 DISCORD_CLIENT_ID = config['Discord']['DISCORD_CLIENT_ID']
-RPC_UPDATE_INTERVAL = 15  # seconds
 
-# Discord webhook configuration
-WEBHOOK_URLS = {
-    'PROD': config['Webhooks']['PROD'].split(','),  # Split comma-separated URLs into list
-    'TEST': config['Webhooks']['TEST'].split(',')
-}
-ACTIVE_WEBHOOK = WEBHOOK_URLS['TEST'] if DEBUG else WEBHOOK_URLS['PROD']
+DEBUG = config.getboolean('DEBUGGING', 'DEBUG', fallback=False)
 
 # Theme settings
 light_theme = {
@@ -251,6 +233,28 @@ THEMES = {
     "light": light_theme,
     "dark": dark_theme
 }
+
+def get_current_theme():
+    if os.path.exists(PERSISTENT_FILE):
+        try:
+            with open(PERSISTENT_FILE, 'r') as f:
+                settings = json.load(f)
+                return settings.get('theme', 'light')
+        except Exception:
+            return 'light'
+    return 'light'
+
+def set_current_theme(theme_name):
+    settings = {}
+    if os.path.exists(PERSISTENT_FILE):
+        try:
+            with open(PERSISTENT_FILE, 'r') as f:
+                settings = json.load(f)
+        except Exception:
+            settings = {}
+    settings['theme'] = theme_name
+    with open(PERSISTENT_FILE, 'w') as f:
+        json.dump(settings, f, indent=4)
 
 # Enemy icons and colors from config
 ENEMY_ICONS = {
@@ -839,6 +843,37 @@ def total_missions():
 
 class MissionLogGUI:
     """GUI application for logging Helldiver 2 mission data."""
+    def __init__(self, root: tk.Tk) -> None:
+        """Initialize the GUI application."""
+        self.root = root
+        if DEBUG:
+            self.root.title("Helldiver Mission Log Manager V-{} DEBUG:{}".format(VERSION, DEBUG))
+        else:
+            self.root.title("Helldiver Mission Log Manager V-{}".format(VERSION))
+        self.root.resizable(False, False)
+        # Initialize theme
+        self.current_theme = "light"  # Default theme
+        
+        # Load icon in a separate thread
+        def load_icon():
+            try:
+                icon = tk.PhotoImage(file='SuperEarth.png')
+                self.root.after(0, lambda: self.root.iconphoto(False, icon))
+            except Exception as e:
+                logging.error(f"Failed to load icon: {e}")
+        
+        threading.Thread(target=load_icon, daemon=True).start()
+        
+        self.settings_file = SETTINGS_FILE
+        self.persistence_file = PERSISTENCE_FILE
+        self._setup_variables()
+        self._setup_discord_rpc()
+        self._create_main_frame()
+        self._setup_ui()
+        
+        # Delay loading settings
+        self.root.after(100, self.load_settings)
+
     def toggle_theme(self):
         """Toggle between light and dark themes."""
         new_theme = "dark" if self.current_theme == "light" else "light"
@@ -868,13 +903,15 @@ class MissionLogGUI:
                             logging.error(f"Error applying map for {widget_type}: {e}")
                 
         
-        # Special handling for Combobox dropdown
+        # Special handling for Combobox dropdown and entry field
         if theme_name == 'dark':
             self.root.option_add("*TCombobox*Listbox*Background", '#2d2d2d')
             self.root.option_add("*TCombobox*Listbox*Foreground", 'white')
+            style.configure('TCombobox', foreground='black', fieldbackground='#2d2d2d')
         else:
             self.root.option_add("*TCombobox*Listbox*Background", '#ffffff')
             self.root.option_add("*TCombobox*Listbox*Foreground", 'black')
+            style.configure('TCombobox', foreground='black', fieldbackground='#ffffff')
         
         # Configure the root background
         if '.' in theme and 'configure' in theme['.']:
@@ -902,52 +939,40 @@ class MissionLogGUI:
         
         settings['theme'] = theme_name
         with open(self.settings_file, 'w') as f:
-            json.dump(settings, f)
+            json.dump(settings, f, indent=4)
 
-    def load_theme(self):
-        """Load theme preference from settings."""
-        try:
-            with open(self.settings_file, 'r') as f:
-                settings = json.load(f)
-                theme_name = settings.get('theme', 'light')
-                self.apply_theme(theme_name)
-        except (FileNotFoundError, json.JSONDecodeError):
-            # Default to light theme if settings file doesn't exist
-            self.apply_theme('light')
+        self._update_widget_styles(self.root, theme_name)
 
-    def __init__(self, root: tk.Tk) -> None:
-        """Initialize the GUI application."""
-        self.root = root
-        if DEBUG:
-            self.root.title("Helldiver Mission Log Manager V-{} DEBUG:{}".format(VERSION, DEBUG))
-        else:
-            self.root.title("Helldiver Mission Log Manager V-{}".format(VERSION))
-        
-        self.root.resizable(False, False)
-        # Initialize theme
-        self.current_theme = "light"  # Default theme
-        
-        # Load icon in a separate thread
-        def load_icon():
-            try:
-                icon = tk.PhotoImage(file='SuperEarth.png')
-                self.root.after(0, lambda: self.root.iconphoto(False, icon))
-            except Exception as e:
-                logging.error(f"Failed to load icon: {e}")
-        
-        threading.Thread(target=load_icon, daemon=True).start()
-        
-        self.settings_file = SETTINGS_FILE
-        self._setup_variables()
-        self._setup_discord_rpc()
-        self._create_main_frame()
-        self._setup_ui()
-        
-        # Delay loading settings
-        self.root.after(100, self.load_settings)
-        self.load_theme()
-        # Start RPC updates after a short delay
-        self.root.after(1000, self._periodic_rpc_update)
+    def _update_widget_styles(self, widget, theme_name):
+        theme = THEMES[theme_name]
+        tframe = theme.get('TFrame', {}).get('configure', {})
+        tlabel = theme.get('TLabel', {}).get('configure', {})
+        tbutton = theme.get('TButton', {}).get('configure', {})
+        if isinstance(widget, (tk.Frame, ttk.Frame, ttk.LabelFrame)):
+            bg = tframe.get('background', None)
+            if bg:
+                try:
+                    widget.configure(background=bg)
+                except Exception:
+                    pass
+        elif isinstance(widget, (tk.Label, ttk.Label)):
+            fg = tlabel.get('foreground', None)
+            bg = tlabel.get('background', None)
+            if fg or bg:
+                try:
+                    widget.configure(foreground=fg, background=bg)
+                except Exception:
+                    pass
+        elif isinstance(widget, (tk.Button, ttk.Button)):
+            fg = tbutton.get('foreground', None)
+            bg = tbutton.get('background', None)
+            if fg or bg:
+                try:
+                    widget.configure(foreground=fg, background=bg)
+                except Exception:
+                    pass
+        for child in widget.winfo_children():
+            self._update_widget_styles(child, theme_name)
 
     def _periodic_rpc_update(self) -> None:
         """Periodically update Discord Rich Presence."""
@@ -1085,7 +1110,7 @@ class MissionLogGUI:
 
         ttk.Label(mission_frame, text="Title:").grid(row=3, column=2, sticky=tk.W, pady=5)
         self.titles = ['CADET', 'SPACE CADET', 'SERGEANT', 'MASTER SERGEANT', 'CHIEF', 'SPACE CHIEF PRIME', 
-             'DEATH CAPTAIN', 'MARSHALL', 'STAR MARSHALL', 'ADMIRAL', 'SKULL ADMIRAL', 'FLEET ADMIRAL',
+             'DEATH CAPTAIN', 'MARSHAL', 'STAR MARSHAL', 'ADMIRAL', 'SKULL ADMIRAL', 'FLEET ADMIRAL',
              'ADMIRABLE ADMIRAL', 'COMMANDER', 'GALACTIC COMMANDER', 'HELL COMMANDER', 'GENERAL',
              '5-STAR GENERAL', '10-STAR GENERAL', 'PRIVATE', 'SUPER PRIVATE', 'SUPER CITIZEN',
              'VIPER COMMANDO', 'FIRE SAFETY OFFICER', 'EXPERT EXTERMINATOR', 'FREE OF THOUGHT',
@@ -1323,7 +1348,7 @@ class MissionLogGUI:
 
         ttk.Label(stats_frame, text="Performance:").grid(row=3, column=0, sticky=tk.W, pady=5)
         ratings = ["Outstanding Patriotism", "Superior Valour", "Costly Failure", "Honourable Duty", "Unremarkable Performance", "Disappointing Service", "Disgraceful Conduct"]
-        self.rating.set(ratings[0])  # Set default value before creating Combobox
+        # self.rating.set(ratings[0])  # Already set in _setup_variables
         rating_combo = ttk.Combobox(stats_frame, textvariable=self.rating, values=ratings, state='readonly', width=27)
         rating_combo.grid(row=3, column=1, padx=5, pady=5)
 
@@ -1343,12 +1368,6 @@ class MissionLogGUI:
         # Export section (right side)
         export_frame = ttk.LabelFrame(content, text="Exporting", padding=10)
         export_frame.grid(row=4, column=0, pady=5, sticky=(tk.W, tk.E))
-
-        self.report_style = tk.StringVar()
-        report_styles = ['Modern', 'Fax']
-        style_combo = ttk.Combobox(style_frame, textvariable=self.report_style, values=report_styles, state='readonly', width=27)
-        style_combo.pack(side=tk.LEFT, padx=5)
-        style_combo.set(report_styles[0])
 
         #open export GUI
         GUIbutton = ttk.Button(export_frame, text=" Open\nExport\n  GUI", command=lambda: subprocess.run(['python', 'exportGUI.py'], shell=False), padding=(6,5), width=14)
@@ -1409,6 +1428,11 @@ class MissionLogGUI:
         theme_button = ttk.Button(export_frame, text="Toggle\nTheme", command=self.toggle_theme, padding=(6,5), width=14)
         theme_button.grid(row=4, column=4, padx=(40,0), pady=15)
 
+        #add a settings button
+        settings_button = ttk.Button(export_frame, text="Settings", command=lambda: subprocess.run(['python', 'settings.py']), padding=(6,5), width=14)
+        settings_button.grid(row=4, column=5, padx=(40,0), pady=15)
+
+
     def _update_discord_presence(self) -> None:
         """Update Discord Rich Presence with current mission information."""
         if not hasattr(self, 'RPC') or self.RPC is None:
@@ -1458,60 +1482,34 @@ class MissionLogGUI:
         """Load user settings from file."""
         def load():
             try:
-                if os.path.exists(self.settings_file):
-                    with open(self.settings_file, 'r') as f:
+                # Load theme from settings.json
+                theme = 'light'
+                if os.path.exists(SETTINGS_FILE):
+                    with open(SETTINGS_FILE, 'r') as f:
                         settings = json.load(f)
-                        self.root.after(0, lambda: self._apply_settings(settings))
+                        theme = settings.get('theme', 'light')
+                # Load all other settings from persistent.json
+                persistent_settings = {}
+                if os.path.exists(PERSISTENCE_FILE):
+                    with open(PERSISTENCE_FILE, 'r') as f:
+                        persistent_settings = json.load(f)
+                persistent_settings['theme'] = theme
+                self.root.after(0, lambda: self._apply_settings(persistent_settings))
             except Exception as e:
                 self.root.after(0, lambda: self._show_error(f"Error loading settings: {e}"))
 
         threading.Thread(target=load, daemon=True).start()
 
-    def load_theme(self):
-        """Load theme preference from settings."""
-        try:
-            with open(self.settings_file, 'r') as f:
-                settings = json.load(f)
-                theme_name = settings.get('theme', 'light')
-                self.apply_theme(theme_name)
-        except (FileNotFoundError, json.JSONDecodeError):
-            # Default to light theme if settings file doesn't exist
-            self.apply_theme('light')
-
-    def _apply_settings(self, settings: Dict) -> None:
-        """Apply loaded settings to UI elements."""
-        self.Helldivers.set(settings.get('helldiver', ''))
-        self.level.set(settings.get('level', 0))
-        self.difficulty.set(settings.get('difficulty', '1 - TRIVIAL'))
-        self.mission_category.set(settings.get('campaign', 'Ivasion'))
-        self.DSS.set(settings.get('DSS', False))
-        self.shipName1.set(settings.get('shipName1', 'SES Adjudicator'))
-        self.shipName2.set(settings.get('shipName2', 'of Allegiance'))
-        if 'theme' in settings:
-            self.apply_theme(settings['theme'])
-
-
-        if settings.get('DSS'):
-            self.DSSMod.set(settings.get('DSSMod', 'Inactive'))
-        
-        # For mission type
-        if settings.get('mission'):
-            self.mission_type.set(settings.get('mission'))
-
-        if settings.get('title') in self.titles:
-            self.title.set(settings.get('title'))
-        if settings.get('profile_picture') in self.profile_pictures:
-            self.profile_picture.set(settings.get('profile_picture'))
-        if settings.get('sector') in self.sector_combo['values']:
-            self.sector.set(settings.get('sector'))
-            self.root.update()
-            self.sector_combo.event_generate('<<ComboboxSelected>>')
-            
-            if settings.get('planet') in self.planet_combo['values']:
-                self.planet.set(settings.get('planet'))
-
     def save_settings(self) -> None:
         """Save current settings to file."""
+        # Save theme to settings.json
+        theme_data = {'theme': self.current_theme}
+        try:
+            with open(SETTINGS_FILE, 'w') as f:
+                json.dump(theme_data, f, indent=4)
+        except Exception as e:
+            self._show_error(f"Error saving theme: {e}")
+        # Save all other settings to persistent.json
         settings = {
             'helldiver': self.Helldivers.get(),
             'level': self.level.get(),
@@ -1527,13 +1525,12 @@ class MissionLogGUI:
             'shipName1': self.shipName1.get(),
             'shipName2': self.shipName2.get(),
             'profile_picture': self.profile_picture.get(),
-             'theme': self.current_theme,
         }
         try:
-            with open(self.settings_file, 'w') as f:
+            with open(PERSISTENCE_FILE, 'w') as f:
                 json.dump(settings, f, indent=4)
         except Exception as e:
-            self._show_error(f"Error saving settings: {e}")
+            self._show_error(f"Error saving persistent settings: {e}")
 
     def submit_data(self) -> None:
         """Handle mission report submission."""
@@ -1617,11 +1614,7 @@ class MissionLogGUI:
             return False
 
     def _show_error(self, message: str) -> None:
-        """Display error message to user."""
         messagebox.showerror("Error", message)
-
-    def _show_success(self, message: str) -> None:
-        """This is a useless feature..."""
 
     def _collect_mission_data(self) -> Dict:
         """Collect all mission data into a dictionary."""
@@ -1647,13 +1640,6 @@ class MissionLogGUI:
             'Time': datetime.now().strftime(DATE_FORMAT),
             'Note': self.note.get(),
         }
-
-
-        # Save to Excel
-        self._save_to_excel(data)
-
-        # Send to Discord
-        self._send_to_discord(data)
 
     def _save_to_excel(self, data: Dict) -> bool:
         """Save mission data to Excel file by appending new rows."""
@@ -1784,29 +1770,18 @@ class MissionLogGUI:
 
             total_missions_main = total_missions()
 
-            # Format the message for Discord
-            message_content1 = (
-                f"# ================================\n"
-                f"> # | **Date:** {date}\n"
-                f"> # | **Mission Report for {data['Helldivers']}**\n"
-                f"> # --------------------------------\n"
-                f"> # | **Sector:** {data['Sector']}\n"
-                f"> ## | **Planet:** {data['Planet']} {planet_icon}\n"
-                f"> ## | **Enemy Type:** {data['Enemy Type']} {enemy_icon}\n"
-                f"> ## | **Mission Category:** {data['Mission Category']} {campaign_icon}\n"
-                f"> ## | **Mission Type:** {data['Mission Type']} {mission_icon}\n"
-                f"> ## | **Mission Difficulty:** {data['Difficulty']}\n"
-                f"> # --------------------------------\n"
-                f"> ### | **Kills:** {data['Kills']}\n"
-                f"> ### | **Deaths:** {data['Deaths']}\n"
-                f"# ================================\n"
-            )
-
-            UID = config['Discord']['UID']
+            # Get UID from settings.json instead of config
+            try:
+                with open('settings.json', 'r') as f:
+                    settings_data = json.load(f)
+                    UID = settings_data.get('discord_uid', '0')
+            except (FileNotFoundError, json.JSONDecodeError) as e:
+                logging.error(f"Error loading settings.json: {e}")
+                UID = '0'  # Fallback to default
             MICo = str(data["Major Order"]) + " " + config['MiscIcon']['MO'] if data["Major Order"] else str(data["Major Order"])
             DSSIco = str(data["DSS Active"]) + " " + config['MiscIcon']['DSS'] if data["DSS Active"] else str(data["DSS Active"])
 
-            message_content2 = {
+            message_content = {
                 "content": None,
                 "embeds": [{
                     "title": f"{data['Super Destroyer']}\nDeployed {data['Helldivers']}",
@@ -1831,12 +1806,20 @@ class MissionLogGUI:
                 
             }
 
-            webhook_data = {"content": message_content1} if self.report_style.get() == "Fax" else message_content2
-            
+            # FIX: Send message_content directly, not wrapped in another dict
+            if DEBUG:
+                # Use TEST webhook from config if in debug mode
+                ACTIVE_WEBHOOK = [config['Webhooks']['TEST']]
+            else:
+                # Use PROD webhook in production mode
+                with open('DCord.json', 'r') as f:
+                    dcord_data = json.load(f)
+                    ACTIVE_WEBHOOK = dcord_data.get('discord_webhooks', [])
+
             successes = []
             for url in ACTIVE_WEBHOOK:
                 try:
-                    response = requests.post(url, json=webhook_data)
+                    response = requests.post(url, json=message_content)
                     if response.status_code == 204:
                         logging.info(f"Successfully sent to Discord webhook: {url}")
                         successes.append(True)
@@ -1895,10 +1878,39 @@ class MissionLogGUI:
         except subprocess.CalledProcessError as e:
             self._show_error(f"Export failed: {e}")
 
+    def _apply_settings(self, settings: dict) -> None:
+        """Apply loaded settings to the GUI variables."""
+        # Only set if key exists to avoid KeyError
+        self.Helldivers.set(settings.get('helldiver', ''))
+        self.level.set(settings.get('level', 1))
+        self.title.set(settings.get('title', ''))
+        self.sector.set(settings.get('sector', ''))
+        self.planet.set(settings.get('planet', ''))
+        self.difficulty.set(settings.get('difficulty', ''))
+        self.mission_type.set(settings.get('mission', ''))
+        self.DSS.set(settings.get('DSS', False))
+        self.DSSMod.set(settings.get('DSSMod', 'Inactive'))
+        self.mission_category.set(settings.get('campaign', ''))
+        self.subfaction_type.set(settings.get('subfaction', ''))
+        self.shipName1.set(settings.get('shipName1', ''))
+        self.shipName2.set(settings.get('shipName2', ''))
+        self.profile_picture.set(settings.get('profile_picture', ''))
+        # Apply theme if present
+        theme = settings.get('theme', 'light')
+        self.apply_theme(theme)
+
 if __name__ == "__main__":
-    if not (re.match(r'^\d{17,19}$', config['Discord']['UID']) or (DEBUG and config['Discord']['UID'] == '0')):
-        print("Please set a valid Discord ID in the config file")
-        messagebox.showerror("Error", "Please set a valid Discord ID in the config file")
+    try:
+        with open('settings.json', 'r') as f:
+            settings_data = json.load(f)
+            discord_uid = settings_data.get('discord_uid', '0')
+            if not (re.match(r'^\d{17,19}$', discord_uid) or (DEBUG and discord_uid == '0')):
+                print("Please set a valid Discord ID in the settings.json file")
+                messagebox.showerror("Error", "Please set a valid Discord ID in the settings.json file")
+                os._exit(1)
+    except (FileNotFoundError, json.JSONDecodeError) as e:
+        print(f"Error loading settings.json: {e}")
+        messagebox.showerror("Error", f"Error loading settings.json: {e}")
         os._exit(1)
 
     root = tk.Tk()

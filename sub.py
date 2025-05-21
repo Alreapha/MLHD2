@@ -609,11 +609,14 @@ planet_stats_df = pd.DataFrame({
 })
 
 # Discord webhook configuration
-WEBHOOK_URLS = {
-    'PROD': config['Webhooks']['BAT'].split(','),
-    'TEST': config['Webhooks']['TEST'].split(',')
-}
-ACTIVE_WEBHOOK = WEBHOOK_URLS['TEST'] if DEBUG else WEBHOOK_URLS['PROD']
+if DEBUG:
+    # Use TEST webhook from config if in debug mode
+    ACTIVE_WEBHOOK = [config['Webhooks']['TEST']]
+else:
+    # Use PROD webhook in production mode
+    with open('DCord.json', 'r') as f:
+        dcord_data = json.load(f)
+        ACTIVE_WEBHOOK = dcord_data.get('discord_webhooks', [])
 
 # Get latest note
 non_blank_notes = df['Note'].dropna()
@@ -788,8 +791,13 @@ for enemy_type, planet_list in enemy_planets.items():
         "thumbnail": {"url": enemy_icons.get(enemy_type, {"url": ""})["url"]}
     })
 
-# Send data to Discord
-webhook_urls = WEBHOOK_URLS['TEST'] if DEBUG else WEBHOOK_URLS['PROD']
+if DEBUG:
+    webhook_urls = [config['Webhooks']['TEST']] # Use the webhook URL from the config for debugging
+else:
+    # Load webhook URLs from DCord.json
+    with open('DCord.json', 'r') as f:
+        discord_data = json.load(f)
+        webhook_urls = discord_data.get('discord_webhooks', [])
 for webhook_url in webhook_urls:
     response = requests.post(webhook_url, json=embed_data)
     print("Data sent successfully." if response.status_code == 204 else f"Failed to send data. Status: {response.status_code}")

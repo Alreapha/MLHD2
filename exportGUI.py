@@ -13,7 +13,34 @@ config.read('config.config')
 
 # Constants
 DEBUG = config.getboolean('DEBUGGING', 'DEBUG', fallback=False)
-SETTINGS_FILE = 'user_settings.json'
+SETTINGS_FILE = 'persistance.json'
+
+# Dropdown values as constants
+ENEMY_TYPES = ['All', 'Automatons', 'Illuminate', 'Terminids']
+SUBFACTIONS = [
+    'All', 'Terminid Horde', 'Predator Strain', 'Spore Burst Strain', 
+    'Automaton Legion', 'Jet Brigade', 'Incineration Corps', 
+    'Jet Brigade & Incineration Corps', 'Illuminate Cult'
+]
+SECTORS = [
+    'All', 'Akira Sector', 'Alstrad Sector', 'Altus Sector', 'Andromeda Sector', 'Arturion Sector', 'Barnard Sector', 'Borgus Sector', 'Cancri Sector', 'Cantolus Sector', 'Celeste Sector', 'Draco Sector', 'Falstaff Sector', 'Farsight Sector', 'Ferris Sector', 'Gallux Sector',
+    'Gellert Sector', 'Gothmar Sector', 'Guang Sector', 'Hanzo Sector', 'Hawking Sector', 'Hydra Sector', 'Idun Sector', 'Iptus Sector', 'Jin Xi Sector', 'Kelvin Sector', 'Korpus Sector', "L'estrade Sector", 'Lacaille Sector', 'Leo Sector', 'Marspira Sector', 'Meridian Sector',
+    'Mirin Sector', 'Morgon Sector', 'Nanos Sector', 'Omega Sector', 'Orion Sector', 'Quintus Sector', 'Rictus Sector', 'Rigel Sector', 'Sagan Sector', 'Saleria Sector', 'Severin Sector', 'Sol System', 'Sten Sector', 'Talus Sector', 'Tanis Sector', 'Tarragon Sector', 'Theseus Sector',
+    'Trigon Sector', 'Umlaut Sector', 'Ursa Sector', 'Valdis Sector', 'Xi Tauri Sector', 'Xzar Sector', 'Ymir Sector'
+]
+PLANETS = [
+    'All','Alaraph', 'Alathfar XI', 'Andar', 'Asperoth Prime', 'Keid', 'Kneth Port', 'Klaka 5', 'Kraz', 'Pathfinder V', 'Klen Dahth II', "Widow's Harbor", 'New Haven', 'Pilen V', 'Charbal-VII', 'Charon Prime', 'Martale', 'Marfark', 'Matar Bay', 'Mortax Prime', 'Kirrik', 'Wilford Station', 'Arkturus',
+    'Pioneer II', 'Electra Bay', 'Deneb Secundus', 'Fornskogur II', 'Veil', 'Marre IV', 'Midasburg', 'Darrowsport', 'Hydrofall Prime', 'Ursica XI', 'Achird III', 'Achernar Secundus', 'Darius II', 'Prosperity Falls', 'Cerberus IIIc', 'Effluvia', 'Seyshel Beach', 'Fort Sanctuary', 'Kelvinor', "Martyr's Bay",
+    'Freedom Peak', 'Viridia Prime', 'Obari', 'Sulfura', 'Nublaria I', 'Krakatwo', 'Ivis', 'Slif', 'Moradesh', 'Meridia', 'Crimsica', 'Estanu', 'Fori Prime', 'Bore Rock', 'Esker', 'Socorro III', 'Erson Sands', 'Prasa', 'Pollux 31', 'Polaris Prime', 'Pherkad Secundus', 'Grand Errant', 'Hadar', 'Haldus', 'Zea Rugosia',
+    'Herthon Secundus', 'Kharst', 'Bashyr', 'Rasp', 'Acubens Prime', 'Adhara', 'Afoyay Bay', 'Minchir', 'Mintoria', 'Blistica', 'Zzaniah Prime', 'Zosma', 'Okul VI', 'Solghast', 'Diluvia', 'Elysian Meadows', 'Alderidge Cove', 'Bellatrix', 'Botein', 'Khandark', 'Heze Bay', 'Alairt III', 'Alamak VII', 'New Stockholm', 'Ain-5',
+    'Mordia 9', 'Euphoria III', 'Skitter', 'Kuma', 'Aesir Pass', 'Vernen Wells', 'Menkent', 'Wraith', 'Atrama', 'Myradesh', 'Maw', 'Providence', 'Primordia', 'Krakabos', 'Iridica', 'Valgaard', 'Ratch', 'Acamar IV', 'Pandion-XXIV', 'Gacrux', 'Phact Bay', 'Gar Haren', 'Gatria', 'Zegema Paradise', 'Fort Justice', 'New Kiruna',
+    'Igla', 'Emeria', 'Crucible', 'Volterra', 'Caramoor', 'Alta V', 'Inari', 'Navi VII', 'Omicron', 'Nabatea Secundus', 'Gemstone Bluffs', 'Epsilon Phoencis VI', 'Enuliale', 'Disapora X', 'Lesath', 'Penta', 'Chort Bay', 'Choohe', 'Ras Algethi', 'Propus', 'Halies Port', 'Haka', 'Curia', 'Barabos', 'Fenmire', 'Tarsh', 'Mastia',
+    'Emorath', 'Ilduna Prime', 'Baldrick Prime', 'Liberty Ridge', 'Hellmire', 'Nivel 43', 'Zagon Prime', 'Oshaune', 'Myrium', 'Eukoria', 'Regnus', 'Mog', 'Dolph', 'Julheim', 'Bekvam III', 'Duma Tyr', 'Setia', 'Senge 23', 'Seasse', 'Hydrobius', 'Karlia', 'Terrek', 'Azterra', 'Fort Union', 'Cirrus', 'Heeth', "Angel's Venture",
+    'Veld', 'Termadon', 'Stor Tha Prime', 'Spherion', 'Stout', 'Leng Secundus', 'Valmox', 'Iro', 'Grafmere', 'Kerth Secundus', 'Parsh', 'Oasis', 'Genesis Prime', 'Rogue 5', 'RD-4', 'Hesoe Prime', 'Hort', 'Rirga Bay', 'Oslo Station', 'Gunvald', 'Borea', 'Calypso', 'Outpost 32', 'Reaf', 'Irulta', 'Maia', 'Malevelon Creek', 'Durgen',
+    'Ubanea', 'Tibit', 'Super Earth', 'Mars', 'Trandor', 'Peacock', 'Partion', 'Overgoe Prime', 'Azur Secundus', 'Shallus', 'Shelt', 'Gaellivare', 'Imber', 'Claorell', 'Vog-Sojoth', 'Clasa', 'Yed Prior', 'Zefia', 'Demiurg', 'East Iridium Trading Bay', 'Brink-2', 'Osupsam', 'Canopus', 'Bunda Secundus', 'The Weir', 'Kuper', 'Caph', 'Castor',
+    'Tien Kwan', 'Lastofe', 'Varylia 5', 'Choepessa IV', 'Ustotu', 'Troost', 'Vandalon IV', 'Erata Prime', 'Fenrir III', 'Turing', 'Skaash', 'Acrab XI', 'Acrux IX', 'Gemma', 'Merga IV', 'Merak', 'Cyberstan', 'Aurora Bay', 'Mekbuda', 'Videmitarix Prime', 'Skat Bay', 'Sirius', 'Siemnot', 'Shete', 'Mort', 'P\u00F6pli IX', 'Ingmar', 'Mantes',
+    'Draupnir', 'Meissa', 'Wasat', 'X-45', 'Vega Bay', 'Wezen'
+]
 
 # Theme settings
 light_theme = {
@@ -251,24 +278,36 @@ def apply_theme(root, theme_name):
             
     return theme_name
 
-def load_theme_preference():
-    """Load theme preference from settings file."""
-    try:
-        with open(SETTINGS_FILE, 'r') as f:
-            settings = json.load(f)
-            return settings.get('theme', 'light')
-    except (FileNotFoundError, json.JSONDecodeError):
-        # Default to light theme if settings file doesn't exist
-        return 'light'
+def get_current_theme():
+    if os.path.exists('settings.json'):
+        try:
+            with open('settings.json', 'r') as f:
+                settings = json.load(f)
+                return settings.get('theme', 'light')
+        except Exception:
+            return 'light'
+    return 'light'
+
+def apply_theme_from_settings(root):
+    theme_name = get_current_theme()
+    apply_theme(root, theme_name)
+
+def create_filter_dropdown(parent, label_text, var, values, on_select, padx=0):
+    label = ttk.Label(parent, text=label_text)
+    label.pack(side=tk.LEFT, padx=(padx, 0))
+    dropdown = ttk.Combobox(parent, textvariable=var, values=values)
+    dropdown.current(0)
+    dropdown.pack(side=tk.LEFT)
+    dropdown.bind("<<ComboboxSelected>>", on_select)
+    return dropdown
 
 def main():
     # Create the main window
     root = tk.Tk()
     root.title("Excel Data Viewer")
     root.geometry("1980x1000")
-    
-    # Apply theme
-    current_theme = load_theme_preference()
+    # Set current_theme from settings at the start
+    current_theme = get_current_theme()
     apply_theme(root, current_theme)
     
     # Configure root grid layout
@@ -349,7 +388,7 @@ def main():
             # Check if we have a filtered dataframe
             if filtered_df is None or filtered_df.empty:
                 return
-                
+                 
             # Make sure start_idx is within bounds
             start_idx = max(0, min(start_idx, len(filtered_df) - 1 if len(filtered_df) > 0 else 0))
             nonlocal current_offset
@@ -609,28 +648,8 @@ def main():
     button = ttk.Button(button_frame, text="Process Selection", command=button_action)
     button.pack(side=tk.RIGHT)
 
-    # Add a theme toggle button
-    def toggle_theme():
-        nonlocal current_theme
-        new_theme = "dark" if current_theme == "light" else "light"
-        current_theme = apply_theme(root, new_theme)
-        
-        # Save theme preference
-        try:
-            settings = {}
-            if os.path.exists(SETTINGS_FILE):
-                with open(SETTINGS_FILE, 'r') as f:
-                    settings = json.load(f)
-            
-            settings['theme'] = current_theme
-            with open(SETTINGS_FILE, 'w') as f:
-                json.dump(settings, f)
-        except Exception as e:
-            print(f"Error saving theme preference: {e}")
-            
-    theme_button = ttk.Button(button_frame, text="Toggle Theme", command=toggle_theme)
-    theme_button.pack(side=tk.RIGHT, padx=10)
-
+    # Theme is now only settable from settings.py
+    
     # Add filters section
     # Global variables to track filter selections
     filters = {
@@ -641,76 +660,40 @@ def main():
     }
     
     # Enemy Type filter
-    enemy_label = ttk.Label(button_frame, text="Select enemy Type:")
-    enemy_label.pack(side=tk.LEFT)
     enemy_var = tk.StringVar()
-    enemy_dropdown = ttk.Combobox(button_frame, textvariable=enemy_var)
-    enemy_dropdown['values'] = ['All', 'Automatons', 'Illuminate', 'Terminids']
-    enemy_dropdown.current(0)
-    enemy_dropdown.pack(side=tk.LEFT)
-    
     def on_enemy_select(event):
         filters['enemy_type'] = enemy_var.get()
         filter_data()
-    
-    enemy_dropdown.bind("<<ComboboxSelected>>", on_enemy_select)
-    
+    enemy_dropdown = create_filter_dropdown(
+        button_frame, "Select enemy Type:", enemy_var, ENEMY_TYPES, on_enemy_select
+    )
+
     # Subfaction filter
-    subfaction_label = ttk.Label(button_frame, text="Select subfaction:")
-    subfaction_label.pack(side=tk.LEFT, padx=(10, 0))
     subfaction_var = tk.StringVar()
-    subfaction_dropdown = ttk.Combobox(button_frame, textvariable=subfaction_var)
-    subfaction_dropdown['values'] = ['All', 'Terminid Horde', 'Predator Strain', 'Spore Burst Strain', 
-                                    'Automaton Legion', 'Jet Brigade', 'Incineration Corps', 
-                                    'Jet Brigade & Incineration Corps', 'Illuminate Cult']
-    subfaction_dropdown.current(0)
-    subfaction_dropdown.pack(side=tk.LEFT)
-    
     def on_subfaction_select(event):
         filters['Enemy Subfaction'] = subfaction_var.get()
         filter_data()
-    
-    subfaction_dropdown.bind("<<ComboboxSelected>>", on_subfaction_select)
-    
+    subfaction_dropdown = create_filter_dropdown(
+        button_frame, "Select subfaction:", subfaction_var, SUBFACTIONS, on_subfaction_select, padx=10
+    )
+
     # Sector filter
-    sector_label = ttk.Label(button_frame, text="Select sector:")
-    sector_label.pack(side=tk.LEFT, padx=(10, 0))
     sector_var = tk.StringVar()
-    sector_dropdown = ttk.Combobox(button_frame, textvariable=sector_var)
-    sector_dropdown['values'] = ['All', 'Akira Sector', 'Alstrad Sector', 'Altus Sector', 'Andromeda Sector', 'Arturion Sector', 'Barnard Sector', 'Borgus Sector', 'Cancri Sector', 'Cantolus Sector', 'Celeste Sector', 'Draco Sector', 'Falstaff Sector', 'Farsight Sector', 'Ferris Sector', 'Gallux Sector',
-                                'Gellert Sector', 'Gothmar Sector', 'Guang Sector', 'Hanzo Sector', 'Hawking Sector', 'Hydra Sector', 'Idun Sector', 'Iptus Sector', 'Jin Xi Sector', 'Kelvin Sector', 'Korpus Sector', 'L\'estrade Sector', 'Lacaille Sector', 'Leo Sector', 'Marspira Sector', 'Meridian Sector',
-                                'Mirin Sector', 'Morgon Sector', 'Nanos Sector', 'Omega Sector', 'Orion Sector', 'Quintus Sector', 'Rictus Sector', 'Rigel Sector', 'Sagan Sector', 'Saleria Sector', 'Severin Sector', 'Sol System', 'Sten Sector', 'Talus Sector', 'Tanis Sector', 'Tarragon Sector', 'Theseus Sector',
-                                'Trigon Sector', 'Umlaut Sector', 'Ursa Sector', 'Valdis Sector', 'Xi Tauri Sector', 'Xzar Sector', 'Ymir Sector']
-    sector_dropdown.current(0)
-    sector_dropdown.pack(side=tk.LEFT)
-    
     def on_sector_select(event):
         filters['sector'] = sector_var.get()
         filter_data()
-    
-    sector_dropdown.bind("<<ComboboxSelected>>", on_sector_select)
+    sector_dropdown = create_filter_dropdown(
+        button_frame, "Select sector:", sector_var, SECTORS, on_sector_select, padx=10
+    )
 
     # Planet filter
-    planet_label = ttk.Label(button_frame, text="Select planet:")
-    planet_label.pack(side=tk.LEFT, padx=(10, 0))
     planet_var = tk.StringVar()
-    planet_dropdown = ttk.Combobox(button_frame, textvariable=planet_var)
-    planet_dropdown['values'] = ['All','Alaraph', 'Alathfar XI', 'Andar', 'Asperoth Prime', 'Keid', 'Kneth Port', 'Klaka 5', 'Kraz', 'Pathfinder V', 'Klen Dahth II', 'Widow\'s Harbor', 'New Haven', 'Pilen V', 'Charbal-VII', 'Charon Prime', 'Martale', 'Marfark', 'Matar Bay', 'Mortax Prime', 'Kirrik', 'Wilford Station', 'Arkturus',
-                                'Pioneer II', 'Electra Bay', 'Deneb Secundus', 'Fornskogur II', 'Veil', 'Marre IV', 'Midasburg', 'Darrowsport', 'Hydrofall Prime', 'Ursica XI', 'Achird III', 'Achernar Secundus', 'Darius II', 'Prosperity Falls', 'Cerberus IIIc', 'Effluvia', 'Seyshel Beach', 'Fort Sanctuary', 'Kelvinor', 'Martyr\'s Bay',
-                                'Freedom Peak', 'Viridia Prime', 'Obari', 'Sulfura', 'Nublaria I', 'Krakatwo', 'Ivis', 'Slif', 'Moradesh', 'Meridia', 'Crimsica', 'Estanu', 'Fori Prime', 'Bore Rock', 'Esker', 'Socorro III', 'Erson Sands', 'Prasa', 'Pollux 31', 'Polaris Prime', 'Pherkad Secundus', 'Grand Errant', 'Hadar', 'Haldus', 'Zea Rugosia',
-                                'Herthon Secundus', 'Kharst', 'Bashyr', 'Rasp', 'Acubens Prime', 'Adhara', 'Afoyay Bay', 'Minchir', 'Mintoria', 'Blistica', 'Zzaniah Prime', 'Zosma', 'Okul VI', 'Solghast', 'Diluvia', 'Elysian Meadows', 'Alderidge Cove', 'Bellatrix', 'Botein', 'Khandark', 'Heze Bay', 'Alairt III', 'Alamak VII', 'New Stockholm', 'Ain-5',
-                                'Mordia 9', 'Euphoria III', 'Skitter', 'Kuma', 'Aesir Pass', 'Vernen Wells', 'Menkent', 'Wraith', 'Atrama', 'Myradesh', 'Maw', 'Providence', 'Primordia', 'Krakabos', 'Iridica', 'Valgaard', 'Ratch', 'Acamar IV', 'Pandion-XXIV', 'Gacrux', 'Phact Bay', 'Gar Haren', 'Gatria', 'Zegema Paradise', 'Fort Justice', 'New Kiruna',
-                                'Igla', 'Emeria', 'Crucible', 'Volterra', 'Caramoor', 'Alta V', 'Inari', 'Navi VII', 'Omicron', 'Nabatea Secundus', 'Gemstone Bluffs', 'Epsilon Phoencis VI', 'Enuliale', 'Disapora X', 'Lesath', 'Penta', 'Chort Bay', 'Choohe', 'Ras Algethi', 'Propus', 'Halies Port', 'Haka', 'Curia', 'Barabos', 'Fenmire', 'Tarsh', 'Mastia',
-                                'Emorath', 'Ilduna Prime', 'Baldrick Prime', 'Liberty Ridge', 'Hellmire', 'Nivel 43', 'Zagon Prime', 'Oshaune', 'Myrium', 'Eukoria', 'Regnus', 'Mog', 'Dolph', 'Julheim', 'Bekvam III', 'Duma Tyr', 'Setia', 'Senge 23', 'Seasse', 'Hydrobius', 'Karlia', 'Terrek', 'Azterra', 'Fort Union', 'Cirrus', 'Heeth', 'Angel\'s Venture',
-                                'Veld', 'Termadon', 'Stor Tha Prime', 'Spherion', 'Stout', 'Leng Secundus', 'Valmox', 'Iro', 'Grafmere', 'Kerth Secundus', 'Parsh', 'Oasis', 'Genesis Prime', 'Rogue 5', 'RD-4', 'Hesoe Prime', 'Hort', 'Rirga Bay', 'Oslo Station', 'Gunvald', 'Borea', 'Calypso', 'Outpost 32', 'Reaf', 'Irulta', 'Maia', 'Malevelon Creek', 'Durgen',
-                                'Ubanea', 'Tibit', 'Super Earth', 'Mars', 'Trandor', 'Peacock', 'Partion', 'Overgoe Prime', 'Azur Secundus', 'Shallus', 'Shelt', 'Gaellivare', 'Imber', 'Claorell', 'Vog-Sojoth', 'Clasa', 'Yed Prior', 'Zefia', 'Demiurg', 'East Iridium Trading Bay', 'Brink-2', 'Osupsam', 'Canopus', 'Bunda Secundus', 'The Weir', 'Kuper', 'Caph', 'Castor',
-                                'Tien Kwan', 'Lastofe', 'Varylia 5', 'Choepessa IV', 'Ustotu', 'Troost', 'Vandalon IV', 'Erata Prime', 'Fenrir III', 'Turing', 'Skaash', 'Acrab XI', 'Acrux IX', 'Gemma', 'Merga IV', 'Merak', 'Cyberstan', 'Aurora Bay', 'Mekbuda', 'Videmitarix Prime', 'Skat Bay', 'Sirius', 'Siemnot', 'Shete', 'Mort', 'P\u00F6pli IX', 'Ingmar', 'Mantes',
-                                'Draupnir', 'Meissa', 'Wasat', 'X-45', 'Vega Bay', 'Wezen']
     def on_planet_select(event):
         filters['planet'] = planet_var.get()
         filter_data()
-    planet_dropdown.current(0)
-    planet_dropdown.pack(side=tk.LEFT)
+    planet_dropdown = create_filter_dropdown(
+        button_frame, "Select planet:", planet_var, PLANETS, on_planet_select, padx=10
+    )
 
     # Add a button to clear filters
     def clear_filters():

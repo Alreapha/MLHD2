@@ -951,7 +951,20 @@ for enemy_type in enemy_types:
 # }
 
 # Send data to Discord
-webhook_urls = WEBHOOK_URLS['TEST'] if DEBUG else WEBHOOK_URLS['PROD']
+
+
+
+
+
+if DEBUG:
+    webhook_urls = [config['Webhooks']['TEST']] # Use the webhook URL from the config for debugging
+else:
+    # Load webhook URLs from DCord.json
+    with open('DCord.json', 'r') as f:
+        discord_data = json.load(f)
+        webhook_urls = discord_data.get('discord_webhooks', [])
+
+# Send data to each webhook
 for webhook_url in webhook_urls:
     response = requests.post(webhook_url, json=embed_data)
     print("Data sent successfully." if response.status_code == 204 else f"Failed to send data. Status: {response.status_code}")
