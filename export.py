@@ -76,7 +76,6 @@ MISSION_ICONS = {
     "Launch ICBM": config['MissionIcons']['Launch ICBM'],
     "Retrieve Valuable Data": config['MissionIcons']['Retrieve Valuable Data'],
     "Blitz: Search and Destroy": config['MissionIcons']['Blitz Search and Destroy'],
-    "PLACEHOLDER": config['MissionIcons']['PLACEHOLDER'],
     "Emergency Evacuation": config['MissionIcons']['Emergency Evacuation'],
     "Retrieve Essential Personnel": config['MissionIcons']['Retrieve Essential Personnel'],
     "Evacuate High-Value Assets": config['MissionIcons']['Evacuate High-Value Assets'],
@@ -111,7 +110,11 @@ MISSION_ICONS = {
     "Collect Gloom-Infused Oil": config['MissionIcons']['Collect Gloom-Infused Oil'],
     "Blitz: Secure Research Site": config['MissionIcons']['Blitz Secure Research Site'],
     "Collect Gloom Spore Readings": config['MissionIcons']['Collect Gloom Spore Readings'],
-    "Chart Terminid Tunnels": config['MissionIcons']['Chart Terminid Tunnels']
+    "Chart Terminid Tunnels": config['MissionIcons']['Chart Terminid Tunnels'],
+    "Take Down Overship": config['MissionIcons']['Take Down Overship'],
+    "Repel Invasion Fleet": config['MissionIcons']['Repel Invasion Fleet'],
+    "Evacuate Citizens": config['MissionIcons']['Evacuate Citizens'],
+    "Free The City": config['MissionIcons']['Free The City']
 }
 
 # Biome banners for Planets

@@ -70,7 +70,6 @@ CAMPAIGN_ICONS = {
 
 # Mission Icons
 MISSION_ICONS = {
-    "Placeholder Mission": config['MissionIcons']['Placeholder Mission'],
     "Terminate Illegal Broadcast": config['MissionIcons']['Terminate Illegal Broadcast'],
     "Pump Fuel To ICBM": config['MissionIcons']['Pump Fuel To ICBM'],
     "Upload Escape Pod Data": config['MissionIcons']['Upload Escape Pod Data'],
@@ -79,7 +78,6 @@ MISSION_ICONS = {
     "Launch ICBM": config['MissionIcons']['Launch ICBM'],
     "Retrieve Valuable Data": config['MissionIcons']['Retrieve Valuable Data'],
     "Blitz: Search and Destroy": config['MissionIcons']['Blitz Search and Destroy'],
-    "PLACEHOLDER": config['MissionIcons']['PLACEHOLDER'],
     "Emergency Evacuation": config['MissionIcons']['Emergency Evacuation'],
     "Retrieve Essential Personnel": config['MissionIcons']['Retrieve Essential Personnel'],
     "Evacuate High-Value Assets": config['MissionIcons']['Evacuate High-Value Assets'],
@@ -117,7 +115,8 @@ MISSION_ICONS = {
     "Chart Terminid Tunnels": config['MissionIcons']['Chart Terminid Tunnels'],
     "Take Down Overship": config['MissionIcons']['Take Down Overship'],
     "Repel Invasion Fleet": config['MissionIcons']['Repel Invasion Fleet'],
-    "Evacuate Citizens": config['MissionIcons']['Evacuate Citizens']
+    "Evacuate Citizens": config['MissionIcons']['Evacuate Citizens'],
+    "Free The City": config['MissionIcons']['Free The City']
 }
 
 # Biome banners for Planets
