@@ -154,6 +154,8 @@ def normalize_subfaction_name(subfaction: str) -> str:
         "Cyborgs & Jet Brigade": "CyborgsJetBrigade",
         "Cyborgs & Incineration Corps": "CyborgsIncinerationCorps",
         "Cyborgs, Jet Brigade & Incineration Corps": "CyborgsJetBrigadeIncinerationCorps",
+        "Appropriators": "Appropriators",
+        "Mindless Masses": "MindlessMasses",
     }
     return replacements.get(normalized, normalized)
 

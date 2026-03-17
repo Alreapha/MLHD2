@@ -512,24 +512,25 @@ def build_ui(app):
     # Initial preview update
     update_planet_preview()
 
-    # Label text changes based on selected planet (Cyberstan -> Mega Factory)
-    mega_city_label = ttk.Label(mission_frame, text="Mega City:", foreground=flair_fg)
+    # Mega Structure selection label is static; city/factory values are merged in the combobox.
+    mega_city_label = ttk.Label(mission_frame, text="Mega Structure:", foreground=flair_fg)
     mega_city_label.grid(row=2, column=0, sticky=tk.W, pady=5)
     app.mega_cities_label = mega_city_label
     mega_cities_combo = ttk.Combobox(mission_frame, textvariable=app.mega_cities, state="readonly", width=27)
     mega_cities_combo.grid(row=2, column=1, sticky=tk.W, padx=(8, 0), pady=5)
     app.mega_cities_combo = mega_cities_combo
 
-    # Updates the Mega City label for Cyberstan; affects UI label only
-    def update_mega_city_label(*args):
-        try:
-            planet_name = app.planet.get() or ""
-            is_cyberstan = planet_name.strip().lower() == "cyberstan"
-            label_text = "Mega Factory:" if is_cyberstan else "Mega City:"
-            if getattr(app, "mega_cities_label", None) is not None:
-                app.mega_cities_label.configure(text=label_text)
-        except Exception:
-            pass
+    # Returns a merged mega structure list (cities + factories) for a planet.
+    def get_planet_mega_structures(planetary_data, planet_name):
+        planet_entry = planetary_data.get(planet_name, {}) if isinstance(planetary_data, dict) else {}
+        if not isinstance(planet_entry, dict):
+            return []
+        merged = []
+        for values in (planet_entry.get("mega_cities") or [], planet_entry.get("mega_factories") or []):
+            for value in values:
+                if value not in merged:
+                    merged.append(value)
+        return merged
 
     # Dynamic planet / mega city lists
     # Populates mega city options for the selected planet; affects mega city combobox
@@ -541,12 +542,11 @@ def build_ui(app):
                 planetary_data = json.load(f)
         except Exception:
             planetary_data = {}
-        update_mega_city_label()
         if not selected_planet or selected_planet not in planetary_data:
             mega_cities_combo["values"] = ["Planet Surface"]
             mega_cities_combo.set("Planet Surface")
         else:
-            mega_cities_list = planetary_data[selected_planet].get("mega_cities", [])
+            mega_cities_list = get_planet_mega_structures(planetary_data, selected_planet)
             mega_cities_combo["values"] = mega_cities_list if mega_cities_list else ["Planet Surface"]
             mega_cities_combo.set(mega_cities_list[0] if mega_cities_list else "Planet Surface")
 
@@ -565,22 +565,13 @@ def build_ui(app):
         else:
             planet_combo.set(planet_list[0])
         # Immediately update mega cities for the (possibly new) planet
-        update_mega_city_label()
         update_mega_cities()
 
     sector_combo.bind("<<ComboboxSelected>>", update_planets)
     planet_combo.bind("<<ComboboxSelected>>", update_mega_cities)
-    try:
-        app.planet.trace_add("write", update_mega_city_label)
-    except Exception:
-        try:
-            app.planet.trace("w", lambda *a: update_mega_city_label())
-        except Exception:
-            pass
     # Initial population
     update_planets()
     update_mega_cities()
-    update_mega_city_label()
 
     # 7 images underneath mega city and profile, packed tightly together
     # Each image is based on a dropdown: enemy type, subfaction, campaign, difficulty, mission, major order, DSS

@@ -18,6 +18,9 @@
       "Hiljaisuus",
       "Kalasatama",
       "Ydinkeskusta"
+    ],
+    "mega_factories": [
+      "Evolution Plats"
     ]
   },
   "Fort Union": {
@@ -540,8 +543,15 @@
       "Hangar 6"
     ]
   },
+  "Charbal-VII": {
+    "mega_factories": [
+      "Planet Surface",
+      "Utopia Varen"
+    ]
+  },
+  
   "Cyberstan": {
-    "mega_cities": [
+    "mega_factories": [
       "Planet Surface",
       "Transcendence",
       "Ursoot Nine",

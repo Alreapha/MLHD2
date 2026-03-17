@@ -484,6 +484,9 @@ SUBFACTION_BANNERS = {
     "Cyborgs, Jet Brigade & Incineration Corps": iconconfig["SubfactionBanners"].get(
         "CyborgsJetBrigadeIncinerationCorps", "Cyborgs, Jet Brigade & Incineration Corps"
     ),
+    "Appropriators": iconconfig["SubfactionBanners"].get("Appropriators", "Appropriators"),
+    "Mindless Masses": iconconfig["SubfactionBanners"].get("MindlessMasses", "Mindless Masses"),
+
 }
 
 HELLDIVER_BANNERS = {
@@ -514,6 +517,8 @@ SUBFACTION_ICONS = {
     "Cyborgs & Jet Brigade": iconconfig["SubfactionIcons"]["CyborgsJetBrigade"],
     "Cyborgs & Incineration Corps": iconconfig["SubfactionIcons"]["CyborgsIncinerationCorps"],
     "Cyborgs, Jet Brigade & Incineration Corps": iconconfig["SubfactionIcons"]["CyborgsJetBrigadeIncinerationCorps"],
+    "Appropriators": iconconfig["SubfactionIcons"]["Appropriators"],
+    "Mindless Masses": iconconfig["SubfactionIcons"]["MindlessMasses"],
 }
 
 HVT_ICONS = {
@@ -569,6 +574,7 @@ TITLE_ICONS = {
     "PYTHON COMMANDO": iconconfig["TitleIcons"]["PYTHON COMMANDO"],
     "REDACTED": iconconfig["TitleIcons"]["REDACTED"],
     "BUNKER BUSTER": iconconfig["TitleIcons"]["BUNKER BUSTER"],
+    "MUDSKIPPER": iconconfig["TitleIcons"]["MUDSKIPPER"],
 }
 
 PROFILE_PICTURES = {
@@ -674,6 +680,9 @@ PROFILE_PICTURES = {
     "SA-7 Headfirst": iconconfig["ProfilePictures"]["SA-7 Headfirst"],
     "SA-8 Ram": iconconfig["ProfilePictures"]["SA-8 Ram"],
     "DP-8 Mountain-Scaled": iconconfig["ProfilePictures"]["DP-8 Mountain-Scaled"],
+    "CPG-48 Sapper": iconconfig["ProfilePictures"]["CPG-48 Sapper"],
+    "CPH-26 Commandant": iconconfig["ProfilePictures"]["CPH-26 Commandant"],
+    "CPR-80 Bulwark": iconconfig["ProfilePictures"]["CPR-80 Bulwark"],
 }
 
 # Biome Banners per Planet (used as embed image backgrounds)

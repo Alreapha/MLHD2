@@ -98,9 +98,9 @@ from core.utils import (
 )
 
 # Manual Configuration
-GWDay = "Day: 759"
-GWDate = "Date: 08/03/2026"
-VERSION = "1.7.023"
+GWDay = "Day: 769"
+GWDate = "Date: 17/03/2026"
+VERSION = "1.7.024"
 DEV_RELEASE = "-dev"
 RPC_UPDATE_INTERVAL = 10  # seconds, this is in seconds
 DATE_FORMAT = "%d-%m-%Y %H:%M:%S"
@@ -305,6 +305,8 @@ def normalize_subfaction_name(subfaction: str) -> str:
         "Cyborgs & Jet Brigade": "CyborgsJetBrigade",
         "Cyborgs & Incineration Corps": "CyborgsIncinerationCorps",
         "Cyborgs, Jet Brigade & Incineration Corps": "CyborgsJetBrigadeIncinerationCorps",
+        "Appropriators": "Appropriators",
+        "Mindless Masses": "MindlessMasses",
     }
     return replacements.get(normalized, normalized)
 

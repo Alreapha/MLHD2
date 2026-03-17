@@ -482,7 +482,16 @@ def send_to_discord(
             FlairLeftIco = iconconfig["MiscIcon"].get("Flair Left", "") if "MiscIcon" in iconconfig else ""
             FlairRightIco = iconconfig["MiscIcon"].get("Flair Right", "") if "MiscIcon" in iconconfig else ""
 
-        mega_label = "Mega Factory" if str(data.get("Planet", "")).strip().lower() == "cyberstan" else "Mega City"
+        mega_label = "Mega City"
+        try:
+            planet_name = str(data.get("Planet", "")).strip()
+            with open(app_path("JSON", "MegaCityPlanets.json"), "r") as f:
+                planetary_data = json.load(f)
+            planet_entry = planetary_data.get(planet_name, {}) if isinstance(planetary_data, dict) else {}
+            if isinstance(planet_entry, dict) and "mega_factories" in planet_entry:
+                mega_label = "Mega Factory"
+        except Exception:
+            pass
 
         message_content = {
             "content": None,
