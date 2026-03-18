@@ -98,9 +98,9 @@ from core.utils import (
 )
 
 # Manual Configuration
-GWDay = "Day: 769"
-GWDate = "Date: 17/03/2026"
-VERSION = "1.7.024"
+GWDay = "Day: 770"
+GWDate = "Date: 18/03/2026"
+VERSION = "1.7.025"
 DEV_RELEASE = "-dev"
 RPC_UPDATE_INTERVAL = 10  # seconds, this is in seconds
 DATE_FORMAT = "%d-%m-%Y %H:%M:%S"
@@ -537,6 +537,7 @@ class MissionLogGUI:
         self.root.resizable(False, False)
         self.RPC = None
         self.last_rpc_update = 0
+        self._icon_ref = None  # Keep reference to prevent garbage collection
 
         def load_icon():
             try:
@@ -545,9 +546,13 @@ class MissionLogGUI:
                 background = Image.new("RGBA", pil_icon.size, bg_color)
                 pil_icon = Image.alpha_composite(background, pil_icon)
                 icon = ImageTk.PhotoImage(pil_icon)
+                # Store reference to prevent garbage collection
+                self._icon_ref = icon
                 self.root.after(0, lambda: self.root.iconphoto(False, icon))
             except Exception as e:
-                logging.error(f"Failed to load icon: {e}")
+                # Suppress PIL/Tkinter threading warnings that don't affect operation
+                if "main thread is not in main loop" not in str(e):
+                    logging.error(f"Failed to load icon: {e}")
 
         threading.Thread(target=load_icon, daemon=True).start()
 

@@ -1,5 +1,7 @@
 import logging
 import os
+import sys
+import warnings
 from logging.handlers import RotatingFileHandler
 from typing import Optional
 
@@ -16,6 +18,15 @@ class _StructuredContextFilter(logging.Filter):
             record.outcome = "-"
         if not hasattr(record, "latency_ms"):
             record.latency_ms = "-"
+        return True
+
+
+class _SuppressNoiseFilter(logging.Filter):
+    """Suppress known non-critical warnings from third-party libraries."""
+    def filter(self, record: logging.LogRecord) -> bool:
+        # Suppress PIL/Tkinter PhotoImage cleanup warnings
+        if "PhotoImage" in record.getMessage() and "__photo" in record.getMessage():
+            return False
         return True
 
 
@@ -41,6 +52,7 @@ def setup_logging(debug: bool, log_file: str = "app.log") -> None:
     root = logging.getLogger()
     root.setLevel(logging.DEBUG)  # Capture all; handlers filter
     context_filter = _StructuredContextFilter()
+    noise_filter = _SuppressNoiseFilter()
 
     # Remove any pre-existing handlers added by libraries (to avoid duplicate/verbose output)
     for h in list(root.handlers):
@@ -56,6 +68,7 @@ def setup_logging(debug: bool, log_file: str = "app.log") -> None:
         )
     )
     ch.addFilter(context_filter)
+    ch.addFilter(noise_filter)
     root.addHandler(ch)
 
     # File handler (rotating not required yet; simple append)
@@ -85,6 +98,17 @@ def setup_logging(debug: bool, log_file: str = "app.log") -> None:
         # Avoid duplicate output if library attached its own handlers
         for h in list(nlog.handlers):
             nlog.removeHandler(h)
+
+    # Suppress PIL/Tkinter PhotoImage cleanup warnings
+    warnings.filterwarnings("ignore", message=".*PhotoImage.*")
+    
+    # Override exception hook to suppress PIL cleanup errors
+    _original_excepthook = sys.excepthook
+    def _filter_excepthook(exc_type, exc_value, traceback):
+        if exc_type.__name__ == "AttributeError" and "__photo" in str(exc_value):
+            return  # Suppress PIL PhotoImage cleanup errors
+        _original_excepthook(exc_type, exc_value, traceback)
+    sys.excepthook = _filter_excepthook
 
 
 # Returns a named logger for modules; affects structured log routing
