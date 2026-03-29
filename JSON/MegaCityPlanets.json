@@ -549,7 +549,13 @@
       "Utopia Varen"
     ]
   },
-  
+  "Heze Bay": {
+    "mega_cities": [
+      "Planet Surface",
+      "Unanimity",
+      "Unison"
+    ]
+  },
   "Cyberstan": {
     "mega_factories": [
       "Planet Surface",

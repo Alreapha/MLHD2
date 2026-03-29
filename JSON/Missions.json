@@ -2544,6 +2544,136 @@
                 "Retrieve Recon Craft Intel",
                 "Unlisted Mission"
             ]
+        },
+        "Urgent Liberation": {
+            "1 - TRIVIAL": [
+                "Destroy Exospire",
+                "Evacuate Colonists",
+                "Free Colony",
+                "Free The City",
+                "Pump Fuel To ICBM",
+                "Retrieve Recon Craft Intel",
+                "Take Down Overship",
+                "Terminate Illegal Broadcast",
+                "Upload Escape Pod Data",
+                "Unlisted Mission"
+            ],
+            "2 - EASY": [
+                "Conduct Geological Survey",
+                "Evacuate Colonists",
+                "Destroy Exospire",
+                "Free Colony",
+                "Free The City",
+                "Pump Fuel To ICBM",
+                "Retrieve Recon Craft Intel",
+                "Take Down Overship",
+                "Terminate Illegal Broadcast",
+                "Upload Escape Pod Data",
+                "Unlisted Mission"
+            ],
+            "3 - MEDIUM": [
+                "Blitz: Destroy Illuminate Warp Ships",
+                "Conduct Geological Survey",
+                "Destroy Exospire",
+                "Destroy Harvesters",
+                "Evacuate Colonists",
+                "Free Colony",
+                "Free The City",
+                "Launch ICBM",
+                "Retrieve Recon Craft Intel",
+                "Take Down Overship",
+                "Unlisted Mission"
+            ],
+            "4 - CHALLENGING": [
+                "Blitz: Destroy Illuminate Warp Ships",
+                "Conduct Geological Survey",
+                "Destroy Exospire",
+                "Evacuate Colonists",
+                "Free Colony",
+                "Free The City",
+                "Launch ICBM",
+                "Retrieve Recon Craft Intel",
+                "Take Down Overship",
+                "Unlisted Mission"
+            ],
+            "5 - HARD": [
+                "Blitz: Destroy Illuminate Warp Ships",
+                "Conduct Geological Survey",
+                "Destroy Exospire",
+                "Evacuate Colonists",
+                "Evacuate High-Value Assets",
+                "Free Colony",
+                "Free The City",
+                "Launch ICBM",
+                "Retrieve Recon Craft Intel",
+                "Take Down Overship",
+                "Unlisted Mission"
+            ],
+            "6 - EXTREME": [
+                "Blitz: Destroy Illuminate Warp Ships",
+                "Conduct Geological Survey",
+                "Destroy Exospire",
+                "Evacuate Colonists",
+                "Evacuate High-Value Assets",
+                "Free Colony",
+                "Free The City",
+                "Launch ICBM",
+                "Retrieve Recon Craft Intel",
+                "Take Down Overship",
+                "Unlisted Mission"
+            ],
+            "7 - SUICIDE MISSION": [
+                "Blitz: Destroy Illuminate Warp Ships",
+                "Conduct Geological Survey",
+                "Destroy Exospire",
+                "Evacuate Colonists",
+                "Evacuate High-Value Assets",
+                "Free Colony",
+                "Free The City",
+                "Launch ICBM",
+                "Retrieve Recon Craft Intel",
+                "Take Down Overship",
+                "Unlisted Mission"
+            ],
+            "8 - IMPOSSIBLE": [
+                "Blitz: Destroy Illuminate Warp Ships",
+                "Conduct Geological Survey",
+                "Destroy Exospire",
+                "Evacuate Colonists",
+                "Evacuate High-Value Assets",
+                "Free Colony",
+                "Free The City",
+                "Launch ICBM",
+                "Retrieve Recon Craft Intel",
+                "Take Down Overship",
+                "Unlisted Mission"
+            ],
+            "9 - HELLDIVE": [
+                "Blitz: Destroy Illuminate Warp Ships",
+                "Conduct Geological Survey",
+                "Destroy Exospire",
+                "Evacuate Colonists",
+                "Evacuate High-Value Assets",
+                "Free Colony",
+                "Free The City",
+                "Launch ICBM",
+                "Retrieve Recon Craft Intel",
+                "Take Down Overship",
+                "Unlisted Mission"
+            ],
+            "10 - SUPER HELLDIVE": [
+                "Blitz: Destroy Illuminate Warp Ships",
+                "Conduct Geological Survey",
+                "Destroy Exospire",
+                "Evacuate Colonists",
+                "Evacuate High-Value Assets",
+                "Free Colony",
+                "Free The City",
+                "Launch ICBM",
+                "Retrieve Recon Craft Intel",
+                "Take Down Overship",
+                "Unlisted Mission"
+            ]
         }
     },
     "Observing": {

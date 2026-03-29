@@ -183,6 +183,7 @@ total_attrition = mission_category_counts.get("Attrition", 0) > 0
 total_bfse = mission_category_counts.get("Battle for Super Earth", 0) > 0
 total_recon = mission_category_counts.get("Recon", 0) > 0
 total_bfc = mission_category_counts.get("Battle for Cyberstan", 0) > 0
+total_urgent_liberation = missions_category_counts.get("Urgent Liberation", 0) > 0
 
 # First-occurrence lookup tables used by date computations
 first_time_by_difficulty = (
@@ -204,6 +205,7 @@ all_campaigns = (
     and total_bfse
     and total_recon
     and total_bfc
+    and total_urgent_liberation
 )
 
 # Load biome mapping from json file
@@ -603,6 +605,7 @@ if AllCampaigns:
         "Battle for Super Earth",
         "Recon",
         "Battle for Cyberstan",
+        "Urgent Liberation"
     ]:
         first_time = first_time_by_campaign.get(campaign)
         if first_time is not None:

@@ -95,6 +95,7 @@ _BASE_PLANET_ICONS = {
     "Angel's Venture": iconconfig["PlanetIcons"]["Fractured"],
     "Moradesh": iconconfig["PlanetIcons"]["Fractured"],
     "Ivis": iconconfig["PlanetIcons"]["Fractured"],
+    "Seasse": iconconfig["PlanetIcons"]["Void"]
 }
 
 # Apply dynamic planet icons to create final PLANET_ICONS dictionary
@@ -109,6 +110,7 @@ CAMPAIGN_ICONS = {
     "Battle for Super Earth": iconconfig["CampaignIcons"]["Battle for Super Earth"],
     "Recon": iconconfig["CampaignIcons"]["Recon"],
     "Battle for Cyberstan": iconconfig["CampaignIcons"]["Battle for Cyberstan"],
+    "Urgent Liberation": iconconfig["CampaignIcons"]["Urgent Liberation"]
 }
 
 
@@ -179,6 +181,10 @@ MISSION_ICONS = {
     "Commando: Acquire Evidence": iconconfig["MissionIcons"]["Commando Acquire Evidence"],
     "Commando: Extract Intel": iconconfig["MissionIcons"]["Commando Extract Intel"],
     "Commando: Secure Black Box": iconconfig["MissionIcons"]["Commando Secure Black Box"],
+    "Neutralise Ground-to-Orbit Defences": iconconfig["MissionIcons"]["Neutralise Ground-to-Orbit Defences"],
+    "Confiscate Assets": iconconfig["MissionIcons"]["Confiscate Assets"],
+    "Halt Cyborg Production": iconconfig["MissionIcons"]["Halt Cyborg Production"],
+    "Destroy Exospire": iconconfig["MissionIcons"]["Destroy Exospire"]
 }
 
 # Biome Banners per Planet (used as embed image backgrounds)
@@ -411,7 +417,7 @@ BIOME_BANNERS = {
     "Crimsica": iconconfig["BiomeBanners"]["Ionic Crimson"],
     "Charon Prime": iconconfig["BiomeBanners"]["Ionic Crimson"],
     "Clasa": iconconfig["BiomeBanners"]["Basic Swamp"],
-    "Seasse": iconconfig["BiomeBanners"]["Basic Swamp"],
+    "Seasse": iconconfig["BiomeBanners"]["Void"],
     "Parsh": iconconfig["BiomeBanners"]["Basic Swamp"],
     "East Iridium Trading Bay": iconconfig["BiomeBanners"]["Basic Swamp"],
     "Gacrux": iconconfig["BiomeBanners"]["Basic Swamp"],
@@ -915,7 +921,7 @@ PLANET_PROFILES = {
     "Crimsica": iconconfig["PlanetProfile"]["Ionic Crimson"],
     "Charon Prime": iconconfig["PlanetProfile"]["Ionic Crimson"],
     "Clasa": iconconfig["PlanetProfile"]["Basic Swamp"],
-    "Seasse": iconconfig["PlanetProfile"]["Basic Swamp"],
+    "Seasse": iconconfig["PlanetProfile"]["Void"],
     "Parsh": iconconfig["PlanetProfile"]["Basic Swamp"],
     "East Iridium Trading Bay": iconconfig["PlanetProfile"]["Basic Swamp"],
     "Gacrux": iconconfig["PlanetProfile"]["Basic Swamp"],
@@ -1187,7 +1193,7 @@ PLANET_PROFILES = {
     "Crimsica": iconconfig["BiomePlanets"]["Ionic Crimson"],
     "Charon Prime": iconconfig["BiomePlanets"]["Ionic Crimson"],
     "Clasa": iconconfig["BiomePlanets"]["Basic Swamp"],
-    "Seasse": iconconfig["BiomePlanets"]["Basic Swamp"],
+    "Seasse": iconconfig["BiomePlanets"]["Void"],
     "Parsh": iconconfig["BiomePlanets"]["Basic Swamp"],
     "East Iridium Trading Bay": iconconfig["BiomePlanets"]["Basic Swamp"],
     "Gacrux": iconconfig["BiomePlanets"]["Basic Swamp"],

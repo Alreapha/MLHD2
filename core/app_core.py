@@ -98,9 +98,9 @@ from core.utils import (
 )
 
 # Manual Configuration
-GWDay = "Day: 770"
-GWDate = "Date: 18/03/2026"
-VERSION = "1.7.025"
+GWDay = "Day: 780"
+GWDate = "Date: 29/03/2026"
+VERSION = "1.7.026"
 DEV_RELEASE = "-dev"
 RPC_UPDATE_INTERVAL = 10  # seconds, this is in seconds
 DATE_FORMAT = "%d-%m-%Y %H:%M:%S"

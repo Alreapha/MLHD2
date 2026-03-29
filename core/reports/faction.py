@@ -416,6 +416,7 @@ InvasionIco = iconconfig["CampaignIcons"]["Invasion"]
 HighPriorityIco = iconconfig["CampaignIcons"]["High-Priority"]
 AttritionIco = iconconfig["CampaignIcons"]["Attrition"]
 ReconIco = iconconfig["CampaignIcons"]["Recon"]
+UrgentIco = iconconfig["CampaignIcons"]["Urgent Liberation"]
 
 
 def _safe_div(numer, denom):
@@ -487,6 +488,7 @@ terminid_campaign_lines = (
     + _campaign_line("Terminids", "Battle for Super Earth", "Battle for Super Earth", InvasionIco, hide_zero=True)
     + _campaign_line("Terminids", "Recon", "Recon", ReconIco)
     + _campaign_line("Terminids", "Battle for Cyberstan", "Battle for Cyberstan", LiberationIco, hide_zero=True)
+    + _campaign_line("Terminids", "Urgent Liberation", "Urgent Liberation", UrgentIco, hide_zero=True)
 )
 
 automaton_campaign_lines = (
@@ -498,6 +500,7 @@ automaton_campaign_lines = (
     + _campaign_line("Automatons", "Battle for Super Earth", "Battle for Super Earth", InvasionIco, hide_zero=True)
     + _campaign_line("Automatons", "Recon", "Recon", ReconIco)
     + _campaign_line("Automatons", "Battle for Cyberstan", "Battle for Cyberstan", LiberationIco)
+    + _campaign_line("Automatons", "Urgent Liberation", "Urgent Liberation", UrgentIco, hide_zero=True)
 )
 
 illuminate_campaign_lines = (
@@ -509,6 +512,7 @@ illuminate_campaign_lines = (
     + _campaign_line("Illuminate", "Battle for Super Earth", "Battle for Super Earth", InvasionIco)
     + _campaign_line("Illuminate", "Recon", "Recon", ReconIco)
     + _campaign_line("Illuminate", "Battle for Cyberstan", "Battle for Cyberstan", LiberationIco, hide_zero=True)
+    + _campaign_line("Illuminate", "Urgent Liberation", "Urgent Liberation", UrgentIco, hide_zero=True)
 )
 
 # Create embed data
